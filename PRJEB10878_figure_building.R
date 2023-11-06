@@ -1,6 +1,8 @@
 library(feather)
 library(ggplot2)
 library(tidyverse)
+library(ggrepel)
+library(zCompositions)
 
 pooled_data <- read_feather('pooled_abundance_data.feather')
 pooled_data <- as.data.frame(pooled_data)  
@@ -45,6 +47,9 @@ plot_function <- function(data, enzyme_name) {
   ggsave(paste0("Enzyme_", enzyme_name, ".png"), dpi = 600, plot = p, width = 10, height = 6)
 }
 
+clr_pooled_count_df <- czm_clr(pooled_data)
+
+
 # Loop through each enzyme and plot
 enzyme_names <- unique(long_df$Enzyme)
 
@@ -52,4 +57,14 @@ for (enzyme in enzyme_names) {
   enzyme_data <- filter(long_df, Enzyme == enzyme)
   plot_function(enzyme_data, enzyme)
 }
+
+
+
+
+
+
+
+
+
+
 
