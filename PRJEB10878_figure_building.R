@@ -1,6 +1,7 @@
 library(feather)
 library(ggplot2)
 library(tidyverse)
+library(Boruta)
 
 czm_clr <- function(count_df) {
   
@@ -12,16 +13,27 @@ czm_clr <- function(count_df) {
   
 }
 
+boruta <- function(count_df, meta_df) {
+  
+  set.seed(101)
+  Boruta(count_df,
+         as.factor(meta_df[rownames(count_df), "config"]),
+         maxRuns = 1000)
+  
+}
+
+## Load the Data
+
 pooled_data <- read_feather('pooled_abundance_data.feather')
 pooled_data <- as.data.frame(pooled_data)  
 
 metadata <- read_feather('metadf.feather')
 metadata <- as.data.frame(metadata)
 
-# add the 'config' column from metadata to the pooled_data df, make sure they align
-# properly on the SampleIdentifier column present in both dfs
+# add the 'config' column from metadata to the pooled_data df
 pooled_data$config <- metadata[match(pooled_data$SampleIdentifier, metadata$SampleIdentifier),]$config
 
+# Save the identifier columns
 identifiers_and_config <- pooled_data[, c("SampleIdentifier", "config")]
 
 # List of columns needed
@@ -31,14 +43,15 @@ enzymes = c('Amidase', 'DD-carboxypeptidase', 'DD-endopeptidase', 'DL-endopeptid
 #make new DF with only these columns
 filtered_pooled_data <- pooled_data[enzymes]
 
+# Apply CLR Normalization and change to DF
 CLR_pooled_data <- czm_clr(filtered_pooled_data)
-
 CLR_pooled_data <- as.data.frame(CLR_pooled_data)
 
 # Add config column back into data frame
 CLR_pooled_data <- cbind(identifiers_and_config, CLR_pooled_data)
 
 
+# Conver to long format DF
 long_df <- CLR_pooled_data %>%
   pivot_longer(
     cols = -c(SampleIdentifier, config),
@@ -46,13 +59,7 @@ long_df <- CLR_pooled_data %>%
     values_to = "CLR Relative Abundance"
   )
 
-# Convert the 'CLR Relative Abundance' to numeric, coercing non-numeric to NAs
-long_df$`CLR Relative Abundance` <- as.numeric(as.character(long_df$`CLR Relative Abundance`))
-
-# Check again after conversion
-str(long_df$`CLR Relative Abundance`)
-
-summary(long_df$`CLR Relative Abundance`)
+# Plot the differential abundances and save to a tiff for pub
 
 my_plot <- ggplot(long_df, aes(x = Enzyme, y = `CLR Relative Abundance`, color = config)) +
     geom_point(alpha = 0.8, size = 2, stroke = 0.3, position = position_jitterdodge(jitter.height = 0,
@@ -82,3 +89,29 @@ my_plot <- ggplot(long_df, aes(x = Enzyme, y = `CLR Relative Abundance`, color =
 
 ggsave("PRJEB10878_diff_abundance.tiff", plot = my_plot, width = 11, height = 8.5, units = "in", dpi = 300, type = "cairo")
 
+
+## Apply and plot Boruta ##
+
+# Apply Boruta
+boruta <- boruta(CLR_pooled_data, metadata)
+
+# Plot Boruta
+imp <- attStats(boruta)
+
+# Create a dataframe for plotting
+imp_df <- data.frame(
+  Attribute = rownames(imp),
+  Importance = imp$meanImp,
+  Decision = imp$decision
+)
+
+print(imp_df)
+
+
+# Plot using ggplot2
+ggplot(imp_df, aes(x = reorder(Attribute, Importance), y = Importance, fill = Decision)) +
+  geom_bar(stat = "identity") +
+  coord_flip() + # Flip coordinates to make it a horizontal bar plot
+  scale_fill_manual(values = c("Rejected" = "red", "Confirmed" = "green", "Tentative" = "yellow")) +
+  theme_minimal() +
+  labs(title = "Feature Importance from Boruta Analysis", x = "Features", y = "Importance (Z-Score)")
