@@ -54,6 +54,8 @@ pooled_abun_df_7774 <- pooled_abun_df(abundance_data_7774)
 # drop the UNMAPPED column
 pooled_abun_df_7774 <- subset(pooled_abun_df_7774, select = -c(UNMAPPED))
 
+
+
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
@@ -126,6 +128,11 @@ ggsave("C:/users/odesa/Desktop/CRCFinal/Figures/PRJEB7774_clr_abun.tif",
        width = 10, height = 10, units = "in", device = 'tiff', dpi = 600)
 
 # write new feathers of pooled data
+# Want 2 variations of the data for ML training, relab all, CLR - UNMAPPED 
+
+# add rownames to column
+clr_pooled_abun_df_7774$sample_id <- rownames(clr_pooled_abun_df_7774)
+pooled_abun_df_7774$sample_id <- rownames(pooled_abun_df_7774)
 
 arrow::write_feather(clr_pooled_abun_df_7774, "C:/users/odesa/Desktop/CRCFinal/PRJEB7774/CLR_PRJEB7774_pooled_abun.feather")
-
+arrow::write_feather(pooled_abun_df_7774, "C:/users/odesa/Desktop/CRCFinal/PRJEB7774/relab_PRJEB7774_pooled_abun.feather")
