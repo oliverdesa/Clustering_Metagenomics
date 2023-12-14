@@ -4,6 +4,10 @@ library(ggbiplot)
 library(feather)
 library(arrow)
 library(tidyverse)
+library(scales)
+library(vegan)
+library(pairwiseAdonis)
+
 
 pooled_abun_df <- function(abun_df) {
   
@@ -136,3 +140,62 @@ pooled_abun_df_7774$sample_id <- rownames(pooled_abun_df_7774)
 
 arrow::write_feather(clr_pooled_abun_df_7774, "C:/users/odesa/Desktop/CRCFinal/PRJEB7774/CLR_PRJEB7774_pooled_abun.feather")
 arrow::write_feather(pooled_abun_df_7774, "C:/users/odesa/Desktop/CRCFinal/PRJEB7774/relab_PRJEB7774_pooled_abun.feather")
+
+
+# PCA Analysis #
+relab_pooled <- arrow::read_feather("C:/users/odesa/Desktop/CRCFinal/PRJEB7774/relab_PRJEB7774_pooled_abun.feather")
+
+# Rename the 'run_accession' column in metadata_table to 'sample_id'
+names(metadata_7774)[names(metadata_7774) == "run_accession"] <- "sample_id"
+
+# add labels
+relab_pooled_labeled <- merge(relab_pooled, metadata_7774[, c("sample_id", "sample_title")], by = "sample_id")
+
+# drop unwanted columns
+relab_pooled_labeled <- subset(relab_pooled_labeled, select = -c(sample_id, UNMAPPED, UC118))
+
+# Separate the labels from the data
+data <- relab_pooled_labeled[, -ncol(relab_pooled_labeled)]
+labels <- relab_pooled_labeled[, ncol(relab_pooled_labeled)]
+
+# Z-score normalization
+data_normalized <- as.data.frame(scale(data))
+
+# PCA
+pca_result <- prcomp(data_normalized, center = TRUE, scale. = TRUE)
+
+# Create a data frame for plotting
+pca_data <- as.data.frame(pca_result$x)
+pca_data$label <- labels
+
+# Plot
+pca_plot <- ggplot(pca_data, aes(x = PC1, y = PC2, color = label)) +
+    geom_point() +
+    stat_ellipse(type = "t", level = 0.95) +  # Adds ellipses for each group
+    theme_minimal() +
+    annotate("text", x = Inf, y = Inf, label = annotation_text, hjust = 1, vjust = 1, size = 3.5) +
+    theme(plot.margin = margin(1, 1, 1, 1, "cm"))
+
+pca_plot <- pca_plot + 
+  theme(panel.background = element_rect(fill = "white"),
+        plot.background = element_rect(fill = "white", colour = "white"),
+        legend.background = element_rect(fill = "white"),
+        plot.title = element_text(size = 14, hjust = 0.5, color = "black"),
+        legend.text = element_text(color = "black"),
+        legend.title = element_text(color = "black"))
+
+ggsave("PCA_plot.png", plot = pca_plot, width = 10, height = 10, units = "in")
+
+
+# Permanova
+distance_matrix <- vegdist(data_normalized, method = "euclidean")
+permanova_result <- adonis2(distance_matrix ~ labels)
+print(permanova_result)
+
+pairwise_results <- pairwise.adonis(distance_matrix, labels)
+print(pairwise_results)
+
+annotation_text <- "Carcinoma vs Control: R2 = 0.0447, p.adj = 0.003"
+
+
+
