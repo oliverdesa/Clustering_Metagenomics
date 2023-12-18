@@ -4,6 +4,7 @@ library(ggbiplot)
 library(feather)
 library(arrow)
 library(tidyverse)
+library(ggplot2)
 
 pooled_abun_df <- function(abun_df) {
   
@@ -67,6 +68,28 @@ results <- Maaslin2(
   transform = "none"
 )
 
+# DAC Analysis #
+
+DAC_abundance_data <- arrow::read_feather("C:/Users/odesa/Desktop/CRCFinal/PRJEB10878/clean_joined_DAC_genefamilies_relab.feather")
+
+DAC_abundance_data <- DAC_abundance_data %>% column_to_rownames(var = "sample_id")
+
+DAC_pooled_abun_df <- pooled_abun_df(DAC_abundance_data)
+
+DAC_pooled_abun_df <- subset(DAC_pooled_abun_df, select = -c(UNMAPPED))
+
+DAC_pooled_abun_df$sample_id <- rownames(DAC_pooled_abun_df)
+
+metadata$sample_id <- rownames(metadata)
+
+# add the config column from metadata to DAC_pooled_abun_df on the same sample_id
+DAC_pooled_abun_df <- merge(DAC_pooled_abun_df, metadata, by = "sample_id")
 
 
+DAC_plot <- ggplot(DAC_pooled_abun_df, aes(x = config, y = Diadenylate, color = config)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, size = 1.5, aes(color = config)) +
+  theme_minimal() +
+  labs(x = "Patient", y = "DAC Relative Abundance")
 
+ggsave("C:/users/odesa/Desktop/CRCFinal/CRC-Final/figures/DAC_abundance.png", plot = DAC_plot, width = 10, height = 10, dpi=300)
