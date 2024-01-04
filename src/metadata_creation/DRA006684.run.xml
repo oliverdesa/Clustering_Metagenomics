@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RUN_SET>
+    <RUN alias="DRR127619" center_name="TITECH" accession="DRR127619">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114865</TITLE>
+        <EXPERIMENT_REF refname="DRX120363" refcenter="TITECH" accession="DRX120363"/>
+    </RUN>
+    <RUN alias="DRR127552" center_name="TITECH" accession="DRR127552">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114798</TITLE>
+        <EXPERIMENT_REF refname="DRX120296" refcenter="TITECH" accession="DRX120296"/>
+    </RUN>
+    <RUN alias="DRR127721" center_name="TITECH" accession="DRR127721">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114967</TITLE>
+        <EXPERIMENT_REF refname="DRX120465" refcenter="TITECH" accession="DRX120465"/>
+    </RUN>
+    <RUN alias="DRR127507" center_name="TITECH" accession="DRR127507">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114753</TITLE>
+        <EXPERIMENT_REF refname="DRX120251" refcenter="TITECH" accession="DRX120251"/>
+    </RUN>
+    <RUN alias="DRR127718" center_name="TITECH" accession="DRR127718">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114964</TITLE>
+        <EXPERIMENT_REF refname="DRX120462" refcenter="TITECH" accession="DRX120462"/>
+    </RUN>
+    <RUN alias="DRR127713" center_name="TITECH" accession="DRR127713">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114959</TITLE>
+        <EXPERIMENT_REF refname="DRX120457" refcenter="TITECH" accession="DRX120457"/>
+    </RUN>
+    <RUN alias="DRR127666" center_name="TITECH" accession="DRR127666">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114912</TITLE>
+        <EXPERIMENT_REF refname="DRX120410" refcenter="TITECH" accession="DRX120410"/>
+    </RUN>
+    <RUN alias="DRR127588" center_name="TITECH" accession="DRR127588">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114834</TITLE>
+        <EXPERIMENT_REF refname="DRX120332" refcenter="TITECH" accession="DRX120332"/>
+    </RUN>
+    <RUN alias="DRR127789" center_name="TITECH" accession="DRR127789">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115035</TITLE>
+        <EXPERIMENT_REF refname="DRX120533" refcenter="TITECH" accession="DRX120533"/>
+    </RUN>
+    <RUN alias="DRR127509" center_name="TITECH" accession="DRR127509">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114755</TITLE>
+        <EXPERIMENT_REF refname="DRX120253" refcenter="TITECH" accession="DRX120253"/>
+    </RUN>
+    <RUN alias="DRR127731" center_name="TITECH" accession="DRR127731">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114977</TITLE>
+        <EXPERIMENT_REF refname="DRX120475" refcenter="TITECH" accession="DRX120475"/>
+    </RUN>
+    <RUN alias="DRR162777" center_name="TITECH" accession="DRR162777">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00154993</TITLE>
+        <EXPERIMENT_REF refname="DRX153396" refcenter="TITECH" accession="DRX153396"/>
+    </RUN>
+    <RUN alias="DRR127476" center_name="TITECH" accession="DRR127476">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114722</TITLE>
+        <EXPERIMENT_REF refname="DRX120220" refcenter="TITECH" accession="DRX120220"/>
+    </RUN>
+    <RUN alias="DRR127594" center_name="TITECH" accession="DRR127594">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114840</TITLE>
+        <EXPERIMENT_REF refname="DRX120338" refcenter="TITECH" accession="DRX120338"/>
+    </RUN>
+    <RUN alias="DRR127616" center_name="TITECH" accession="DRR127616">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114862</TITLE>
+        <EXPERIMENT_REF refname="DRX120360" refcenter="TITECH" accession="DRX120360"/>
+    </RUN>
+    <RUN alias="DRR127567" center_name="TITECH" accession="DRR127567">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114813</TITLE>
+        <EXPERIMENT_REF refname="DRX120311" refcenter="TITECH" accession="DRX120311"/>
+    </RUN>
+    <RUN alias="DRR127579" center_name="TITECH" accession="DRR127579">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114825</TITLE>
+        <EXPERIMENT_REF refname="DRX120323" refcenter="TITECH" accession="DRX120323"/>
+    </RUN>
+    <RUN alias="DRR127559" center_name="TITECH" accession="DRR127559">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114805</TITLE>
+        <EXPERIMENT_REF refname="DRX120303" refcenter="TITECH" accession="DRX120303"/>
+    </RUN>
+    <RUN alias="DRR127613" center_name="TITECH" accession="DRR127613">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114859</TITLE>
+        <EXPERIMENT_REF refname="DRX120357" refcenter="TITECH" accession="DRX120357"/>
+    </RUN>
+    <RUN alias="DRR127514" center_name="TITECH" accession="DRR127514">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114760</TITLE>
+        <EXPERIMENT_REF refname="DRX120258" refcenter="TITECH" accession="DRX120258"/>
+    </RUN>
+    <RUN alias="DRR127751" center_name="TITECH" accession="DRR127751">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114997</TITLE>
+        <EXPERIMENT_REF refname="DRX120495" refcenter="TITECH" accession="DRX120495"/>
+    </RUN>
+    <RUN alias="DRR127762" center_name="TITECH" accession="DRR127762">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115008</TITLE>
+        <EXPERIMENT_REF refname="DRX120506" refcenter="TITECH" accession="DRX120506"/>
+    </RUN>
+    <RUN alias="DRR127557" center_name="TITECH" accession="DRR127557">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114803</TITLE>
+        <EXPERIMENT_REF refname="DRX120301" refcenter="TITECH" accession="DRX120301"/>
+    </RUN>
+    <RUN alias="DRR127672" center_name="TITECH" accession="DRR127672">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114918</TITLE>
+        <EXPERIMENT_REF refname="DRX120416" refcenter="TITECH" accession="DRX120416"/>
+    </RUN>
+    <RUN alias="DRR127532" center_name="TITECH" accession="DRR127532">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114778</TITLE>
+        <EXPERIMENT_REF refname="DRX120276" refcenter="TITECH" accession="DRX120276"/>
+    </RUN>
+    <RUN alias="DRR127634" center_name="TITECH" accession="DRR127634">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114880</TITLE>
+        <EXPERIMENT_REF refname="DRX120378" refcenter="TITECH" accession="DRX120378"/>
+    </RUN>
+    <RUN alias="DRR127692" center_name="TITECH" accession="DRR127692">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114938</TITLE>
+        <EXPERIMENT_REF refname="DRX120436" refcenter="TITECH" accession="DRX120436"/>
+    </RUN>
+    <RUN alias="DRR127597" center_name="TITECH" accession="DRR127597">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114843</TITLE>
+        <EXPERIMENT_REF refname="DRX120341" refcenter="TITECH" accession="DRX120341"/>
+    </RUN>
+    <RUN alias="DRR127628" center_name="TITECH" accession="DRR127628">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114874</TITLE>
+        <EXPERIMENT_REF refname="DRX120372" refcenter="TITECH" accession="DRX120372"/>
+    </RUN>
+    <RUN alias="DRR127481" center_name="TITECH" accession="DRR127481">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114727</TITLE>
+        <EXPERIMENT_REF refname="DRX120225" refcenter="TITECH" accession="DRX120225"/>
+    </RUN>
+    <RUN alias="DRR127674" center_name="TITECH" accession="DRR127674">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114920</TITLE>
+        <EXPERIMENT_REF refname="DRX120418" refcenter="TITECH" accession="DRX120418"/>
+    </RUN>
+    <RUN alias="DRR127537" center_name="TITECH" accession="DRR127537">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114783</TITLE>
+        <EXPERIMENT_REF refname="DRX120281" refcenter="TITECH" accession="DRX120281"/>
+    </RUN>
+    <RUN alias="DRR127546" center_name="TITECH" accession="DRR127546">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114792</TITLE>
+        <EXPERIMENT_REF refname="DRX120290" refcenter="TITECH" accession="DRX120290"/>
+    </RUN>
+    <RUN alias="DRR127535" center_name="TITECH" accession="DRR127535">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114781</TITLE>
+        <EXPERIMENT_REF refname="DRX120279" refcenter="TITECH" accession="DRX120279"/>
+    </RUN>
+    <RUN alias="DRR127669" center_name="TITECH" accession="DRR127669">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114915</TITLE>
+        <EXPERIMENT_REF refname="DRX120413" refcenter="TITECH" accession="DRX120413"/>
+    </RUN>
+    <RUN alias="DRR127515" center_name="TITECH" accession="DRR127515">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114761</TITLE>
+        <EXPERIMENT_REF refname="DRX120259" refcenter="TITECH" accession="DRX120259"/>
+    </RUN>
+    <RUN alias="DRR127491" center_name="TITECH" accession="DRR127491">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114737</TITLE>
+        <EXPERIMENT_REF refname="DRX120235" refcenter="TITECH" accession="DRX120235"/>
+    </RUN>
+    <RUN alias="DRR127754" center_name="TITECH" accession="DRR127754">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115000</TITLE>
+        <EXPERIMENT_REF refname="DRX120498" refcenter="TITECH" accession="DRX120498"/>
+    </RUN>
+    <RUN alias="DRR127603" center_name="TITECH" accession="DRR127603">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114849</TITLE>
+        <EXPERIMENT_REF refname="DRX120347" refcenter="TITECH" accession="DRX120347"/>
+    </RUN>
+    <RUN alias="DRR127521" center_name="TITECH" accession="DRR127521">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114767</TITLE>
+        <EXPERIMENT_REF refname="DRX120265" refcenter="TITECH" accession="DRX120265"/>
+    </RUN>
+    <RUN alias="DRR162779" center_name="TITECH" accession="DRR162779">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00154995</TITLE>
+        <EXPERIMENT_REF refname="DRX153398" refcenter="TITECH" accession="DRX153398"/>
+    </RUN>
+    <RUN alias="DRR127755" center_name="TITECH" accession="DRR127755">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115001</TITLE>
+        <EXPERIMENT_REF refname="DRX120499" refcenter="TITECH" accession="DRX120499"/>
+    </RUN>
+    <RUN alias="DRR127748" center_name="TITECH" accession="DRR127748">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114994</TITLE>
+        <EXPERIMENT_REF refname="DRX120492" refcenter="TITECH" accession="DRX120492"/>
+    </RUN>
+    <RUN alias="DRR162776" center_name="TITECH" accession="DRR162776">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00154992</TITLE>
+        <EXPERIMENT_REF refname="DRX153395" refcenter="TITECH" accession="DRX153395"/>
+    </RUN>
+    <RUN alias="DRR127724" center_name="TITECH" accession="DRR127724">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114970</TITLE>
+        <EXPERIMENT_REF refname="DRX120468" refcenter="TITECH" accession="DRX120468"/>
+    </RUN>
+    <RUN alias="DRR127728" center_name="TITECH" accession="DRR127728">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114974</TITLE>
+        <EXPERIMENT_REF refname="DRX120472" refcenter="TITECH" accession="DRX120472"/>
+    </RUN>
+    <RUN alias="DRR127685" center_name="TITECH" accession="DRR127685">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114931</TITLE>
+        <EXPERIMENT_REF refname="DRX120429" refcenter="TITECH" accession="DRX120429"/>
+    </RUN>
+    <RUN alias="DRR127580" center_name="TITECH" accession="DRR127580">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114826</TITLE>
+        <EXPERIMENT_REF refname="DRX120324" refcenter="TITECH" accession="DRX120324"/>
+    </RUN>
+    <RUN alias="DRR127625" center_name="TITECH" accession="DRR127625">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114871</TITLE>
+        <EXPERIMENT_REF refname="DRX120369" refcenter="TITECH" accession="DRX120369"/>
+    </RUN>
+    <RUN alias="DRR127485" center_name="TITECH" accession="DRR127485">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114731</TITLE>
+        <EXPERIMENT_REF refname="DRX120229" refcenter="TITECH" accession="DRX120229"/>
+    </RUN>
+    <RUN alias="DRR127704" center_name="TITECH" accession="DRR127704">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114950</TITLE>
+        <EXPERIMENT_REF refname="DRX120448" refcenter="TITECH" accession="DRX120448"/>
+    </RUN>
+    <RUN alias="DRR127646" center_name="TITECH" accession="DRR127646">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114892</TITLE>
+        <EXPERIMENT_REF refname="DRX120390" refcenter="TITECH" accession="DRX120390"/>
+    </RUN>
+    <RUN alias="DRR127774" center_name="TITECH" accession="DRR127774">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115020</TITLE>
+        <EXPERIMENT_REF refname="DRX120518" refcenter="TITECH" accession="DRX120518"/>
+    </RUN>
+    <RUN alias="DRR127638" center_name="TITECH" accession="DRR127638">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114884</TITLE>
+        <EXPERIMENT_REF refname="DRX120382" refcenter="TITECH" accession="DRX120382"/>
+    </RUN>
+    <RUN alias="DRR127720" center_name="TITECH" accession="DRR127720">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114966</TITLE>
+        <EXPERIMENT_REF refname="DRX120464" refcenter="TITECH" accession="DRX120464"/>
+    </RUN>
+    <RUN alias="DRR162775" center_name="TITECH" accession="DRR162775">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00154991</TITLE>
+        <EXPERIMENT_REF refname="DRX153394" refcenter="TITECH" accession="DRX153394"/>
+    </RUN>
+    <RUN alias="DRR127736" center_name="TITECH" accession="DRR127736">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114982</TITLE>
+        <EXPERIMENT_REF refname="DRX120480" refcenter="TITECH" accession="DRX120480"/>
+    </RUN>
+    <RUN alias="DRR127683" center_name="TITECH" accession="DRR127683">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114929</TITLE>
+        <EXPERIMENT_REF refname="DRX120427" refcenter="TITECH" accession="DRX120427"/>
+    </RUN>
+    <RUN alias="DRR162778" center_name="TITECH" accession="DRR162778">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00154994</TITLE>
+        <EXPERIMENT_REF refname="DRX153397" refcenter="TITECH" accession="DRX153397"/>
+    </RUN>
+    <RUN alias="DRR127767" center_name="TITECH" accession="DRR127767">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115013</TITLE>
+        <EXPERIMENT_REF refname="DRX120511" refcenter="TITECH" accession="DRX120511"/>
+    </RUN>
+    <RUN alias="DRR127647" center_name="TITECH" accession="DRR127647">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114893</TITLE>
+        <EXPERIMENT_REF refname="DRX120391" refcenter="TITECH" accession="DRX120391"/>
+    </RUN>
+    <RUN alias="DRR127536" center_name="TITECH" accession="DRR127536">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114782</TITLE>
+        <EXPERIMENT_REF refname="DRX120280" refcenter="TITECH" accession="DRX120280"/>
+    </RUN>
+    <RUN alias="DRR127756" center_name="TITECH" accession="DRR127756">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115002</TITLE>
+        <EXPERIMENT_REF refname="DRX120500" refcenter="TITECH" accession="DRX120500"/>
+    </RUN>
+    <RUN alias="DRR127708" center_name="TITECH" accession="DRR127708">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114954</TITLE>
+        <EXPERIMENT_REF refname="DRX120452" refcenter="TITECH" accession="DRX120452"/>
+    </RUN>
+    <RUN alias="DRR127776" center_name="TITECH" accession="DRR127776">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115022</TITLE>
+        <EXPERIMENT_REF refname="DRX120520" refcenter="TITECH" accession="DRX120520"/>
+    </RUN>
+    <RUN alias="DRR127617" center_name="TITECH" accession="DRR127617">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114863</TITLE>
+        <EXPERIMENT_REF refname="DRX120361" refcenter="TITECH" accession="DRX120361"/>
+    </RUN>
+    <RUN alias="DRR127649" center_name="TITECH" accession="DRR127649">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114895</TITLE>
+        <EXPERIMENT_REF refname="DRX120393" refcenter="TITECH" accession="DRX120393"/>
+    </RUN>
+    <RUN alias="DRR127524" center_name="TITECH" accession="DRR127524">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114770</TITLE>
+        <EXPERIMENT_REF refname="DRX120268" refcenter="TITECH" accession="DRX120268"/>
+    </RUN>
+    <RUN alias="DRR127763" center_name="TITECH" accession="DRR127763">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115009</TITLE>
+        <EXPERIMENT_REF refname="DRX120507" refcenter="TITECH" accession="DRX120507"/>
+    </RUN>
+    <RUN alias="DRR127707" center_name="TITECH" accession="DRR127707">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114953</TITLE>
+        <EXPERIMENT_REF refname="DRX120451" refcenter="TITECH" accession="DRX120451"/>
+    </RUN>
+    <RUN alias="DRR127583" center_name="TITECH" accession="DRR127583">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114829</TITLE>
+        <EXPERIMENT_REF refname="DRX120327" refcenter="TITECH" accession="DRX120327"/>
+    </RUN>
+    <RUN alias="DRR127737" center_name="TITECH" accession="DRR127737">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114983</TITLE>
+        <EXPERIMENT_REF refname="DRX120481" refcenter="TITECH" accession="DRX120481"/>
+    </RUN>
+    <RUN alias="DRR127752" center_name="TITECH" accession="DRR127752">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114998</TITLE>
+        <EXPERIMENT_REF refname="DRX120496" refcenter="TITECH" accession="DRX120496"/>
+    </RUN>
+    <RUN alias="DRR127777" center_name="TITECH" accession="DRR127777">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00115023</TITLE>
+        <EXPERIMENT_REF refname="DRX120521" refcenter="TITECH" accession="DRX120521"/>
+    </RUN>
+    <RUN alias="DRR127700" center_name="TITECH" accession="DRR127700">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114946</TITLE>
+        <EXPERIMENT_REF refname="DRX120444" refcenter="TITECH" accession="DRX120444"/>
+    </RUN>
+    <RUN alias="DRR127519" center_name="TITECH" accession="DRR127519">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114765</TITLE>
+        <EXPERIMENT_REF refname="DRX120263" refcenter="TITECH" accession="DRX120263"/>
+    </RUN>
+    <RUN alias="DRR127488" center_name="TITECH" accession="DRR127488">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114734</TITLE>
+        <EXPERIMENT_REF refname="DRX120232" refcenter="TITECH" accession="DRX120232"/>
+    </RUN>
+    <RUN alias="DRR127517" center_name="TITECH" accession="DRR127517">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114763</TITLE>
+        <EXPERIMENT_REF refname="DRX120261" refcenter="TITECH" accession="DRX120261"/>
+    </RUN>
+    <RUN alias="DRR127478" center_name="TITECH" accession="DRR127478">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114724</TITLE>
+        <EXPERIMENT_REF refname="DRX120222" refcenter="TITECH" accession="DRX120222"/>
+    </RUN>
+    <RUN alias="DRR127596" center_name="TITECH" accession="DRR127596">
+        <TITLE>Illumina HiSeq 2500 paired end sequencing of SAMD00114842</TITLE>
+        <EXPERIMENT_REF refname="DRX120340" refcenter="TITECH" accession="DRX120340"/>
+    </RUN>
+</RUN_SET>
