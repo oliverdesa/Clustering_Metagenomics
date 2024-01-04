@@ -1,0 +1,12 @@
+Finishing up the break, What I need to do this week
+
+- Put together and create a small presentation of the protein purification to show dana
+- Write down some points of potential next steps
+- take inventory of all the trial patients
+	- How many do I have completed?
+	- find names of those missing, check if filt reads exist, if not re-download from scratch
+- Finish the metadata sheet
+- Test applying the clustering, take notes and important info.
+	- How many clusters are being made? How many idividual protein do each of these clusters contain?
+- download and run the bariatric data, might have to check how many of the files are potentially missing
+- 
