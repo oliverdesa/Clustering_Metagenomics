@@ -71,5 +71,33 @@ def xml_to_spreadsheet_sample(xml_file_path, output_file_path):
     # Export DataFrame to a CSV file
     df.to_csv(output_file_path, index=False)
 
+def xml_to_spreadsheet_run(xml_file_path, output_file_path):
+    # Parse the XML file
+    tree = ET.parse(xml_file_path)
+    root = tree.getroot()
+
+    # Create a list to hold the data
+    data = []
+
+    # Iterate over each STUDY in the XML
+    for run in root.findall('RUN'):
+        # Initialize a dictionary for this study
+        run_info = {
+            'Alias': run.get('alias'),
+            'Center Name': run.get('center_name'),
+            'Accession': run.get('accession'),
+            'Title': run.find('.//TITLE').text if run.find('.//TITLE') is not None else None,
+            
+        }
+
+        # Append to data list
+        data.append(run_info)
+
+    # Create a DataFrame from the data
+    df = pd.DataFrame(data)
+
+    # Export DataFrame to a CSV file
+    df.to_csv(output_file_path, index=False)
+
 
 
