@@ -22,9 +22,9 @@ Finishing up the break, What I need to do this week
 	- CLR normalization has very low N not 0, looks like a bug with maaslin but not sure. 
 - Make a process to look deeper into differentially abundant clusters;
 	- what taxa are they mostly coming from?
-	- what domains/sec tags do proteins in that cluster typically have?
+	- what domains/sec tags do proteins in that cluster typically have? (Running now)
 	- visualize the cluster changes between patients
-	- make function to easily pull initial proteins collected under a cluster
+	- make function to easily pull initial proteins collected under a cluster (Done)
 	
 - Cluster and run Maaslin2 on PRJEB10878
 	- Look for repeatedly downregulated clusters
