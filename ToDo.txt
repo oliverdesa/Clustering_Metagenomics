@@ -14,7 +14,7 @@ Finishing up the break, What I need to do this week
 
 05/01/2024
 
-- queued up the remaining reads for kneaddata
+- queued up the remaining reads for kneaddata (Done, Failed)
 - clustered PRJEB7774 and applied maaslin
 	- 1 significant cluster when doing raw maaslin on relab data
 	- ~9 sig clusters when doing CLR maaslin on relab data
@@ -28,4 +28,14 @@ Finishing up the break, What I need to do this week
 	
 - Cluster and run Maaslin2 on PRJEB10878
 	- Look for repeatedly downregulated clusters
--  
+
+08/02/2024
+
+- Combined and ran DA on Large CRC dataset
+- in the pooled, CLR normalized analysis, LD-carboxys are downregulated in early stage patients (p=0.0305281909265825, q=0.24422552741266)
+- In analysis, stage 1/2 are characterized as early stage, 3/4 are late stage. HS and MP seperate from healthy, might have to combine those into simply cancer vs no cancer
+- signalp and IPS are finished and downloaded to OneDrive, need to make some functions.
+	- How do Secreted DLEs change?
+	- What are the domains/secretion tags of the clusters? (do it for all to make it easier)
+
+
