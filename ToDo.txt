@@ -32,10 +32,20 @@ Finishing up the break, What I need to do this week
 08/02/2024
 
 - Combined and ran DA on Large CRC dataset
-- in the pooled, CLR normalized analysis, LD-carboxys are downregulated in early stage patients (p=0.0305281909265825, q=0.24422552741266)
+- in the pooled, CLR normalized analysis, LD-carboxys are downregulated in early stage patients (p=0.0305281909265825, q=0.24422552741266) (Not that important)
 - In analysis, stage 1/2 are characterized as early stage, 3/4 are late stage. HS and MP seperate from healthy, might have to combine those into simply cancer vs no cancer
 - signalp and IPS are finished and downloaded to OneDrive, need to make some functions.
 	- How do Secreted DLEs change?
 	- What are the domains/secretion tags of the clusters? (do it for all to make it easier)
+
+09/01/2024
+
+- Start by building function to grab number of DLE per cluster, domains + secretion tag calculations/cluster make a csv to easily map and build figures
+- test out random forest stuff
+- issues with cluster mapping, only 1879 of 1960 original proteins seem to be mapping all the way to foldseek clusters. 
+- Created function to pull the amount of protiens stored within each cluster
+- crreated a function to annotation secretion tags based on uniref ID
+- Could technically do DA testing on secrreted only DLEs. 
+- Should apply DA testing with clustering on PRJEB10878
 
 
