@@ -45,7 +45,37 @@ Finishing up the break, What I need to do this week
 - issues with cluster mapping, only 1879 of 1960 original proteins seem to be mapping all the way to foldseek clusters. 
 - Created function to pull the amount of protiens stored within each cluster
 - crreated a function to annotation secretion tags based on uniref ID
-- Could technically do DA testing on secrreted only DLEs. 
+- Could technically do DA testing on secreted only DLEs. 
 - Should apply DA testing with clustering on PRJEB10878
+
+10/01/2024
+
+- Tried to do DA testing on PRJEB10878 but metadata was lost on old ssd. Metadata download doesnt seem to include patient conditions
+- Re-assess clustering function for secretion annotation and protein counts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
