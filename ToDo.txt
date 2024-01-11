@@ -57,10 +57,10 @@ Finishing up the break, What I need to do this week
 11/01/2024
 
 - Today, prepare some figures for meeting with Dana and meeting with charlie.
-- Make a pooled DA testing figure to compare with the clustered data.
-- Train some models on the pooled and clustering data then print out some figures. 
+- Make a pooled DA testing figure to compare with the clustered data. (DONE)
+- Train some models on the pooled and clustering data then print out some figures. (Move this to later)
 - Display some info on cluster secretion tags, domains if possible.
-- make figures of PRJEB7774 and look for common clusters. 
+- make figures of PRJEB7774 and look for common clusters. (Fig made, look for common clusters)
 
 
 
