@@ -54,6 +54,14 @@ Finishing up the break, What I need to do this week
 - Re-assess clustering function for secretion annotation and protein counts
 - SOLVED, some proteins do not have their 3d structured annotated yet so are ignored in the foldseek clustering process. Most are singletons and havent been seen in any of the shotgun data yet. Can submit a job to get those 3d structures predicted for completion sake. 
 
+11/01/2024
+
+- Today, prepare some figures for meeting with Dana and meeting with charlie.
+- Make a pooled DA testing figure to compare with the clustered data.
+- Train some models on the pooled and clustering data then print out some figures. 
+- Display some info on cluster secretion tags, domains if possible.
+- make figures of PRJEB7774 and look for common clusters. 
+
 
 
 
