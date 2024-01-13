@@ -27,7 +27,7 @@ def create_heatmap(dataframe, title, filename, target_column):
 
     # Create the heatmap
     plt.figure(figsize=(10, 8))
-    sns.heatmap(sorted_heatmap_data, annot=True, cmap='coolwarm_r', fmt='.2f')
+    sns.heatmap(sorted_heatmap_data, annot=True, cmap='coolwarm_r', fmt='.2f', center = 0)
 
     # Customize the plot
     plt.title(title)
