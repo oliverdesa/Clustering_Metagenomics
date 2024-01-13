@@ -61,6 +61,9 @@ Finishing up the break, What I need to do this week
 - Train some models on the pooled and clustering data then print out some figures. (Move this to later)
 - Display some info on cluster secretion tags, domains if possible.
 - make figures of PRJEB7774 and look for common clusters. (Fig made, look for common clusters)
+- Plan to make comparisons;
+	- pull tables from 8156 and 7774 from heatmap script, pull common clusters that are downregulated. 
+	- use that to look at secretion, % secreted per cluster.
 
 
 
