@@ -59,16 +59,25 @@ Finishing up the break, What I need to do this week
 - Today, prepare some figures for meeting with Dana and meeting with charlie.
 - Make a pooled DA testing figure to compare with the clustered data. (DONE)
 - Train some models on the pooled and clustering data then print out some figures. (Move this to later)
-- Display some info on cluster secretion tags, domains if possible.
+- Display some info on cluster secretion tags, domains if possible. 
 - make figures of PRJEB7774 and look for common clusters. (Fig made, look for common clusters)
 - Plan to make comparisons;
-	- pull tables from 8156 and 7774 from heatmap script, pull common clusters that are downregulated. 
-	- use that to look at secretion, % secreted per cluster.
+	- pull tables from 8156 and 7774 from heatmap script, pull common clusters that are downregulated. (IPR)
+	- use that to look at secretion, % secreted per cluster. (DONE)
 
+13/01/2024
 
-
-
-
+- Notes from meeting with Charlie:
+	- find custom database from genomes that map back to uniref IDS. Use those to determine taxanomic composition of clusters.
+	- might have multiple mapping back to the same taxa, need to pick one
+	- Adjust colour gradient of heatmap so that white is at 0 (done)
+	- build a correlation plot between the 2 datasets to see how related they are (Done, weak correlation)
+	- look deeper into the formula log(qvalue) * sign(coeff)
+	- maybe plot effect size (just coeff?)
+	- PCA the clusters from the dataset to see if theyre different
+	- Need to prove taxa shifts are not all that explain cluster diffs
+- Still need to find PRJEB10878 metadata (Found)
+- What clusters are downregulated the most? Of these clusters, which have the highest correlation between the 2 datasets?
 
 
 
