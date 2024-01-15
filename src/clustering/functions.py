@@ -112,3 +112,12 @@ def get_cluster_info(ID_list, mmseqs_dict, foldseek_dict, sec_dict):
         new_df.loc[idx] = [id, len(proteins), sec_count]
     
     return new_df
+
+def make_outputs(df, output_name):
+    """Make a feather file and tsv from a dataframe"""
+
+    df.to_csv(output_name + '.tsv', sep='\t')
+
+    df.to_feather(output_name + '.feather')
+
+    return output_name
