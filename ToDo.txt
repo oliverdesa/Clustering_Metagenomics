@@ -87,7 +87,11 @@ Finishing up the break, What I need to do this week
 	- This cluster has only 2 members unfortunately, A0A1C5VJV2 and A0A1V6EIC9
 	- Bost seem to be coming from clostrideacea family. Should check species from our databases and see what we have.
 - Will now start pulling taxa for each uniref ID in our database and add it to the cluster_info.csv.
-
+	- Difficulty finding blastped genomes, wait for charlie
+- Will now take a look at GVHD data
+	- Really not many samples, probably not worth looking at at this point, wait for large danish dataset
+- species question cant be answered until I get the blastp results.
+- 
 
 
 
