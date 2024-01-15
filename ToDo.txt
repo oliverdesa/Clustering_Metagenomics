@@ -79,6 +79,14 @@ Finishing up the break, What I need to do this week
 - Still need to find PRJEB10878 metadata (Found)
 - What clusters are downregulated the most? Of these clusters, which have the highest correlation between the 2 datasets?
 
+15/01/2024
+
+- Ran DA testing on PRJEB10878
+	- No significantly down-regulated clusters unfortunately
+	- the most common cluster A0A1C5VJV2 Is still heavily downregulated in this dataset
+	- This cluster has only 2 members unfortunately, A0A1C5VJV2 and A0A1V6EIC9
+	- Bost seem to be coming from clostrideacea family. Should check species from our databases and see what we have.
+- Will now start pulling taxa for each uniref ID in our database and add it to the cluster_info.csv.
 
 
 
