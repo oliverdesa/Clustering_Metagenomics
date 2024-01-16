@@ -91,7 +91,9 @@ Finishing up the break, What I need to do this week
 - Will now take a look at GVHD data
 	- Really not many samples, probably not worth looking at at this point, wait for large danish dataset
 - species question cant be answered until I get the blastp results.
-- 
+- Should continue with the domain information tomorrow, create the csv
+- should also implement code to log and pull secretion information from individual proteins captured, not just cluster members
+- relative abundance of each protein also matters in this case, might be a bit complicated.
 
 
 
