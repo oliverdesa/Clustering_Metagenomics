@@ -94,7 +94,34 @@ Finishing up the break, What I need to do this week
 - Should continue with the domain information tomorrow, create the csv
 - should also implement code to log and pull secretion information from individual proteins captured, not just cluster members
 - relative abundance of each protein also matters in this case, might be a bit complicated.
-
+- Proteins without 3D structure:
+['A0A1A6AKX1',
+ 'A0A2U3N4J8',
+ 'A0A8A0RIS4',
+ 'A0A8A0RIX7',
+ 'A0A8G2HRI5',
+ 'A0A8G2M587',
+ 'A0A8S0GDS2',
+ 'A0A8S0GPC8',
+ 'A0A916BQR8',
+ 'A0A916CW89',
+ 'A0A916HN28',
+ 'A0A916HNI5',
+ 'A0A916IAR6',
+ 'A0A916KA10',
+ 'A0A916NI20',
+ 'A0A917VZF3',
+ 'A0A919WN25',
+ 'A0A919ZDK0',
+ 'A0A927LH80',
+ 'A0A928K5J0',
+ 'A0A928NUY4',
+ 'A0A940ZKM3',
+ 'A0A942PKR4',
+ 'A0A949RNE6',
+ 'A0A971NJL2',
+ 'A0A977II70',
+ 'UPI0001CF73DB']
 
 
 
