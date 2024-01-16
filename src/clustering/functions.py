@@ -35,7 +35,7 @@ def create_heatmap(dataframe, title, filename, target_column):
     plt.xlabel('')
 
     # Save and show the plot
-    plt.tight_layout() # Ensure everything fits without overlapping
+    plt.tight_layout() 
     plt.savefig(filename, dpi=600, bbox_inches='tight')
     plt.show()
 
@@ -113,6 +113,8 @@ def get_cluster_info(ID_list, mmseqs_dict, foldseek_dict, sec_dict):
     
     return new_df
 
+## Data Processing ##
+
 def make_outputs(df, output_name):
     """Make a feather file and tsv from a dataframe"""
 
@@ -121,3 +123,26 @@ def make_outputs(df, output_name):
     df.to_feather(output_name + '.feather')
 
     return output_name
+
+def clean_table(tsv):
+    """Clean the humann table for downstream analysis"""
+
+    #read to tsv
+    df = pd.read_csv(tsv, sep='\t')
+
+    # drops dupes including taxa info
+    df = df[~df['# Gene Family'].apply(lambda x: '|' in x)]
+    
+    # Remove everything from the headers following the id, then transpose
+    df.columns = [col.split('_')[0] for col in df.columns]
+    transposed_df = df.T
+
+    # make the first row the header
+    transposed_df.columns = transposed_df.iloc[0]
+    transposed_df = transposed_df.drop(transposed_df.index[0])
+
+    # make the index a column
+    transposed_df = transposed_df.reset_index()
+    transposed_df = transposed_df.rename(columns={'index': 'sample_id'})
+
+    return transposed_df
