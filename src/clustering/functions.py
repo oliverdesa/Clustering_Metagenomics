@@ -148,7 +148,7 @@ def clean_table(tsv):
     return transposed_df
 
 
-def create_mapping_dict(mmseqs_tsv, foldseek_tsv, output_name):
+def create_maps(mmseqs_tsv, foldseek_tsv, output_name):
     """Create a dictionary mapping uniref100s to mmseqs
        and foldseek clusters. Input clustering file, and
        return a dictionary mapping uniref100s to foldseek"""

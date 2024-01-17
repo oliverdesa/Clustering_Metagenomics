@@ -95,33 +95,27 @@ Finishing up the break, What I need to do this week
 - should also implement code to log and pull secretion information from individual proteins captured, not just cluster members
 - relative abundance of each protein also matters in this case, might be a bit complicated.
 - Proteins without 3D structure:
-['A0A1A6AKX1',
- 'A0A2U3N4J8',
- 'A0A8A0RIS4',
- 'A0A8A0RIX7',
- 'A0A8G2HRI5',
- 'A0A8G2M587',
- 'A0A8S0GDS2',
- 'A0A8S0GPC8',
- 'A0A916BQR8',
- 'A0A916CW89',
- 'A0A916HN28',
- 'A0A916HNI5',
- 'A0A916IAR6',
- 'A0A916KA10',
- 'A0A916NI20',
- 'A0A917VZF3',
- 'A0A919WN25',
- 'A0A919ZDK0',
- 'A0A927LH80',
- 'A0A928K5J0',
- 'A0A928NUY4',
- 'A0A940ZKM3',
- 'A0A942PKR4',
- 'A0A949RNE6',
- 'A0A971NJL2',
- 'A0A977II70',
- 'UPI0001CF73DB']
+
+17/01/2024
+
+- Clustered all groups of enzymes through msmeqs
+- downloaded all PDBs of cluster reps
+- ran foldseek to get foldseek clusters
+- working on developing a function to create cluster mapping tools
+- mapping through DF instead of dict
+- important 3D structures may be missing
+- Scanning through the cluster maps, quite a few of the mmmseqs representatives are missing AF PDBs. Some ways to address:
+	1. Create the PDBs. Set up alphafold on the cluster and feed in un-predicted seqs for prediction. Time consuming, not sure if possible.
+	2. Ignore those without PDBs. Those lacking structures are probably rarely known or unimportant protein. Could add checks in the clustering code to 
+	   report how many uniref IDs from the humann output table are unnaccounted for after clustering. Potential to miss important proteins.
+	3. Could look for predicted proteins clustered to un-predicted rep sequences to replace the representative for that cluster. Might be a slightly poorer
+	   representation of all the proteins within that cluster, however would have less gaps, likely would be better than completely ignoring
+- Should likely start with 2 and then go from there depending on results. 
+- make sure kneaddata + trimmomatic are working, start the bariatric data on graham
+	- remember to adjust the kneaddata script for the the 4 in the reads. 
+
+ 
+ 
 
 
 
