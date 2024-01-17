@@ -146,3 +146,38 @@ def clean_table(tsv):
     transposed_df = transposed_df.rename(columns={'index': 'sample_id'})
 
     return transposed_df
+
+
+def create_mapping_dict(mmseqs_tsv, foldseek_tsv, output_name):
+    """Create a dictionary mapping uniref100s to mmseqs
+       and foldseek clusters. Input clustering file, and
+       return a dictionary mapping uniref100s to foldseek"""
+
+    # read in the tsvs
+    mmseqs_df = pd.read_csv(mmseqs_tsv, sep='\t')
+    foldseek_df = pd.read_csv(foldseek_tsv, sep='\t')
+
+    # rename the columns
+    mm_column_names = ['mmseqs_cluster', 'unclustered']
+    fold_column_names = ['foldseek_cluster', 'mmseqs_unclustered']
+    mmseqs_df.columns = mm_column_names
+    foldseek_df.columns = fold_column_names
+
+    # parse the DFs keeping only Uniref IDs
+    mmseqs_df['mmseqs_cluster'] = mmseqs_df['mmseqs_cluster'].apply(lambda x: x.split('_')[1])
+    mmseqs_df['unclustered'] = mmseqs_df['unclustered'].apply(lambda x: x.split('_')[1])
+
+    foldseek_df['foldseek_cluster'] = foldseek_df['foldseek_cluster'].apply(lambda x: x.split('-')[1])
+    foldseek_df['mmseqs_unclustered'] = foldseek_df['mmseqs_unclustered'].apply(lambda x: x.split('-')[1])
+
+    # Merging on 'mmseqs_cluster' from mmseqs_df and 'unclustered' from foldseek_df
+    combined_df = mmseqs_df.merge(foldseek_df, left_on='mmseqs_cluster', right_on='mmseqs_unclustered', how='left')
+
+    combined_df.to_csv(output_name + '.tsv', sep='\t')
+
+
+def cluster_humann_table(df, ):
+    """Cluster the humann table for each of the PGH enzymes
+       input the raw humann df, clustering dictionaries, and
+       output the clustered humann df"""
+       
