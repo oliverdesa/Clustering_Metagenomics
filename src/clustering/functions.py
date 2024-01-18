@@ -188,11 +188,56 @@ def cluster_humann_table(humann_feather, cluster_tsv):
     humann_df = pd.read_feather(humann_feather)
 
     # read in the clustering dataframes
-    enzymes = ['dl_endopeptidases', 'ld_carboxypeptidases', 
-               'glucosaminidases', 'muramidases', 
-               'amidases', 'ld_endopeptidases',
-               'dd_carboxypeptidases', 'diadenylate_cyclases']
+    cluster_df = pd.read_csv(cluster_tsv, sep='\t', low_memory=False)
+
+    # list of enzymes
+    enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
+               'LD-endopeptidase',
+               'DD-carboxypeptidase', 'Diadenylate-cyclase']
+
+    clustered_df = pd.DataFrame()
+    for enzyme in enzymes:
+        df = humann_df.loc[:, humann_df.columns.str.startswith(enzyme)]
+        column_names = df.columns.tolist()
+
+        print(f'{len(column_names)} {enzyme} found')
+
+        # Extract the UniRef IDs from the column names
+        column_ids = [x.split('_')[2] for x in column_names]
+
+        # Get the foldseek cluster for each UniRef ID
+        results = []
+        unclustered = []
+        for id in column_ids:
+            result = cluster_df.loc[cluster_df[f'{enzyme.replace('-', '_').lower() + 's'}-unclustered'] == id, f'{enzyme.replace('-', '_').lower() + 's'}-foldseek_cluster']
+            if pd.isna(result).all():
+                unclustered.append(f'{id}')
+                results.append('unclustered')
+            if pd.isna(result).all():
+                results.append(enzyme + '-' + str(result.iloc[0]))
+        
+        print(f'{len(results)} {enzyme} found, {len(unclustered)} {enzyme} unclustered')
+
+        # Replace the column names with the foldseek cluster
+        df.columns = results
+
+        # Aggregate the columns by foldseek cluster
+        agg_df = df.T.groupby(df.columns).sum().T
+
+        # Add the aggregated df to the clustered df
+        clustered_df = pd.concat([clustered_df, agg_df], axis=1)
     
+    # Add the sample id column back to the dataframe
+    clustered_df['sample_id'] = humann_df['sample_id']
+
+    return clustered_df
+
+
+
+            
+
+
+
 
     
 
