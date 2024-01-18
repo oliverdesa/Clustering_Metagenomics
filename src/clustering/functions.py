@@ -209,14 +209,14 @@ def cluster_humann_table(humann_feather, cluster_tsv):
         results = []
         unclustered = []
         for id in column_ids:
-            result = cluster_df.loc[cluster_df[f'{enzyme.replace('-', '_').lower() + 's'}-unclustered'] == id, f'{enzyme.replace('-', '_').lower() + 's'}-foldseek_cluster']
+            result = cluster_df.loc[cluster_df[f"{enzyme.replace('-', '_').lower() + 's'}-unclustered"] == id, f"{enzyme.replace('-', '_').lower() + 's'}-foldseek_cluster"]
             if pd.isna(result).all():
-                unclustered.append(f'{id}')
-                results.append('unclustered')
+                unclustered.append(f"{id}")
+                results.append("unclustered")
             if pd.isna(result).all():
                 results.append(enzyme + '-' + str(result.iloc[0]))
         
-        print(f'{len(results)} {enzyme} found, {len(unclustered)} {enzyme} unclustered')
+        print(f"{len(results)} {enzyme} found, {len(unclustered)} {enzyme} unclustered")
 
         # Replace the column names with the foldseek cluster
         df.columns = results
