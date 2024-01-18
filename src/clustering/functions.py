@@ -158,23 +158,23 @@ def create_maps(mmseqs_tsv, foldseek_tsv, output_name):
     foldseek_df = pd.read_csv(foldseek_tsv, sep='\t')
 
     # rename the columns
-    mm_column_names = ['mmseqs_cluster', 'unclustered']
-    fold_column_names = ['foldseek_cluster', 'mmseqs_unclustered']
+    mm_column_names = [f'{output_name}_mmseqs_cluster', f'{output_name}_unclustered']
+    fold_column_names = [f'{output_name}_foldseek_cluster', f'{output_name}_mmseqs_unclustered']
     mmseqs_df.columns = mm_column_names
     foldseek_df.columns = fold_column_names
 
     # parse the DFs keeping only Uniref IDs
-    mmseqs_df['mmseqs_cluster'] = mmseqs_df['mmseqs_cluster'].apply(lambda x: x.split('_')[1])
-    mmseqs_df['unclustered'] = mmseqs_df['unclustered'].apply(lambda x: x.split('_')[1])
+    mmseqs_df[f'{output_name}_mmseqs_cluster'] = mmseqs_df[f'{output_name}_mmseqs_cluster'].apply(lambda x: x.split('_')[1])
+    mmseqs_df[f'{output_name}_unclustered'] = mmseqs_df[f'{output_name}_unclustered'].apply(lambda x: x.split('_')[1])
 
-    foldseek_df['foldseek_cluster'] = foldseek_df['foldseek_cluster'].apply(lambda x: x.split('-')[1])
-    foldseek_df['mmseqs_unclustered'] = foldseek_df['mmseqs_unclustered'].apply(lambda x: x.split('-')[1])
+    foldseek_df[f'{output_name}_foldseek_cluster'] = foldseek_df[f'{output_name}_foldseek_cluster'].apply(lambda x: x.split('-')[1])
+    foldseek_df[f'{output_name}_mmseqs_unclustered'] = foldseek_df[f'{output_name}_mmseqs_unclustered'].apply(lambda x: x.split('-')[1])
 
     # Merging on 'mmseqs_cluster' from mmseqs_df and 'unclustered' from foldseek_df
-    combined_df = mmseqs_df.merge(foldseek_df, left_on='mmseqs_cluster', right_on='mmseqs_unclustered', how='left')
+    combined_df = mmseqs_df.merge(foldseek_df, left_on=f'{output_name}_mmseqs_cluster', right_on=f'{output_name}_mmseqs_unclustered', how='left')
 
     # subset to only important columns
-    combined_df = combined_df[['unclustered', 'mmseqs_cluster','foldseek_cluster']]
+    combined_df = combined_df[[f'{output_name}_unclustered', f'{output_name}_mmseqs_cluster', f'{output_name}_foldseek_cluster']]
 
     combined_df.to_csv(output_name + '.tsv', sep='\t')
 

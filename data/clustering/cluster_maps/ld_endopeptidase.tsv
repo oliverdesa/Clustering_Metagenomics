@@ -1,4 +1,4 @@
-	unclustered	mmseqs_cluster	foldseek_cluster
+	ld_endopeptidase_unclustered	ld_endopeptidase_mmseqs_cluster	ld_endopeptidase_foldseek_cluster
 0	A0A0B8XNQ7	A0A0B8XNQ7	A0A0B0HVF0
 1	A0A0G1JBJ2	A0A0G1JBJ2	A4SWU3
 2	A0A0G1Q852	A0A0G1JBJ2	A4SWU3
