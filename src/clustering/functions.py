@@ -173,11 +173,16 @@ def create_maps(mmseqs_tsv, foldseek_tsv, output_name):
     # Merging on 'mmseqs_cluster' from mmseqs_df and 'unclustered' from foldseek_df
     combined_df = mmseqs_df.merge(foldseek_df, left_on='mmseqs_cluster', right_on='mmseqs_unclustered', how='left')
 
+    # subset to only important columns
+    combined_df = combined_df[['unclustered', 'mmseqs_cluster','foldseek_cluster']]
+
     combined_df.to_csv(output_name + '.tsv', sep='\t')
 
 
 def cluster_humann_table(df, ):
     """Cluster the humann table for each of the PGH enzymes
-       input the raw humann df, clustering dictionaries, and
+       input the raw humann df, clustering dataframes, and
        output the clustered humann df"""
+    
+
        
