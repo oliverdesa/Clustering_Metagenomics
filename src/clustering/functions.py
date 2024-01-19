@@ -213,7 +213,7 @@ def cluster_humann_table(humann_feather, cluster_tsv):
             if pd.isna(result).all():
                 unclustered.append(f"{id}")
                 results.append("unclustered")
-            if pd.isna(result).all():
+            if  not pd.isna(result).all():
                 results.append(enzyme + '-' + str(result.iloc[0]))
         
         print(f"{len(results)} {enzyme} found, {len(unclustered)} {enzyme} unclustered")
