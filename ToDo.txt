@@ -114,6 +114,22 @@ Finishing up the break, What I need to do this week
 - make sure kneaddata + trimmomatic are working, start the bariatric data on graham
 	- remember to adjust the kneaddata script for the the 4 in the reads. 
 
+18/01/2024
+
+- started bariatric data and last of CRC data on graham
+	- same error with CRC data, the reads are misaligned
+- Created an improved large clustering function to look at all of the enzymes within the humann table
+- A significant amount of the enzymes are remaining unclustered because the mmseqs reps dont have 3D structures
+329 DL-endopeptidase found, 14 DL-endopeptidase unclustered
+3935 LD-carboxypeptidase found, 2225 LD-carboxypeptidase unclustered
+31 LD-endopeptidase found, 31 LD-endopeptidase unclustered
+11481 DD-carboxypeptidase found, 6677 DD-carboxypeptidase unclustered
+0 Diadenylate-cyclase found, 0 Diadenylate-cyclase unclustered
+- ** amidases, glucosaminidases and muramidases omitted for speed
+- email was sent to scinet, hopefully will get a response soon regarding running alphafold
+- in the meantime will likely need to move forward with option 3.
+
+
  
  
 
