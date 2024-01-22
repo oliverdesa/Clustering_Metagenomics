@@ -129,6 +129,20 @@ Finishing up the break, What I need to do this week
 - email was sent to scinet, hopefully will get a response soon regarding running alphafold
 - in the meantime will likely need to move forward with option 3.
 
+22/01/2024
+
+- Scinet responded, beluga and graham are capable of runnning alphafold. Look into setting that up.
+- Last of CRC data has error, something went wrong with bariatric. Go back and look.
+- addressed errors other than trimmomatic, ran jobs again.
+- Need to write a function to check if a Uref ID has a PDB, if print it to a txt to later feed into AF
+- Set up Globus, error connecting to clusters, emailed support. 
+	- Should try to set up AF asap because it will take ~ a day to install
+- Regarding the previous note about the function; What to do:
+	- First drop singletons: print out info after
+	- Second, create a dataframe without any of the fully clustered protiens
+	- Third, loop through and check for PDBs from full Uref100s, if it has one, replace the mmseqs rep w that protein.
+	- print out some stats on how many are now unclustered
+	- re-run foldseek.
 
  
  
