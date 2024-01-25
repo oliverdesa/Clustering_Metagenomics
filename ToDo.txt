@@ -151,6 +151,44 @@ Finishing up the break, What I need to do this week
 - subbed humann on bariatric, subbed kneaddata on resequenced reads
 - continue with clustering
 
+24/01/2024
+
+- AF databases are being downloaded, might be ready by tomorrow
+- bariatric has humann running
+- clustering updates:
+	- Wrote code to identify singletons, decided to use it after the re-clustering
+	- wrote code to pull no PDB repseqs and list their clustered uref IDs, working on a way to check for PDB and download that 
+	- code finished; pulls unclustered mmseqs clusters, searches clustered UrefIds for complete PDBs, makes that the new rep, otherwise nothing
+	- returns a new csv with the replaced reps, automatically downloads all of the new PDBs and puts out a sheet of which PDBs need to be removed
+	- wrote a shell script that reads the to_delete.txt and automatically deletes all files with those IDs from dir, can then copy new PDBs in
+	- function takes long to run prob ~3h, but likely only needs to run once.
+
+25/01/2024
+
+- Cluster tables made, new PDBs downloaded and to_delete files creates
+- Need to now sub in these new PDBs and re-run foldseek
+- After this, remove the singletons. 
+- Put together some discussion topics for Dana
+- new PDBs have been subbed in, will start running foldseek
+- Topics to talk about with Dana:
+	1. briefly show GVHD Nod2 stimulation results talk about pitfalls, next experiment
+		- will check all PRRs we have to see fi there is more motive to investigate Nod2
+	2. bariatric data: processing done for the most part, need to talk to yasaman about metadata
+	3. Clustering: wanted to adress the machine learning problem we mentioned, would need to cluster all enzymes first.
+		- clustered all enzymes, realized quite a few of them were not getting clustered into their final foldseek clusters
+		- 2 ways to address it, one method worked, talk about that.
+		- will be finished tonight, then will re-run on all datasets for DLEs along with all proteins
+		- will re-train models with clustered data and predict again
+		- species data; DLE blastp was lost on the cluster because it wasnt used recently enough
+		- re-running it again for DLEs, will also do ld_carboxys and dd_carboxys
+		- finished secretion and domain tables to get extra info
+	4. Ask for updates on GVHD data
+		- not worth applying clustering to current GVHD, not large enough
+	5. iHMP2 data, will work on this, have to pick a subset of the data because lots of patients and we have to process from scratch
+	6. Sting cells are taking very long to grow, check on them before meeting. have 23cgamp ready, still need to get digitonin.
+	7. Ask about future questions, potentially more grad school...
+
+
  
  
 
