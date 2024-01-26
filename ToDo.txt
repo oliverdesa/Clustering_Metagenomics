@@ -187,6 +187,8 @@ Finishing up the break, What I need to do this week
 	5. iHMP2 data, will work on this, have to pick a subset of the data because lots of patients and we have to process from scratch
 	6. Sting cells are taking very long to grow, check on them before meeting. have 23cgamp ready, still need to get digitonin.
 	7. Ask about future questions, potentially more grad school...
+- Finished clustering by foldseek. Now need to tkae the remade cluster maps, drop the foldseek column and replacements, then remap the enw foldseek clusters to the mseqs cluster
+
 
 
  
