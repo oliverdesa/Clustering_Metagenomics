@@ -189,6 +189,18 @@ Finishing up the break, What I need to do this week
 	7. Ask about future questions, potentially more grad school...
 - Finished clustering by foldseek. Now need to tkae the remade cluster maps, drop the foldseek column and replacements, then remap the enw foldseek clusters to the mseqs cluster
 
+26/01/2024
+
+- New foldseek clusters and maps to be edited are present on the external drive
+- combined bariatric reads are finished kneaddata, start humann (started)
+- Load signalp and IPS onto niagara and graham for charlie
+
+29/01/2024
+
+- Sent an email to yasaman asking for the bariatric metadata
+- uploaded scripts to niagara but have issues uploading signalp. Not sure what the issues is
+- Continue on creating new cluster maps
+
 
 
  
