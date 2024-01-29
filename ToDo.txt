@@ -199,7 +199,31 @@ Finishing up the break, What I need to do this week
 
 - Sent an email to yasaman asking for the bariatric metadata
 - uploaded scripts to niagara but have issues uploading signalp. Not sure what the issues is
-- Continue on creating new cluster maps
+- Continue on creating new cluster maps now
+- New cluster maps now created, significant improvement on cluster mapping
+- Is it necessary to drop singletons? Could help eliminate changes a result of just a single species changing. 
+	- Could also lose sinsitivity to important enzymes. Unlikely a random protein would be that important?
+	- They did this in their paper so have justification.
+- pause for now and look at ICI data.
+- Dropping singletons now; here are the changes:
+Original DataFrame shape for dl_endopeptidase: (1965, 4)
+Modified DataFrame shape for dl_endopeptidase: (1896, 4)
+Original DataFrame shape for ld_carboxypeptidase: (41419, 4)
+Modified DataFrame shape for ld_carboxypeptidase: (41278, 4)
+Original DataFrame shape for ld_endopeptidase: (13862, 4)
+Modified DataFrame shape for ld_endopeptidase: (13862, 4)
+Original DataFrame shape for amidase: (180887, 4)
+Modified DataFrame shape for amidase: (179497, 4)
+Original DataFrame shape for dd_carboxypeptidase: (125228, 4)
+Modified DataFrame shape for dd_carboxypeptidase: (124658, 4)
+Original DataFrame shape for diadenylate_cyclase: (24627, 4)
+Modified DataFrame shape for diadenylate_cyclase: (24587, 4)
+Original DataFrame shape for muramidase: (331610, 4)
+Modified DataFrame shape for muramidase: (329723, 4)
+Original DataFrame shape for glucosaminidase: (13210, 4)
+Modified DataFrame shape for glucosaminidase: (12979, 4)
+
+- clustered the DRA008156 data, setting up the machine learning ipynb to do testing
 
 
 

@@ -192,8 +192,9 @@ def cluster_humann_table(humann_feather, cluster_tsv):
 
     # list of enzymes
     enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
-               'LD-endopeptidase',
-               'DD-carboxypeptidase', 'Diadenylate-cyclase']
+               'LD-endopeptidase', 'Glucosaminidase',
+               'DD-carboxypeptidase', 'Diadenylate-cyclase',
+               'Amidase', 'Muramidase']
 
     clustered_df = pd.DataFrame()
     for enzyme in enzymes:
@@ -209,7 +210,7 @@ def cluster_humann_table(humann_feather, cluster_tsv):
         results = []
         unclustered = []
         for id in column_ids:
-            result = cluster_df.loc[cluster_df[f"{enzyme.replace('-', '_').lower() + 's'}-unclustered"] == id, f"{enzyme.replace('-', '_').lower() + 's'}-foldseek_cluster"]
+            result = cluster_df.loc[cluster_df[f"{enzyme.replace('-', '_').lower()}-unclustered"] == id, f"{enzyme.replace('-', '_').lower()}-foldseek_cluster"]
             if pd.isna(result).all():
                 unclustered.append(f"{id}")
                 results.append("unclustered")
