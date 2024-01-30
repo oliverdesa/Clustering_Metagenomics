@@ -225,6 +225,9 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 
 - clustered the DRA008156 data, setting up the machine learning ipynb to do testing
 
+30/01/2024
+- Continuing the machine learning, after can re-do DA testing on new clusters.
+
 
 
  
