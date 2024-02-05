@@ -238,6 +238,12 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - try to analyze ICI data. 
 - research PhD
 
+05/02/2024
+- Completed LOI, Reviewed CV and payed fee.
+- Need to write draft for steph and send reminders
+- found and downloaded metadata for 2 ICI trials
+- split cells, planned exp, ordered ELISAs
+- Bariatric data and 2 ICI trials are now ready for DA testing. 
 
 
  
