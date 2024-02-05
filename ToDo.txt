@@ -228,6 +228,16 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 30/01/2024
 - Continuing the machine learning, after can re-do DA testing on new clusters.
 
+04/02/2024
+- Schedule for Monday
+- Morning: LOI for LMP, Review CV pay fee, remind Steph and Bryan
+- Look at ICI data
+- Lunch
+- In lab; split cells, get digitonin, order CDN ELISAs
+- plan sting experiment for Wed, talk to nayanan about his samples
+- try to analyze ICI data. 
+- research PhD
+
 
 
  
