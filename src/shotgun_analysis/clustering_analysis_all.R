@@ -155,12 +155,80 @@ results <- Maaslin2(
 
 ## Load Data ##
 
+# Read in the feather
+metadata_22893 <- read.csv("E:/ICI/ici_humann/metadata/PRJEB22893_metadata.tsv", sep = "\t")
+
+# Read in the cluster abundance data
+abundance_data_22893 <- read.csv("E:/ICI/ici_humann/clustered_complete_PRJEB22893.tsv", sep = "\t")
+
+# set sample_id as rownames
+abundance_data_22893 <- abundance_data_22893 %>% column_to_rownames(var = "sample_id")
+metadata_22893 <- metadata_22893 %>% column_to_rownames(var = "Run")
+
+# keep rows in metadata that are in abundance data
+metadata_22893 <- metadata_22893[rownames(abundance_data_22893),]
+
+## Run Maaslin2 ##
+
+results <- Maaslin2(
+  input_data = abundance_data_22893,
+  input_metadata = metadata_22893,
+  output = "E:/ICI/maaslin/PRJEB22893/Maaslin2ResultsNoNorm",
+  fixed_effects = c("config"),
+  random_effects = NULL,
+  normalization = "none", 
+  transform = "none",
+)
+
+results <- Maaslin2(
+  input_data = abundance_data_22893,
+  input_metadata = metadata_22893,
+  output = "E:/ICI/maaslin/PRJEB22893/Maaslin2ResultsCLR",
+  fixed_effects = c("PSF_3_months", "PSF_6_months"),
+  random_effects = NULL,
+  normalization = "CLR", 
+  transform = "none",
+)
 
 
 
+############ PRJEB399742 ############
 
+## Load Data ##
 
+# Read in the feather
+metadata_399742 <- read.csv("E:/ICI/ici_humann/metadata/PRJNA399742_metadata.tsv", sep = "\t")
 
+# Read in the cluster abundance data
+abundance_data_399742 <- read.csv("E:/ICI/ici_humann/clustered_complete_PRJNA399742.tsv", sep = "\t")
+
+# set sample_id as rownames
+abundance_data_399742 <- abundance_data_399742 %>% column_to_rownames(var = "sample_id")
+metadata_399742 <- metadata_399742 %>% column_to_rownames(var = "Run")
+
+## Run Maaslin2 ##
+
+results <- Maaslin2(
+  input_data = abundance_data_399742,
+  input_metadata = metadata_399742,
+  output = "E:/ICI/maaslin/PRJNA399742/Maaslin2ResultsNoNorm",
+  fixed_effects = c("Response"),
+  random_effects = NULL,
+  normalization = "none", 
+  transform = "none",
+  reference = c('Response,NR')
+)
+
+results <- Maaslin2(
+  input_data = abundance_data_399742,
+  input_metadata = metadata_399742,
+  output = "E:/ICI/maaslin/PRJNA399742/Maaslin2ResultsCLR",
+  fixed_effects = c("Response"),
+  random_effects = NULL,
+  normalization = "CLR", 
+  transform = "none",
+  reference = c('Response,NR')
+)
 
 
 
