@@ -247,6 +247,7 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 
 06/02/2024
 - Do DA testing on ICI and bariatric trials, plot heatmaps and total DA figures.
+- No significant associations in second ICI trial, first trial has wrong metadata.
 
 
  
