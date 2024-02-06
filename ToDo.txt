@@ -243,7 +243,10 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - Need to write draft for steph and send reminders
 - found and downloaded metadata for 2 ICI trials
 - split cells, planned exp, ordered ELISAs
-- Bariatric data and 2 ICI trials are now ready for DA testing. 
+- Bariatric data and 2 ICI trials are now ready for DA testing.
+
+06/02/2024
+- Do DA testing on ICI and bariatric trials, plot heatmaps and total DA figures.
 
 
  
