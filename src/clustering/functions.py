@@ -134,14 +134,10 @@ def clean_table(tsv):
     df = df[~df['# Gene Family'].apply(lambda x: '|' in x)]
     
     # Remove everything from the headers following the id, then transpose
-    # df.columns = [col.split('_')[0] for col in df.columns]
-    # transposed_df = df.T
-    
-    # Edit specifically for bariatric data
-    
-    df.columns = ['_'.join(col.split('_')[:2]) for col in df.columns]
+    df.columns = [col.split('_')[0] for col in df.columns]
     transposed_df = df.T
-
+    
+  
     # make the first row the header
     transposed_df.columns = transposed_df.iloc[0]
     transposed_df = transposed_df.drop(transposed_df.index[0])
