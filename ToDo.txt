@@ -251,6 +251,11 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - From bariatric:
 	- 262 6M missing from processed data, present on cluster
 	- 
+	
+09/02/2024
+- Have done clustering and visualization from bariatric data, Will need to figure out applying maaslin, especiallyh with the use of paired samples.
+	- remember you have to assign temporal markers to the timepoint as seen in the thread. 
+- look at CRC data, make sure clustering is complete for all 3 trials, do some analysis on consistently downregulated clusters. 
 
 
  
