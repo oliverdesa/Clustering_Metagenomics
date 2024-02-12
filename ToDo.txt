@@ -262,7 +262,10 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - Still having trouble with maaslin, trying to set up MicrobiomeStat, confusing with feature.ann
 - submitted blastp for DLEs again, will do LD_carboxys next
 - checked the graham to delete, should be fine. 
-- 
+- blastp failed, restarted with changes
+- will try simpler test for grouped bariatric data. Might have to explore maasline and microbiomestat if doing clustering data.
+- Friedmann test + Conover post hoc completed on DLEs and LDCs. DLEs significantly downregulated post-surgery, LDCs sig upregulated post-surgery.
+- blastp now working 
 
 
  
