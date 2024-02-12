@@ -2,6 +2,7 @@ library(Maaslin2)
 library(feather)
 library(arrow)
 library(tidyverse)
+library(MicrobiomeStat)
 
 ############ Bariatric Data ############
 
@@ -46,10 +47,10 @@ results <- Maaslin2(
   input_metadata = metadata_bariatric,
   output = "E:/bariatric/maaslin/grouped_no_clr",
   fixed_effects = c("TimePoint"),
-  normalization = "none", 
+  normalization = "none",
   transform = "none",
-  reference = c("TimePoint,1")
-  #random_effects = c("sample_id")
+  reference = c("TimePoint,1"),
+   random_effects = c("sample_id")
 )
 
 results <- Maaslin2(
@@ -57,10 +58,43 @@ results <- Maaslin2(
   input_metadata = metadata_bariatric,
   output = "E:/bariatric/maaslin/grouped_clr",
   fixed_effects = c("TimePoint"),
-  normalization = "CLR", 
+  normalization = "CLR",
   transform = "none",
   reference = c("TimePoint,BL"),
   random_effects = c("sample_id")
 )
 
 
+# transpose the grouped_bariatric
+
+# grouped_bariatric <- t(grouped_bariatric)
+
+#' Feature.tab <- grouped_bariatric
+#' 
+#' metadata_bariatric$unique_id <- row.names(metadata_bariatric)
+#' 
+#' Meta.dat <- metadata_bariatric
+#' 
+#' Meta.dat$TimePoint <- relevel(as.factor(Meta.dat$TimePoint), ref="1")
+#' 
+#' MicrobiomeData <- list(
+#'   feature.tab = Feature.tab,
+#'   meta.dat = Meta.dat
+#' )
+#' 
+#' test.list <- generate_taxa_trend_test_long(
+#'   data.obj = MicrobiomeData,
+#'   subject.var = "unique_id",
+#'   time.var = "TimePoint",
+#'   #group.var
+#'   feature.level = "original",
+#'   feature.dat.type = "proportion"
+#' )
+#' 
+#' #' Generate the volcano plot
+#' plot.list <- generate_taxa_volcano_single(
+#'   data.obj = MicrobiomeData,
+#'   test.list = test.list,
+#'   feature.sig.level = 0.1,
+#'   feature.mt.method = "none"
+#' )
