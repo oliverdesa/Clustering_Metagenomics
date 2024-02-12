@@ -257,6 +257,13 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 	- remember you have to assign temporal markers to the timepoint as seen in the thread. 
 - look at CRC data, make sure clustering is complete for all 3 trials, do some analysis on consistently downregulated clusters. 
 
+12/02/2024
+- Troubleshoot bariatric maaslin
+- Still having trouble with maaslin, trying to set up MicrobiomeStat, confusing with feature.ann
+- submitted blastp for DLEs again, will do LD_carboxys next
+- checked the graham to delete, should be fine. 
+- 
+
 
  
  
