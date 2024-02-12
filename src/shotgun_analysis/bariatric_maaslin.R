@@ -16,6 +16,9 @@ metadata_bariatric <- metadata_bariatric %>% column_to_rownames(var = "unique_sa
 
 metadata_bariatric <- metadata_bariatric[,-3]
 
+metadata_bariatric$TimePoint <- factor(metadata_bariatric$TimePoint, levels = c("BL", "OR", "1M", "6M"))
+
+metadata_bariatric$TimePoint <- as.numeric(metadata_bariatric$TimePoint)
 
 # Read in the abundance data
 grouped_bariatric <- arrow::read_feather("E:/bariatric/grouped_bariatric.feather")
@@ -45,8 +48,8 @@ results <- Maaslin2(
   fixed_effects = c("TimePoint"),
   normalization = "none", 
   transform = "none",
-  reference = c("TimePoint,BL"),
-  random_effects = c("sample_id")
+  reference = c("TimePoint,1")
+  #random_effects = c("sample_id")
 )
 
 results <- Maaslin2(
@@ -59,3 +62,5 @@ results <- Maaslin2(
   reference = c("TimePoint,BL"),
   random_effects = c("sample_id")
 )
+
+
