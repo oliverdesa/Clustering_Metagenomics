@@ -267,6 +267,14 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - Friedmann test + Conover post hoc completed on DLEs and LDCs. DLEs significantly downregulated post-surgery, LDCs sig upregulated post-surgery.
 - blastp now working 
 
+13/02/2024
+
+- sent charlie copies of bariatric data to try maaslin
+- blastp seems to have finished, will have to verify outputs
+- depending on the results of that, move forward with the CRC data
+- blastp was only annotating half of the families due to issue with memebers text file. Fixed and restarted.
+- 
+
 
  
  

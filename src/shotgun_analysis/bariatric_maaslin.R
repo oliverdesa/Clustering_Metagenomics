@@ -30,6 +30,9 @@ grouped_bariatric$sample_id <- metadata_bariatric$unique_sample_id
 
 grouped_bariatric <- grouped_bariatric %>% column_to_rownames(var = "sample_id")
 
+# write.csv(metadata_bariatric, "E:/bariatric/maaslin/metadata_bariatric.csv")
+# write.csv(grouped_bariatric, "E:/bariatric/maaslin/grouped_bariatric.csv")
+
 ## Load Cluster Data ##
 
 # Read in the feather
