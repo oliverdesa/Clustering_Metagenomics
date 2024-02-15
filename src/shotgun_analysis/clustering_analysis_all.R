@@ -115,7 +115,7 @@ results <- Maaslin2(
 metadata_10878 <- read.csv("C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\LatestDataJan\\PRJEB10878\\PRJEB10878Metadata.txt")
 
 # Read in the cluster abundance data
-abundance_data_10878 <- arrow::read_feather("C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\LatestDataJan\\PRJEB10878\\clustered_complete_10878.feather")
+abundance_data_10878 <- read.csv("C:/Users/odesa/Desktop/Code/CRC-Final/data/clustering/humann_clustered/clustered_complete_PRJEB10878.tsv", sep = "\t")
 
 # set sample_id as rownames
 abundance_data_10878 <- abundance_data_10878 %>% column_to_rownames(var = "sample_id")
@@ -127,21 +127,23 @@ metadata_10878 <- metadata_10878 %>% column_to_rownames(var = "Run")
 results <- Maaslin2(
   input_data = abundance_data_10878,
   input_metadata = metadata_10878,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\PRJEB10878_cluster\\Maaslin2ResultsNoNorm",
+  output = "E:/CRC/PRJEB10878/maaslin/no_clr",
   fixed_effects = c("config"),
   random_effects = NULL,
   normalization = "none", 
   transform = "none",
+  reference=c("config,control"),
 )
 
 results <- Maaslin2(
   input_data = abundance_data_10878,
   input_metadata = metadata_10878,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\PRJEB10878_cluster\\Maaslin2ResultsCLR",
+  output = "E:/CRC/PRJEB10878/maaslin/clr",
   fixed_effects = c("config"),
   random_effects = NULL,
   normalization = "CLR", 
   transform = "none",
+  reference=c("config,control"),
 )
 
 
