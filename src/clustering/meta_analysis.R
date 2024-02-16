@@ -85,11 +85,11 @@ ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
   labs(x = "Effect Size", y = "Feature", title = "Forest Plot of Significant Features") +
   theme_minimal() +
   theme(axis.text.y = element_text(size = 8),
-        legend.position = "none") # Remove legend if not needed
+        legend.position = "none") 
 
 filtered_data <- meta_data %>%
-  filter(EffectSize < 0, # Negative effect size
-         LowerCI < 0, # Confidence interval does not overlap with zero
-         pval < 0.1) # Statistically significant p-values
+  filter(EffectSize < 0, 
+         LowerCI < 0, 
+         pval < 0.1) 
 
 print(filtered_data)
