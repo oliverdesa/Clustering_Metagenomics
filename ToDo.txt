@@ -273,7 +273,15 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - blastp seems to have finished, will have to verify outputs
 - depending on the results of that, move forward with the CRC data
 - blastp was only annotating half of the families due to issue with memebers text file. Fixed and restarted.
-- 
+
+22/02/2024
+
+- In Florida
+- Troubleshooting extract blastp script
+- cleaning beluga bc reaching file limit
+- need to blast sting producing enzymes
+
+
 
 
  
