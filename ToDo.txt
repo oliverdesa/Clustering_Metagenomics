@@ -281,6 +281,19 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - cleaning beluga bc reaching file limit
 - need to blast sting producing enzymes
 
+26/02/2024
+
+- First monday back
+- need to confirm but looks like extract blastp finally finished.
+- after confirming need to run signalp, pull species and map these data to clusters
+- create informative information for the clusters from this data + domains
+- Should be getting new ICI metadata today, check on the reads and begin processing them
+- reads being downloaded, kneaddata queued for the new ici data.
+- cant make cdnb database, disk usage apparently full but that doesnt seem to be the case, might just need some time.
+- Now will work on getting data from the extract blastp
+- zipping data to move onto external drive. Will use mapping file to pull species. assign those species to protein hits in the clusters.
+- need to run IPS and signalp on these hits to develop those databases.
+
 
 
 
