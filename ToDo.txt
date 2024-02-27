@@ -294,6 +294,13 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - zipping data to move onto external drive. Will use mapping file to pull species. assign those species to protein hits in the clusters.
 - need to run IPS and signalp on these hits to develop those databases.
 
+27/02/2024
+
+- finished signalp, IPS running, almost finished creating uniref/genome mapping file
+- Created map with data on secretion + taxa. Need to add uniref + domain info to complete
+- once finished can get info on all of the important clusters and make infographics on their domain/secretion/taxa etc. 
+- might be good to also do muscle on clusters to look for similarity.
+
 
 
 
