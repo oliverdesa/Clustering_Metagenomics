@@ -301,6 +301,14 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - once finished can get info on all of the important clusters and make infographics on their domain/secretion/taxa etc. 
 - might be good to also do muscle on clusters to look for similarity.
 
+28/02/2024
+
+- Now have signalp, taxa, uniref ID maps. IPS still runnning for domain info.
+- got metadata for nice ici dataset, reads are being processed by kneaddata currently, could begin humann to save time.
+- got baseline reads for that dataset, began downloading them on graham. will need to do some work on the multiple metadata files to get all the information from this set. 
+- submitted cdnb for blastp
+- ips ran out of time, need to either restart with more time or edit file to pickup where left off.
+
 
 
 
