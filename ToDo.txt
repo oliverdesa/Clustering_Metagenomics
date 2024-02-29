@@ -308,7 +308,17 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - got baseline reads for that dataset, began downloading them on graham. will need to do some work on the multiple metadata files to get all the information from this set. 
 - submitted cdnb for blastp
 - ips ran out of time, need to either restart with more time or edit file to pickup where left off.
+- created a table with the uniref ID, genome IDs, taxa info and secretion info. 
+- began writing a function to quickly pull information about a cluster when given the cluster ID. 
+	- Need to validate whether the extract blastp worked correctly, seems like there are potentially too many hits
+	- Need to figure out what to do with strain variants of the same species.. average data maybe?
 
+29/02/2024
+
+- conitnued downloading ici reads, kneaddata still running, humann still queued.
+- check on IPS
+- restarted IPS with small change, restarted cdnb blastp with another small fix
+- now going back to mapping work
 
 
 
