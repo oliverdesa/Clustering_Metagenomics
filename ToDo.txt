@@ -319,6 +319,8 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - check on IPS
 - restarted IPS with small change, restarted cdnb blastp with another small fix
 - now going back to mapping work
+- Fixed the code to map the hits correctly with taxa information
+- now updating function to correctly pull species+secretion info
 
 
 
