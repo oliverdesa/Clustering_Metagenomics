@@ -334,6 +334,8 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 	- how many individual species/cluster
 	- % secreted from the cluster
 	- IPS domains present in the cluster as % of proteins
+- Added functionality to plot secretion info plus domain info.
+- Might need to adjust how I'm displaying the domain information
 
 
  
