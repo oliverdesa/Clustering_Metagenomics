@@ -322,6 +322,14 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - Fixed the code to map the hits correctly with taxa information
 - now updating function to correctly pull species+secretion info
 
+03/03/3034
+
+- check on ici reads
+- check on IPS
+- fixed graham for the ici trials, kneaddata queued for all of the remaining reads, set to 5 days
+- sub_humann submitted on the first subset of the data, the cdnb db was added so that it gets annotated in the humann reads.
+- interproscan looks finished, data downloaded onto the ssd, will map today
+- 
 
 
  
