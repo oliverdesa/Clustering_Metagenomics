@@ -329,7 +329,11 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - fixed graham for the ici trials, kneaddata queued for all of the remaining reads, set to 5 days
 - sub_humann submitted on the first subset of the data, the cdnb db was added so that it gets annotated in the humann reads.
 - interproscan looks finished, data downloaded onto the ssd, will map today
-- 
+- added the IPS data to the info table. 
+- functionalities to add and pull from cluster info data:
+	- how many individual species/cluster
+	- % secreted from the cluster
+	- IPS domains present in the cluster as % of proteins
 
 
  
