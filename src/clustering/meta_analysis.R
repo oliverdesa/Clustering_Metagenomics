@@ -30,13 +30,15 @@ data8156 <- subset(data8156, select=c(Dataset, feature, coef, stderr, pval, qval
 combined_data <- rbind(data10878, data7774, data8156)
 
 # Subsetting to include only features that contain "DL.e"
-subset_data <- combined_data[grepl("LD.c", combined_data$feature), ]
+subset_data <- combined_data[grepl("DL.e", combined_data$feature), ]
 
 # write.csv(subset_data, "subset_data.csv")
 
 unique_features <- unique(subset_data$feature)
 
 print(unique_features)
+
+writeLines(unique_features, "DLE_ids.txt")
 
 # Placeholder for meta-analysis results
 meta_results <- list()
@@ -76,6 +78,11 @@ print(meta_data)
 # Assuming meta_data is prepared as above
 meta_data$Feature <- factor(meta_data$Feature, levels = meta_data$Feature[order(meta_data$EffectSize)])
 
+filtered_data <- meta_data %>%
+  filter(EffectSize < 0, 
+         LowerCI < 0, 
+         pval < 0.1) 
+
 # Assuming 'meta_data' contains your full dataset and 'filtered_data' contains the significant features
 ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
   geom_point(aes(color = Feature %in% filtered_data$Feature), size = 3) + # Highlight significant features
@@ -87,9 +94,6 @@ ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
   theme(axis.text.y = element_text(size = 8),
         legend.position = "none") 
 
-filtered_data <- meta_data %>%
-  filter(EffectSize < 0, 
-         LowerCI < 0, 
-         pval < 0.1) 
+
 
 print(filtered_data)

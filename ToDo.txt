@@ -340,6 +340,17 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 06/03/2024
 
 - re-formatting and configuring the cluster information code to make it into a script to be ran from the terminal
+- cluster information function is essentially complete what do do moving forward:
+	- what is unique about these clusters?
+		- are they secreted more often than other clusters?
+		- Do they have unique domains/certain domains more abundantly than other clusters?
+		- How could I look into the sequences of these clusters and find characteristics that make them distinct?
+		- what families/genera typically encode DLEs found in these clusters?
+		- what families/genera typically encode DLEs found in less important clusters?
+		- potentially look at a new dataset with only these important clusters, see if we can get significance. 
+- while on average the downregulated clusters have a much higher proportion of secretion compared to the others, there is too much variation to find any significance. 
+
+
 
  
  
