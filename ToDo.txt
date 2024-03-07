@@ -337,6 +337,9 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - Added functionality to plot secretion info plus domain info.
 - Might need to adjust how I'm displaying the domain information
 
+06/03/2024
+
+- re-formatting and configuring the cluster information code to make it into a script to be ran from the terminal
 
  
  
