@@ -350,6 +350,15 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 		- potentially look at a new dataset with only these important clusters, see if we can get significance. 
 - while on average the downregulated clusters have a much higher proportion of secretion compared to the others, there is too much variation to find any significance. 
 
+07/03/2024
+
+- some jobs ran, some failed, check up and manage the cluster first
+- On Graham; kneaddata on PRJEB4 failed, re-ran using kneaddata custom. the other kenaddata and human are running fine.
+- issues with blasting/extracting cdnb for some reason. Luckily its still running in the ici humann rn. Will try and figure it out.
+- should potentially run metaphlan on this new ici trial as well to validate cluster changes.
+- re-ran blastp for cdnb, will re-run extract script after finished with a changed log file location.
+- continue working on the python terminal package
+
 
 
  
