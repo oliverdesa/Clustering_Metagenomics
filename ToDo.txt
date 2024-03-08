@@ -358,6 +358,11 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - should potentially run metaphlan on this new ici trial as well to validate cluster changes.
 - re-ran blastp for cdnb, will re-run extract script after finished with a changed log file location.
 - continue working on the python terminal package
+- what should the package take as arguments:
+	- the first argument should be a cluster id, or a .txt file with multiple cluster ids.
+	- 
+
+
 
 
 
