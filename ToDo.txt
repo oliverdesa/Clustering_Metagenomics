@@ -360,7 +360,25 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - continue working on the python terminal package
 - what should the package take as arguments:
 	- the first argument should be a cluster id, or a .txt file with multiple cluster ids.
-	- 
+
+11/03/2024
+
+- check on clusters
+- graham ran out of file space, re-organized and ran kenaddata and humann
+- ran extract blastp
+- extract blastp finished
+
+12/03/2024
+
+- extract blastp failed again, re-ran with new path.
+- 1 kneaddata running, other 2 jobs queued
+
+13/03/2024
+
+- kneaddata and humann running on the ici trial data now
+- extract blastp finished again
+- seems to have finally worked on the cdnb genes
+
 
 
 
