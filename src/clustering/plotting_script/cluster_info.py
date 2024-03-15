@@ -184,6 +184,8 @@ def describe_cluster(cluster_id: str, protein_info_table: Path, cluster_info_tab
     # given the cluster_id, find the initial uniref IDs and make them into a list
     clustered_dl_list = list(cluster_info_table.loc[cluster_info_table['dl_endopeptidase-foldseek_cluster'] == cluster_id, 'Uniref'])
 
+    print(clustered_dl_list)
+
     number_proteins = len(list(protein_info_table.loc[protein_info_table['Uniref'].isin(clustered_dl_list), '# ID']))
 
     # search the protein_info_table for the reuturned Uniref ids. return unique species

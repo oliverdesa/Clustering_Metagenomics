@@ -379,6 +379,20 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - extract blastp finished again
 - seems to have finally worked on the cdnb genes
 
+14/03/2024
+
+- kneaddata finished on PRJEB7
+- kneaddata still running on PRJEB4
+- humann running on both
+- extract blastp on cdnbs worked to create a log file but didnt actually extract the fastas. Can use the log file to get them myself
+
+15/03/2024
+
+- check up on clusters again
+- continue with cluster/crc work, figure out what else I might be able to do
+- a cluster may have multiple uniref IDs within that cluster but if only 1 maps to the genomes it will show as only those hits. Should I incorporate those proteins for domain/secretion information? wouldnt have any taxanomic information
+
+
 
 
 
