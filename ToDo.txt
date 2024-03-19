@@ -392,6 +392,17 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - continue with cluster/crc work, figure out what else I might be able to do
 - a cluster may have multiple uniref IDs within that cluster but if only 1 maps to the genomes it will show as only those hits. Should I incorporate those proteins for domain/secretion information? wouldnt have any taxanomic information
 
+18/03/2024
+
+- re-organized and ran kneaddata/humann for the ici datasets.
+- work on TFRI meeting slides
+
+19/03/2024
+
+- 
+
+
+
 
 
 
