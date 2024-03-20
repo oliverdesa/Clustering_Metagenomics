@@ -397,9 +397,14 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 - re-organized and ran kneaddata/humann for the ici datasets.
 - work on TFRI meeting slides
 
-19/03/2024
+19/03/2023
 
-- 
+- re-ran all cluster processes, need to free up space on graham
+- created domain network figure, began code for phylogenetic tree
+
+20/03/2024
+
+- chekcing on cluster making sure everything is moving
 
 
 
