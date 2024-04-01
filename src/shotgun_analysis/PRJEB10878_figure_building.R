@@ -47,7 +47,7 @@ pooled_abun_df <- function(abun_df) {
 }
 
 ## Load the Data
-abundance_data <- read_feather('C:\\Users\\odesa\\Desktop\\CRCFinal\\PRJEB10878\\clean_joined_genefamilies_relab.feather')
+abundance_data <- read_feather('E:/CRC/PRJEB10878/clean_joined_genefamilies_relab_10878.feather')
 abundance_data <- abundance_data %>% column_to_rownames(var = "sample_id")
 
 pooled_data <- pooled_abun_df(abundance_data)
@@ -56,11 +56,11 @@ pooled_data <- pooled_abun_df(abundance_data)
 pooled_data$SampleIdentifier <- rownames(pooled_data)
 
 
-metadata <- read_feather('C:\\Users\\odesa\\Desktop\\CRCFinal\\PRJEB10878\\PRJEB10878_metadata.feather')
+metadata <- read.csv('E:/CRC/PRJEB10878/PRJEB10878_metadata.csv')
 metadata <- as.data.frame(metadata)
 
 # add the 'config' column from metadata to the pooled_data df
-pooled_data$config <- metadata[match(pooled_data$SampleIdentifier, metadata$SampleIdentifier),]$config
+pooled_data$config <- metadata[match(pooled_data$SampleIdentifier, metadata$Run),]$config
 
 # Save the identifier columns
 identifiers_and_config <- pooled_data[, c("SampleIdentifier", "config")]
@@ -76,21 +76,23 @@ filtered_pooled_data <- pooled_data[enzymes]
 CLR_pooled_data <- czm_clr(filtered_pooled_data)
 CLR_pooled_data <- as.data.frame(CLR_pooled_data)
 
+filtered_pooled_data <- as.data.frame(filtered_pooled_data)
+
 # Add config column back into data frame
-CLR_pooled_data <- cbind(identifiers_and_config, CLR_pooled_data)
+filtered_pooled_data <- cbind(identifiers_and_config, filtered_pooled_data)
 
 
 # Conver to long format DF
-long_df <- CLR_pooled_data %>%
+long_df <- filtered_pooled_data %>%
   pivot_longer(
     cols = -c(SampleIdentifier, config),
     names_to = "Enzyme",
-    values_to = "CLR Relative Abundance"
+    values_to = "Relative Abundance"
   )
 
 # Plot the differential abundances and save to a tiff for pub
 
-my_plot <- ggplot(long_df, aes(x = Enzyme, y = `CLR Relative Abundance`, color = config)) +
+my_plot <- ggplot(long_df, aes(x = Enzyme, y = `Relative Abundance`, color = config)) +
     geom_point(alpha = 0.8, size = 2, stroke = 0.3, position = position_jitterdodge(jitter.height = 0,
                                                                                     jitter.width = 0.15)) +
     stat_summary(aes(group = config),fun.min = function(x) {quantile(x, 0.25)}, fun.max = function(x) {quantile(x, 0.75)},
@@ -98,7 +100,7 @@ my_plot <- ggplot(long_df, aes(x = Enzyme, y = `CLR Relative Abundance`, color =
     stat_summary(aes(group = config), fun.min = median, fun.max = median,
                  size = 0.2, width = 0.6, geom = "errorbar", position = position_dodge(width = 0.8), color='black') +
     scale_color_manual(values = c("case" = "#cf5154", "control" = "#4e88aa")) + # Define custom colors
-    labs(x = "Enzyme", y = "CLR Relative Abundance") + # Label axes
+    labs(x = "Enzyme", y = "Relative Abundance") + # Label axes
     theme_minimal() + # Minimal theme
     coord_flip() + # Flip axes
     
@@ -113,8 +115,11 @@ my_plot <- ggplot(long_df, aes(x = Enzyme, y = `CLR Relative Abundance`, color =
           legend.position = "bottom",
           legend.margin = margin(-0.25, 0, 0, -0.2, unit = "cm"),
           legend.justification = "left") +
-    guides(color = guide_legend(title = "Condition")) +# Add legend
-    scale_y_continuous(limits = c(-5, 5))
+    guides(color = guide_legend(title = "Condition"))# Add legend
+    #scale_y_continuous(limits = c(-5, 5))
+
+  ggsave("C:/users/odesa/Desktop/PRJEB10878_enzyme_abundance.tif", plot = my_plot, width = 10, height = 10, units = "in", 
+       dpi = 600, device = "tiff")
 
 # ## Apply and plot Boruta ##
 # 
