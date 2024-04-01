@@ -94,6 +94,9 @@ ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
   theme(axis.text.y = element_text(size = 8),
         legend.position = "none") 
 
+  ggsave("C:/users/odesa/Desktop/meta_analysis.tif", width = 20, height = 20, units = "cm", dpi = 600,
+         device = "tiff")
+
 
 
 print(filtered_data)
