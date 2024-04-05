@@ -61,14 +61,16 @@ for (feature in unique_features) {
 meta_data <- data.frame(Feature = character(), EffectSize = numeric(), 
                         LowerCI = numeric(), UpperCI = numeric(), pval = numeric())
 
-# Extract data from each meta-analysis result
 for (feature in names(meta_results)) {
   res <- meta_results[[feature]]
+  significance <- ifelse(res$pval < 0.05, "Red", 
+                         ifelse(res$pval < 0.1, "Orange", "Not Significant"))
   meta_data <- rbind(meta_data, data.frame(Feature = feature,
                                            EffectSize = res$beta,
                                            LowerCI = res$ci.lb,
                                            UpperCI = res$ci.ub,
-                                           pval = res$pval))
+                                           pval = res$pval,
+                                           Significance = significance))
 }
 
 dev.off()
@@ -83,19 +85,18 @@ filtered_data <- meta_data %>%
          LowerCI < 0, 
          pval < 0.1) 
 
-# Assuming 'meta_data' contains your full dataset and 'filtered_data' contains the significant features
 ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
-  geom_point(aes(color = Feature %in% filtered_data$Feature), size = 3) + # Highlight significant features
+  geom_point(aes(color = Significance), size = 3) + # Use Significance for color
   geom_errorbarh(aes(xmin = LowerCI, xmax = UpperCI), height = 0.2) +
-  geom_text(data = filtered_data, aes(label = paste0("p=", round(pval, 3))), hjust = 1.5, color = "red") + # Annotate with p-values
-  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) + # Color significant features differently
-  labs(x = "Effect Size", y = "Feature", title = "Forest Plot of Significant Features") +
+  geom_text(data = filtered_data, aes(label = paste0("p=", round(pval, 3)), color = Significance), hjust = 1.5) + # Annotate with p-values
+  scale_color_manual(values = c("Red" = "red", "Orange" = "orange", "Not Significant" = "blue")) + # Define colors
+  labs(x = "MaAsLin2 Coefficient", y = "Feature", title = "Forest Plot of Significant Features") +
   theme_minimal() +
   theme(axis.text.y = element_text(size = 8),
         legend.position = "none") 
 
-  ggsave("C:/users/odesa/Desktop/meta_analysis.tif", width = 20, height = 20, units = "cm", dpi = 600,
-         device = "tiff")
+ggsave("C:/users/odesa/Desktop/meta_analysis.tif", width = 20, height = 20, units = "cm", dpi = 600, device = "tiff")
+
 
 
 
