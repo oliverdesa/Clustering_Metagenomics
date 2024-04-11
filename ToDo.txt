@@ -414,6 +414,17 @@ Modified DataFrame shape for glucosaminidase: (12979, 4)
 ERR12356794
 ERR12356819
 
+10/04/2024
+
+- a lot of progress made recently with visualizations/new insights into clusters.
+- Will be more consistent updating this ToDo/changelog
+- As of now:
+	- there are some reads left of the ICI tral that need to be kneaded. The kneaddata script broke with the updating of the standard enviornment. Will reach out to the team to get a bit of help with moving packages over. humann almost finished otherwise
+	- In this ICI trial need to correlate the results with their processed metaphlan data. 
+	- Need to analyze samples from UC cohorts and look for similarities in cluster shifts
+	- Need to get dana to write a draft to the authors of the multi-omics paper to have access to that dataset. 
+	- working on getting beluga set up to process samples alongisde graham
+
 
 
 
