@@ -425,6 +425,18 @@ ERR12356819
 	- Need to get dana to write a draft to the authors of the multi-omics paper to have access to that dataset. 
 	- working on getting beluga set up to process samples alongisde graham
 
+11/04/2024
+
+- fixed kneaddata script, PRJEB4 samples will be finished with this iteration, will likely need to run the PRJEB7 script once more with ~12 hours of time to finish off those samples, should immediately finish off the humann annotations and can begin clustering/DA testing.
+- Dana has sent an email to the multi-omics people. 
+- Bryan suggested a volcano plot to show that the DLE clusters are most consistently downregulated in CRC patients compared to healthy controls. Also showed interest in adenoma data, might be worth splitting the large dataset by adenomas too to look there for shifts.
+- Need to improve the stacked barchart figure, or improve the pie chart figures. 
+- Should do some further work on machine learning stuff.
+	- Train on solely DLEs, otherwise why would we focus on them? In contrast maybe look at clusteral analysis for all the enzymes, define these clusters and how they relate? Might be way too much data. 
+- lets start looking at UC data, want to keep clusters moving at all times ideally, maybe get it set up on beluga.
+- keep learning paralellization (oof), could pay off with time saved. 
+
+
 
 
 
