@@ -436,6 +436,13 @@ ERR12356819
 - lets start looking at UC data, want to keep clusters moving at all times ideally, maybe get it set up on beluga.
 - keep learning paralellization (oof), could pay off with time saved. 
 
+16/04/2024
+
+- Essentially all of the ICI samples are done, issue with one of them. 
+- The metadata seems to have plenty of patients without matching samples, need to verfy I did it properly and then potentially reach out to the author to make sure. (Done)
+- After this I will work on developing volcano plots for changes in the DLEs from CRC patients. 
+- Then work to develop a proper schematic for clustering on biorender
+- 
 
 
 
