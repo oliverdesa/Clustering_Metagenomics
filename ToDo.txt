@@ -440,9 +440,13 @@ ERR12356819
 
 - Essentially all of the ICI samples are done, issue with one of them. 
 - The metadata seems to have plenty of patients without matching samples, need to verfy I did it properly and then potentially reach out to the author to make sure. (Done)
-- After this I will work on developing volcano plots for changes in the DLEs from CRC patients. 
+- After this I will work on developing volcano plots for changes in the DLEs from CRC patients. (Done)
 - Then work to develop a proper schematic for clustering on biorender
-- 
+- the volcano plot was developed for the CRC clusters. Important issue with Effect sizes that needs to be considered, shoul dprobably be brought up with John Parkinson in the meeting.
+- Created a heatmap that combines all three trials on the sample plot for easier visualization.
+- Might want to plot grouped data but only DLEs, then lead into the heatmaps do better visualize the clustering pathway
+- Need to develop the schematic soon, running out of time today.
+
 
 
 
