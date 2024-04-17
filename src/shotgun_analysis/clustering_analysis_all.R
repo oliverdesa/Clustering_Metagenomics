@@ -2,6 +2,7 @@ library(Maaslin2)
 library(feather)
 library(arrow)
 library(tidyverse)
+library(ALDEx2)
 
 
 ############ Colorectal cancer data ############
@@ -231,8 +232,6 @@ results <- Maaslin2(
   transform = "none",
   reference = c('Response,NR')
 )
-
-
 
 
 
