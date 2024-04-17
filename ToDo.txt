@@ -447,6 +447,13 @@ ERR12356819
 - Might want to plot grouped data but only DLEs, then lead into the heatmaps do better visualize the clustering pathway
 - Need to develop the schematic soon, running out of time today.
 
+17/04/2024
+
+- Did not get a response from the author yet, might need to move forward with the analysis as best I can
+- Remind steph to send in reference letterr, Mogen LOI is almost complete
+- make Schematic for clustering
+- make grouped figure for DLEs only across 3 trials
+
 
 
 

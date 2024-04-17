@@ -8,7 +8,7 @@ library(scales)
 library(vegan)
 library(pairwiseAdonis)
 
-
+ 
 pooled_abun_df <- function(abun_df) {
   
   classes <- unlist(lapply(colnames(abun_df), function(col_name) {
