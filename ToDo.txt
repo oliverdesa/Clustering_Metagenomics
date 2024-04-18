@@ -453,6 +453,7 @@ ERR12356819
 - Remind steph to send in reference letterr, Mogen LOI is almost complete
 - make Schematic for clustering
 - make grouped figure for DLEs only across 3 trials
+- combining abudnance tables is a huge pain rn. Good opportunity to brush up on pandas
 
 
 
