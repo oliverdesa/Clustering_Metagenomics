@@ -6,3 +6,6 @@
 .Rhistory
 *.pyc
 .DS_Store
+.Rproj.user
+.RData
+.Rhistory
