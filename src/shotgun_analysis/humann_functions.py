@@ -106,4 +106,25 @@ def xml_to_spreadsheet_run(xml_file_path, output_file_path):
     df.to_csv(output_file_path, index=False)
 
 
+def group_humann_table(humann_feather):
+    """Group the humann table by enzymes and group all enzyme together"""
 
+    # read in the humann table
+    humann_df = pd.read_feather(humann_feather)
+
+    headers = humann_df.columns.tolist()
+
+    original_width = len(headers)
+
+    headers_enzymes = [x.split('_')[0] for x in headers]  # Extract enzyme names from column headers
+
+    humann_df.columns = headers_enzymes  # Rename columns with enzyme names
+
+    # Sum all columns with the same enzyme
+    grouped_df = humann_df.groupby(humann_df.columns, axis=1).sum()
+
+    new_width = len(grouped_df.columns.tolist())
+
+    print(f'Original width: {original_width}, Grouped width: {new_width}')
+
+    return grouped_df

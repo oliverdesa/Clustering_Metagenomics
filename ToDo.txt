@@ -455,6 +455,33 @@ ERR12356819
 - make grouped figure for DLEs only across 3 trials
 - combining abudnance tables is a huge pain rn. Good opportunity to brush up on pandas
 
+18/04/2024
+
+What do I need to do today?
+- Schematic
+- pooling function to visualize abundance data
+- fix taxonomic visualization function
+- put together the lost run from the ici data and maybe begin analysis. 
+
+- abundances figure is finally finished. Need to just make minor adjustment for cropping in the code and potentially chnage colours to fit the theme of the presentation
+- Lets start piecing together the ICI data as much as possible
+- finished abundance figure. 
+- might be useful to make a figure showing effect size changes between individual taxa and then summed into a cluster to help explain low effect sized.
+
+- Joined table offloaded to laptop
+- cannot write to ssd due to format of the drive. Need to zip all contents on windows pc, re-format drive and then unzip back in.
+
+stats that would be interesting from the ICI data:
+	How to total abundances change with time?
+	Are certain clusters associated with positive response?
+	How are clusters associated with colitis?
+	How do antibiotics effect cluster shifts?
+
+19/04/2024
+
+- timesheet first (done)
+- Cleaned metadata, joined tables, clustered table.
+- 
 
 
 
