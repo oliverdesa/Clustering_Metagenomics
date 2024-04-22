@@ -166,3 +166,46 @@ results <- Maaslin2(
   reference = c("recist,PD")
 ) # nothing
 
+#### Longitudinal Analyses ####
+
+results <- Maaslin2(
+  input_data = abundance_data_clustered,
+  input_metadata = metadata_baseline_survival,
+  output = "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/maaslin/clustered_survival/longi_response",
+  fixed_effects = c("visit", "ORR"),
+  random_effects = NULL,
+  normalization = "none", 
+  transform = "none",
+  reference = c("visit,0")
+) # This doesnt work, ned to subset by visit
+
+# subset by visit
+
+output_base_path <- "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/maaslin/clustered_survival/longi_response"
+
+# Loop through each visit number
+for(visit_number in c(0, 1, 2, 3)) {
+  # Subset metadata for the current visit
+  metadata_subset <- metadata[metadata$visit == visit_number, ]
+  
+  # Re-set the row names for the subset to ensure they are carried over correctly
+  rownames(metadata_subset) <- metadata_subset$accession
+  
+  # Define output directory for this subset
+  output_directory <- paste0(output_base_path, "/visit_", visit_number)
+  
+  # Run MaAsLin2
+  results <- Maaslin2(
+    input_data = abundance_data_clustered,
+    input_metadata = metadata_subset,
+    fixed_effects = c("ORR"),
+    random_effects = NULL,
+    output = output_directory,
+    normalization = "NONE",
+    transform = "NONE"
+  )
+  
+}
+
+
+
