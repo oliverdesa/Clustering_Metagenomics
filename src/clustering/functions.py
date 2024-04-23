@@ -234,11 +234,20 @@ def cluster_humann_table(humann_feather, cluster_tsv):
 
     return clustered_df
 
-def group_humann_table(humann_feather):
+def group_humann_table(humann_table):
     """Group the humann table by enzymes and group all enzyme together"""
 
-    # read in the humann table
-    humann_df = pd.read_feather(humann_feather)
+    if isinstance(humann_table, str):
+        if humann_table.endswith('.tsv') or humann_table.endswith('.csv'):
+            humann_df = pd.read_csv(humann_table, sep='\t')
+        elif humann_table.endswith('.feather'):
+            humann_df = pd.read_feather(humann_table)
+        else:
+            sys.exit('Invalid file type, must be tsv, csv, or feather')
+    elif isinstance(humann_table, pd.DataFrame):
+        humann_df = humann_table
+    else:
+        sys.exit('Invalid input type, must be a file path or a pandas DataFrame')
 
     headers = humann_df.columns.tolist()
 
