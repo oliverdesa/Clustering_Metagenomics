@@ -186,26 +186,102 @@ output_base_path <- "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/m
 # Loop through each visit number
 for(visit_number in c(0, 1, 2, 3)) {
   # Subset metadata for the current visit
-  metadata_subset <- metadata[metadata$visit == visit_number, ]
+  metadata_subset <- metadata_longitudinal[metadata_longitudinal$visit == visit_number, ]
   
-  # Re-set the row names for the subset to ensure they are carried over correctly
-  rownames(metadata_subset) <- metadata_subset$accession
+  # Subset abundance data to match the rownames of the metadata subset
+  abundance_subset <- abundance_data_clustered[rownames(abundance_data_clustered) %in% rownames(metadata_subset), ]
   
   # Define output directory for this subset
   output_directory <- paste0(output_base_path, "/visit_", visit_number)
   
   # Run MaAsLin2
   results <- Maaslin2(
-    input_data = abundance_data_clustered,
+    input_data = abundance_subset,
     input_metadata = metadata_subset,
     fixed_effects = c("ORR"),
     random_effects = NULL,
     output = output_directory,
     normalization = "NONE",
     transform = "NONE"
-  )
+  ) # nothing... Unfortunate
   
 }
 
+output_base_path <- "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/maaslin/clustered_survival/longi_PFS"
 
+# Loop through each visit number
+for(visit_number in c(0, 1, 2, 3)) {
+  # Subset metadata for the current visit
+  metadata_subset <- metadata_longitudinal[metadata_longitudinal$visit == visit_number, ]
+  
+  # Subset abundance data to match the rownames of the metadata subset
+  abundance_subset <- abundance_data_clustered[rownames(abundance_data_clustered) %in% rownames(metadata_subset), ]
+  
+  # Define output directory for this subset
+  output_directory <- paste0(output_base_path, "/visit_", visit_number)
+  
+  # Run MaAsLin2
+  results <- Maaslin2(
+    input_data = abundance_subset,
+    input_metadata = metadata_subset,
+    fixed_effects = c("PFS12"),
+    random_effects = NULL,
+    output = output_directory,
+    normalization = "NONE",
+    transform = "NONE"
+  ) # Basically nothing. 2 Cluster close to significance, q = 0.13 for both at visit 2
+  
+}
 
+output_base_path <- "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/maaslin/clustered_survival/longi_recist"
+
+# Loop through each visit number
+for(visit_number in c(0, 1, 2, 3)) {
+  # Subset metadata for the current visit
+  metadata_subset <- metadata_longitudinal[metadata_longitudinal$visit == visit_number, ]
+  
+  # Subset abundance data to match the rownames of the metadata subset
+  abundance_subset <- abundance_data_clustered[rownames(abundance_data_clustered) %in% rownames(metadata_subset), ]
+  
+  # Define output directory for this subset
+  output_directory <- paste0(output_base_path, "/visit_", visit_number)
+  
+  # Run MaAsLin2
+  results <- Maaslin2(
+    input_data = abundance_subset,
+    input_metadata = metadata_subset,
+    fixed_effects = c("recist"),
+    random_effects = NULL,
+    output = output_directory,
+    normalization = "NONE",
+    transform = "NONE",
+    reference = c("recist,SD")
+  ) # Basically nothing. 2 Cluster close to significance, q = 0.13 for both at visit 2
+  
+}
+
+output_base_path <- "/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/maaslin/clustered_survival/longi_colitis"
+
+# Loop through each visit number
+for(visit_number in c(0, 1, 2, 3)) {
+  # Subset metadata for the current visit
+  metadata_subset <- metadata_longitudinal[metadata_longitudinal$visit == visit_number, ]
+  
+  # Subset abundance data to match the rownames of the metadata subset
+  abundance_subset <- abundance_data_clustered[rownames(abundance_data_clustered) %in% rownames(metadata_subset), ]
+  
+  # Define output directory for this subset
+  output_directory <- paste0(output_base_path, "/visit_", visit_number)
+  
+  # Run MaAsLin2
+  results <- Maaslin2(
+    input_data = abundance_subset,
+    input_metadata = metadata_subset,
+    fixed_effects = c("colitis"),
+    random_effects = NULL,
+    output = output_directory,
+    normalization = "NONE",
+    transform = "NONE"
+  ) # Basically nothing. 2 Cluster close to significance, q = 0.13 for both at visit 2
+  
+}
