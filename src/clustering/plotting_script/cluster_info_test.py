@@ -75,33 +75,35 @@ def pie_chart(taxa_info: list, output_dir: Path):
     family_counts = Counter(family)
     genus_counts = Counter(genus)
 
-    # Create pie charts
-    sns.set_style('whitegrid')
+    sns.set_style("whitegrid")
 
-    # Create a figure to hold the subplots
-    plt.figure(figsize=(24, 12))
+     # Dynamically adjust figure size and font size based on the number of genera
+    num_genus = len(genus_counts)
+    fig_size_width = max(20, num_genus / 2)  # more aggressive width increase
+    fig_size_height = max(20, num_genus / 3)  # more aggressive height increase
+    font_size = min(14, max(8, 800 / num_genus))  # smaller font for more genera
 
-    # Phyla Distribution
-    plt.subplot(1, 3, 1)  # 1 row, 3 columns, 1st subplot
-    plt.pie(phyla_counts.values(), labels=phyla_counts.keys(), autopct='%1.1f%%')
-    plt.title('Phyla Distribution')
+    # Calculate 'explode' distances for each slice to enhance separation
+    explode = [0.1 if v > max(genus_counts.values()) * 0.1 else 0 for v in genus_counts.values()]
 
-    # Family Distribution
-    plt.subplot(1, 3, 2)  # 1 row, 3 columns, 2nd subplot
-    plt.pie(family_counts.values(), labels=family_counts.keys(), autopct='%1.1f%%')
-    plt.title('Family Distribution')
+    # Create a figure for the pie chart
+    plt.figure(figsize=(fig_size_width, fig_size_height))
 
-    # Genus Distribution
-    plt.subplot(1, 3, 3)  # 1 row, 3 columns, 3rd subplot
-    plt.pie(genus_counts.values(), labels=genus_counts.keys(), autopct='%1.1f%%')
+    # Generate the pie chart with adjusted text properties and explode
+    wedges, texts, autotexts = plt.pie(genus_counts.values(), labels=genus_counts.keys(),
+                                       autopct='%1.1f%%', startangle=90, textprops={'fontsize': font_size},
+                                       explode=explode)
+
+    # Rotate text to align optimally and avoid overlap
+    for text in texts:
+        text.set_rotation(0)  # Adjust angle if necessary
+
     plt.title('Genus Distribution')
 
-    # Show the figure with the subplots
-    plt.tight_layout()
-    plt.savefig(output_dir / 'pie_chart.png')
+    # Save the high-resolution figure
+    output_file = output_dir / 'genus_pie_chart.png'
+    plt.savefig(output_file, format='png', dpi=300, bbox_inches='tight')  # Ensure everything fits in the figure
     plt.close()
-
-
 # --------------------------------------------------
 
 def bar_chart(domain_info: list, secretion_info: list, number_proteins: int, output_dir: Path):
@@ -184,7 +186,7 @@ def describe_cluster(cluster_id: str, protein_info_table: Path, cluster_info_tab
     # given the cluster_id, find the initial uniref IDs and make them into a list
     clustered_dl_list = list(cluster_info_table.loc[cluster_info_table['dl_endopeptidase-foldseek_cluster'] == cluster_id, 'Uniref'])
 
-    print(clustered_dl_list)
+    # print(clustered_dl_list)
 
     number_proteins = len(list(protein_info_table.loc[protein_info_table['Uniref'].isin(clustered_dl_list), '# ID']))
 
