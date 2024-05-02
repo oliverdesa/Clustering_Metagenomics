@@ -481,7 +481,29 @@ stats that would be interesting from the ICI data:
 
 - timesheet first (done)
 - Cleaned metadata, joined tables, clustered table.
-- 
+
+02/05/2024
+
+- Back log of comments that were not put here:
+Notes for Today:
+- Let's start with ICI data. Merged tables are created, lets work with the metadata and pull some stats from it
+- clustering the outputs now. 9/397 DLEs were unclusterd. These should be put into their own columns or have a 
+seperate dataframe made to analyze changes in these individual genes, see if theyre significant and then map to taxa
+- began maaslin analysis, nothing so far with colitis associations
+
+Read downloading for ibd doest work, need to use their own custom tool.
+
+CAGEF symposium notes:
+- GBB has a collaborative internship. wowrk with another lab for 2-4 months during PhD
+
+Things to do:
+- Create the effect size figure. show how taxa included in the cluster change, then sum their effect sizes to relate to the cluster.
+
+- Benchmark figures for JP
+Ran maaslin on the individual proteins. extract individuals from 3 different clusters. Ideally signficianctly down ones. 
+From a large sig down cluster there are 3 distinct proteins that have hits throughout the genomes of many bugs. 
+So when we look at the coefs of these three its difficult to say that the there are a lot of species that are driving this change. 
+Might need to also look at the species level at the bugs involved in the cluster and how they change. 
 
 
 
