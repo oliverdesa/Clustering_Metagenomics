@@ -505,6 +505,20 @@ From a large sig down cluster there are 3 distinct proteins that have hits throu
 So when we look at the coefs of these three its difficult to say that the there are a lot of species that are driving this change. 
 Might need to also look at the species level at the bugs involved in the cluster and how they change. 
 
+06/05/2024
+
+- meeting with JP went well, he made good observations.
+
+- Priorities:
+	- process and investigate the IBD data. Look for correlations with our clusters of interest. 
+	- Download and investigate the meta-transcriptomics data. 
+	- download host exome seq too to look for NOD2 mutants, how does this effect our clusters. 
+	- Take a look again at the ICB data. How Does the change in our clusters correlate with response/colitis etc?
+	- PCA; should do a PCA on clusters to see disease states they're associated with. 
+	- ML, Need to do an ore broad model to use our cluster predictions across trials. 
+	- Investigate down clusters more. Need to drop the very small ones likely being driven by a single species shift. Metaphlan profiles necessary
+
+
 
 
 
