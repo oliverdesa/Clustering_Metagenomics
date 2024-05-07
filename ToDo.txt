@@ -518,6 +518,14 @@ Might need to also look at the species level at the bugs involved in the cluster
 	- ML, Need to do an ore broad model to use our cluster predictions across trials. 
 	- Investigate down clusters more. Need to drop the very small ones likely being driven by a single species shift. Metaphlan profiles necessary
 
+07/05/2024
+
+- ran test kneaddata script on hmp data to see if it is already filtered. 
+- check back and run humann once finished.
+- Now look into installing metatranscriptomics
+- ran download script for mtx, check up on it later
+- download script wowrking, downloading to reads dir, need to move after
+
 
 
 
