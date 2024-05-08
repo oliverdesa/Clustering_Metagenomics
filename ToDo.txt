@@ -508,6 +508,13 @@ Might need to also look at the species level at the bugs involved in the cluster
 06/05/2024
 
 - meeting with JP went well, he made good observations.
+What are the driver for the separation between the clusters 
+
+Absolute abundance?
+
+What are the ecological niches of the individuals in the down clusters?
+
+Ratio of top 2 against each other in every sample? Are 
 
 - Priorities:
 	- process and investigate the IBD data. Look for correlations with our clusters of interest. 
@@ -525,6 +532,20 @@ Might need to also look at the species level at the bugs involved in the cluster
 - Now look into installing metatranscriptomics
 - ran download script for mtx, check up on it later
 - download script wowrking, downloading to reads dir, need to move after
+
+08/05/2024
+
+- Files are unzipped and loaded on cluster. Just need to verify whether or not they need to be processed before humann
+- today read about PCAs, how to implement it specifically for these data. Also look individual proteins within a cluster, look at differences
+- multiple alignment and look at differences in domain
+- began writing script to pull sequences of clusters and do MAs. Pretty much finished, for some reason some of the cluster IDs do not have their
+actual sequences included wihtin the cluster. Indeed when looking at the merged_info tsv I see that they dont have their uniref100s included but 
+They are present in the original Fasta. I think this is because they did not have any hits themselves in the ~290k genomes? If thats the case they
+likely should not be referred to as the representative sequence of that cluster. Look in raw outputs of shotgun if it appears. Might have to do some 
+toubleshooting there
+- Also need to get the IPS file which should be on the external ssd. Will need to pull the markers of domains for each of the genes so we cna align those segments alone. 
+
+
 
 
 
