@@ -546,6 +546,13 @@ toubleshooting there
 - Also need to get the IPS file which should be on the external ssd. Will need to pull the markers of domains for each of the genes so we cna align those segments alone. 
 
 
+08/05/2024
+
+- wet lab work mainly today
+- Split up all the reads in for the ibdmdb. Submitted jobs to run kneaddata just incase they arent processed so I dont waste time. 
+- continue with alignment script stuff tomorrow
+
+
 
 
 
