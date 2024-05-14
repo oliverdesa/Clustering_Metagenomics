@@ -561,6 +561,9 @@ toubleshooting there
 - Last 2 kneaddatas now running, queued all 5 humann jobs. 
 - Get back into the MSA script today, do some visualizations
 - do some brainstorming for the small paper suggested by bobby. Write down suggestions
+- Now have script that creates output fastas of cluster, runs MSA on them with muscle, and then a seperate Rsctipt to visualize with ggmsa
+- Now want to overlay important domains of these proteins and look for variations within NLPC/peptidase
+- also compare 3D structures and look for how mutations might alter them.
 - 
 
 

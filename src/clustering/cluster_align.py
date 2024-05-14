@@ -2,6 +2,9 @@
 
 import pandas as pd
 import argparse
+import subprocess
+import os
+
 
 def get_cluster_sequences(cluster_ids):
     """When given a cluster ID, map it to the mapping file,
@@ -62,6 +65,22 @@ def get_cluster_sequences(cluster_ids):
 
         print(f"Filtered FASTA written to {output_fasta_path}")
 
+def run_muscle(input_fasta, output_fasta):
+    """
+    Run MUSCLE to perform multiple sequence alignment.
+    
+    Parameters:
+    input_fasta (str): Path to the input FASTA file.
+    output_fasta (str): Path to the output aligned FASTA file.
+    """
+    try:
+        result = subprocess.run(['muscle', '-in', input_fasta, '-out', output_fasta], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print("MUSCLE run successful")
+        print(result.stdout.decode())
+    except subprocess.CalledProcessError as e:
+        print("Error running MUSCLE")
+        print(e.stderr.decode())
+
 
 # Main entry point to parse command-line arguments
 if __name__ == '__main__':
@@ -74,5 +93,11 @@ if __name__ == '__main__':
 
     # Call the function with the provided list of cluster IDs
     get_cluster_sequences(args.cluster_ids)
+
+    # Run MUSCLE to perform multiple sequence alignment
+    for cluster_id in args.cluster_ids:
+        input_fasta = f'/Users/odesa/Desktop/transient_files/down_fastas/{cluster_id}_dl_endopeptidases_fastas.faa'
+        output_fasta = f'/Users/odesa/Desktop/transient_files/aligned_fastas/{cluster_id}_aligned_dl_endopeptidases_fastas.faa'
+        run_muscle(input_fasta, output_fasta) 
 
 
