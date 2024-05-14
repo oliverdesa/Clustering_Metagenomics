@@ -41,6 +41,10 @@ def get_cluster_sequences(cluster_ids):
         clusters = mapping_info[mapping_info['dl_endopeptidase-foldseek_cluster'] == cluster_id]
         uniref_ids = clusters['Uniref'].values
 
+        if cluster_id not in uniref_ids:
+            uniref_ids = list(uniref_ids)
+            uniref_ids.append(cluster_id)
+
         print(f"found cluster IDs for {cluster_id}: {uniref_ids}")
 
         # Create a filtered dictionary containing only the UniRef IDs present in the list
