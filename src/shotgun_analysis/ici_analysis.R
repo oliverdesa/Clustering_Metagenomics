@@ -10,6 +10,7 @@ library(readr)
 
 ## Load Data ##
 
+## for Mac ##
 # Read in the feather
 metadata_baseline_survival <- read.csv("/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/metadata/cleaned_mdat_baseline_survival.csv")
 metadata_longitudinal <- read.csv("/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/metadata/cleaned_mdat_longitudinal.csv")
@@ -17,6 +18,17 @@ metadata_longitudinal <- read.csv("/Users/odesa/OneDrive - University of Toronto
 # Read in the abundance data
 abundance_data_clustered <- read_tsv("/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/LatestData/clustered_complete_70966_43119.tsv")
 abundance_data_grouped <- read_tsv("/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/LatestData/grouped_70966_43119.tsv")
+
+## For Windows ##
+# Read in the feather
+metadata_baseline_survival <- read.csv("C:/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/metadata/cleaned_mdat_baseline_survival.csv")
+metadata_longitudinal <- read.csv("C:/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/metadata/cleaned_mdat_longitudinal.csv")
+
+# Read in the abundance data
+abundance_data_clustered <- read_tsv("C:/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/LatestData/clustered_complete_70966_43119.tsv")
+abundance_data_grouped <- read_tsv("C:/Users/odesa/OneDrive - University of Toronto/LabWork/ICI/LatestData/grouped_70966_43119.tsv")
+
+
 
 # reformat the accessions
 # Splitting the string and keeping only the first element
