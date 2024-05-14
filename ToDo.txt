@@ -555,7 +555,13 @@ toubleshooting there
 13/05/2024
 
 - 3 groups of ibd data finished kneaddata. Began running humann on those groups.
--
+
+14/05/2024
+
+- Last 2 kneaddatas now running, queued all 5 humann jobs. 
+- Get back into the MSA script today, do some visualizations
+- do some brainstorming for the small paper suggested by bobby. Write down suggestions
+- 
 
 
 
