@@ -567,8 +567,11 @@ toubleshooting there
 - 
 
 
-
-
+11/06/2024
+- Im back BOOSSSSSHHHHHH
+- humans finished on all ibd. Might have made an error in running kneaddata etc again. Still analyze the reads, catting all reads together now to queue humann again on them. Will need to clear all filt reads.
+- Also queue metaphlan on these reads so we can use it for the mtx data. 
+- continue with regular analysis of ibd data in the meantime. 
 
 
 
