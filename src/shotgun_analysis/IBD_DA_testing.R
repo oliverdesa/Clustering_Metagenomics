@@ -58,8 +58,56 @@ results <- Maaslin2(
   reference = c("diagnosis,nonIBD")
 )
 
+## MTX data from IBD ##
+
+# Read in the abundance data
+abundance_data_mtx <- read.csv("/Volumes/PGH-Backup/ibd_data/rnaseq/ibd_rnaseq_clustered.tsv", 
+                                sep = "\t", header = TRUE)
+
+abundance_data_mtx_unique <- abundance_data_mtx[!duplicated(abundance_data_mtx$sample_id), ]
+
+# Temp remove rownames
+abundance_data_mtx_unique <- abundance_data_mtx_unique %>% 
+  rownames_to_column(var = "temp_rowname") %>% 
+  select(-temp_rowname)
+
+# Then, set the 'sample_id' column as row names
+abundance_data_mtx_unique <- abundance_data_mtx_unique %>% 
+  column_to_rownames(var = "sample_id")
+
+# Now filter metadata to only include rows present in abundance df
+abundance_sample_ids <- rownames(abundance_data_mtx_unique)
+
+# Also filter to metagenomic data
+filtered_metadata_ibd <- metadata_ibd %>%
+  filter(`External.ID` %in% abundance_sample_ids & data_type == "metagenomics")
+
+filtered_metadata_ibd <- filtered_metadata_ibd %>% column_to_rownames(var = "External.ID")
+
+# Patterns to search for
+patterns <- c("^DL.endopeptidase")
+
+# Combine patterns into a single regular expression
+pattern <- paste(patterns, collapse = "|")
+
+selected_columns <- grep(pattern, names(abundance_data_mtx_unique), value = TRUE)
+
+abundance_data_mtx_unique <- abundance_data_mtx_unique[, selected_columns]
+
+## Run Maaslin2 ##
+
+results <- Maaslin2(
+  input_data = abundance_data_mtx_unique,
+  input_metadata = filtered_metadata_ibd,
+  output = "/Volumes/PGH-Backup/ibd_data/maaslin2/maaslin2_results_ibd_mtx",
+  fixed_effects = c("diagnosis"),
+  random_effects = NULL,
+  normalization = "none", 
+  transform = "none",
+  reference = c("diagnosis,nonIBD")
+)
 
 
-
+# No significance for MTX data
 
 
