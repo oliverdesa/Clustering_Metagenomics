@@ -8,7 +8,6 @@ import sys
 
 def scale_values(dataframe):
     # Scale the values in the dataframe
-    # Assuming that the columns 'feature' and 'value' exist in the dataframe
     
     dataframe['scaled_value'] = -np.log(dataframe['qval']) * np.sign(dataframe['coef'])
     
@@ -194,7 +193,7 @@ def cluster_humann_table(humann_feather, cluster_tsv):
     # list of enzymes
     enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
                'LD-endopeptidase', 'Glucosaminidase',
-               'DD-carboxypeptidase', 'Diadenylate-cyclase',
+               'DD-carboxypeptidase',
                'Amidase', 'Muramidase']
 
     clustered_df = pd.DataFrame()
