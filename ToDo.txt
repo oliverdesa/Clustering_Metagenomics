@@ -573,7 +573,11 @@ toubleshooting there
 - Also queue metaphlan on these reads so we can use it for the mtx data. 
 - continue with regular analysis of ibd data in the meantime. 
 
-
+24/06/2024
+- All ibd processed by humann correctly, quite a few significantly different clusters in CD and UC by MGX, however, none by MTX. 
+	- unfortunately there seems to be quite a few clusters sig upregulated, expecially in CD. Only 1 or 2 of our sig clusters in CRC are found to be down in IBD. 
+	- Finish comparing clusters to CRC, pick out a few consistenly dreged ones to look further, also take a look at the up ones. We wont have a concrete answer unless we measure Nod2 activation. 
+	- 
 
 
 
