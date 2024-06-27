@@ -577,7 +577,15 @@ toubleshooting there
 - All ibd processed by humann correctly, quite a few significantly different clusters in CD and UC by MGX, however, none by MTX. 
 	- unfortunately there seems to be quite a few clusters sig upregulated, expecially in CD. Only 1 or 2 of our sig clusters in CRC are found to be down in IBD. 
 	- Finish comparing clusters to CRC, pick out a few consistenly dreged ones to look further, also take a look at the up ones. We wont have a concrete answer unless we measure Nod2 activation. 
-	- 
+	- Might want to start looking and all PGHs in the dataset as their clusters. dd-endopeptidase has not been annotated. Seems like ld-endopeptidase contains a lot of 
+	dd-endopeptidases within its map. 
+
+27/06/2024
+- Time to make a slight pivot. Take a more holistic view for now on the contribution of PGH enzymes on IBD specifically, with some 
+links to CRC at the end. dd-endopeptidase is being annotated, but was never clustered. We need to cluster it, generate a map and 
+then re-do analysis with it involved. 
+- Then we need to look at DA for all enzyme groups and form plots to visualize. Network graphs as well to visualize the clusters
+
 
 
 
