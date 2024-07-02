@@ -193,7 +193,7 @@ def cluster_humann_table(humann_feather, cluster_tsv):
     # list of enzymes
     enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
                'LD-endopeptidase', 'Glucosaminidase',
-               'DD-carboxypeptidase',
+               'DD-carboxypeptidase', 'DD-endopeptidase',
                'Amidase', 'Muramidase']
 
     clustered_df = pd.DataFrame()
