@@ -586,11 +586,19 @@ links to CRC at the end. dd-endopeptidase is being annotated, but was never clus
 then re-do analysis with it involved. 
 - Then we need to look at DA for all enzyme groups and form plots to visualize. Network graphs as well to visualize the clusters
 
+02/07/2024
+- went through the bitch work of creating the dd_endopeptidase cluster map. I might have made an error with the way I re-defined clusters. walk through it:
+	- The cluster map and PDBs already existed, however there were large gaps in the foldseek clustering. 
+	- stupid I didnt create a function to find the missing clusters and get the proper PDBs
+	- Need to re-run foldseek. 
 
+03/07/2024
+- clustering with dd-endopeptidase is done. DA testing on IBD cohort with all enzyme clusters is done. Lets start running Pfam and signalp on all families.
+- all blasted proteins have been cleaned off of scratch... unfortunately will need to run it again. Talked to Charlie, wait for response.
 
-
-
-
+05/07/2024
+- The primary issue currently is with the longitudinal nature of the IBD data. Cannot treat every sample as an individual,
+ need to figure out a way to best do testing on them. 
 
  
  
