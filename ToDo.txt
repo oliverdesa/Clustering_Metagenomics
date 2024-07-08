@@ -613,7 +613,30 @@ to do that.
 	the enzymes correlate with some of these markers; association w dysbiosis, transcriptional markers of inflammation, serology markers. 
 	- difficult because dont have these tests for every metagenomic sample. jh
  
- 
+Important Features for PCoA analysis:
+                                    PCoA1      PCoA2
+DD.endopeptidase.A0A1M6ZCE9     0.8618678 -0.3543818
+Muramidase.A0A522FJC4           0.8448333 -0.3324963
+Muramidase.A0A1V5YU78           0.8327395 -0.2777669
+DD.endopeptidase.A0A6L5C0G8     0.8201010 -0.3602216
+LD.carboxypeptidase.A0A108T442  0.8200868 -0.3602502
+DD.endopeptidase.A0A2C8YRG0     0.8120335 -0.2691081
+Amidase.R5JM70                 -0.8051626 -0.3064105
+DD.carboxypeptidase.A0A4Q3CKM9  0.8028495 -0.3516972
+Muramidase.A0A2M8A1B0           0.7968856  0.3854497
+DD.carboxypeptidase.A0A1A9C453 -0.7904948 -0.2635730
+
+                                       PCoA1     PCoA2
+DD.carboxypeptidase.A0A2G6MBS6 -0.0051356930 0.8772747
+Muramidase.A0A538IDP4          -0.0052153762 0.8745636
+Muramidase.L0D878              -0.1523089201 0.8016100
+Muramidase.A0A229I452          -0.0118878446 0.7781938
+Muramidase.A0A6A7VWJ7          -0.0089424700 0.7708327
+Amidase.A0A6I2U068             -0.0008421209 0.7659160
+Amidase.A0A7K0ASC9             -0.0045290136 0.7420360
+Amidase.A0A0G1KR24              0.5144179058 0.7011622
+Amidase.A0A413TDI8             -0.0078764789 0.7004367
+Amidase.A0A1V5P9L7              0.4524114447 0.6648966 
 
 
 
