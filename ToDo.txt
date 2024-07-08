@@ -600,6 +600,18 @@ then re-do analysis with it involved.
 - The primary issue currently is with the longitudinal nature of the IBD data. Cannot treat every sample as an individual,
  need to figure out a way to best do testing on them. 
 
+08/07/2024
+- Will look by DA testing longitudinally, but dont really just want to see how they chnage over time, moreso 
+want to see how they change in relation to severity of disease. need to look at markers of flare ups in order
+to do that.
+- data available
+	- dysbiosis scores? (might be interesting)
+	- host transcriptomics from inflamed tissue
+	- serology (IgA ASCA EUIgA ASCA Pos.IgG ASCA EUIgG ASCA Pos.ASCA PanelOmpC. EUOmpC Pos.Cbir1 EUCBir1 Fla. Pos.ANCA EUANCA Pos.)
+		- these markers are more import for differentiation of CD and UC, not necessarily flare ups or severity.
+	- need to make do with what I have. Although might not be exactly indicitive of severity, could still see if
+	the enzymes correlate with some of these markers; association w dysbiosis, transcriptional markers of inflammation, serology markers. 
+	- difficult because dont have these tests for every metagenomic sample. jh
  
  
 
