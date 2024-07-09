@@ -638,7 +638,13 @@ Amidase.A0A0G1KR24              0.5144179058 0.7011622
 Amidase.A0A413TDI8             -0.0078764789 0.7004367
 Amidase.A0A1V5P9L7              0.4524114447 0.6648966 
 
-
+09/07/2024
+- PCoA yesterday was fairly succesful, all 3 populations are signfiicantly different from one another. Could also write a script to automate the
+ process and run for many covariates to look for unintended batch effects potentially. should further look into the grouped PCoA with CRC samples
+- Want to generate figures for the DA testing, Want to do the network plots in order for it to look uniform. Network plots require Domain info so need charlie
+for that
+- What can I do today?
+- pcoa associating enzymes with dysbiotic states. Make it into an Rscript.
 
 
 
