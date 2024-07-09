@@ -9,7 +9,7 @@ library(tidyverse)
 ## Load Data ##
 
 # Read in the feather
-metadata_ibd <- read.csv("/Volumes/PGH-Backup/ibd_data/hmp2_metadata_2018-08-20.csv")
+metadata_ibd <- read.csv("/Volumes/PGH-Backup/ibd_data/metadata/hmp2_metagenomics_metadata.csv")
 
 # Read in the abundance data
 abundance_data_ibd <- read.csv("/Volumes/PGH-Backup/ibd_data/humann_second_run/ibd_genefamilies_relab_clustered.tsv", 
@@ -34,16 +34,6 @@ filtered_metadata_ibd <- metadata_ibd %>%
   filter(`External.ID` %in% abundance_sample_ids & data_type == "metagenomics")
 
 filtered_metadata_ibd <- filtered_metadata_ibd %>% column_to_rownames(var = "External.ID")
-
-# Patterns to search for
-# patterns <- c("^DL.endopeptidase")
-
-# Combine patterns into a single regular expression
-# pattern <- paste(patterns, collapse = "|")
-
-# selected_columns <- grep(pattern, names(abundance_data_ibd_unique), value = TRUE)
-
-# abundance_data_ibd_unique <- abundance_data_ibd_unique[, selected_columns]
 
 ## Run Maaslin2 ##
 
@@ -109,5 +99,31 @@ results <- Maaslin2(
 
 
 # No significance for MTX data
+
+## DA Testing with Dysbiosis scores ##
+
+# Read in the metadata
+
+metadata_dysbiosis <- read.csv("/Volumes/PGH-Backup/ibd_data/metadata/dysbiosis_scores.tsv",
+                               sep = "\t", header = TRUE)
+colnames(metadata_dysbiosis) <- c("sample_id", "dysbiosis_score", "dysbiosis")
+
+# Now filter metadata to only include rows present in abundance df
+abundance_sample_ids <- rownames(abundance_data_ibd_unique)
+
+filtered_metadata_dysbiosis <- metadata_dysbiosis %>%
+  filter(sample_id %in% abundance_sample_ids)
+
+
+results <- Maaslin2(
+  input_data = abundance_data_ibd_unique,
+  input_metadata = filtered_metadata_dysbiosis,
+  output = "/Volumes/PGH-Backup/ibd_data/maaslin2/maaslin2_results_ibd/dysbiosis",
+  fixed_effects = c("dysbiosis"),
+  random_effects = NULL,
+  normalization = "none", 
+  transform = "none"
+  # reference = c("diagnosis,nonIBD")
+)
 
 
