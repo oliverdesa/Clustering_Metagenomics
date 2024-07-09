@@ -114,6 +114,8 @@ abundance_sample_ids <- rownames(abundance_data_ibd_unique)
 filtered_metadata_dysbiosis <- metadata_dysbiosis %>%
   filter(sample_id %in% abundance_sample_ids)
 
+filtered_metadata_dysbiosis <- filtered_metadata_dysbiosis %>% column_to_rownames(var = "sample_id")
+
 
 results <- Maaslin2(
   input_data = abundance_data_ibd_unique,
@@ -125,5 +127,6 @@ results <- Maaslin2(
   transform = "none"
   # reference = c("diagnosis,nonIBD")
 )
+
 
 
