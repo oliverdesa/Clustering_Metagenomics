@@ -645,9 +645,11 @@ Amidase.A0A1V5P9L7              0.4524114447 0.6648966
 for that
 - What can I do today?
 - pcoa associating enzymes with dysbiotic states. Make it into an Rscript.
+- created script that generates volcano plots from maaslin outputs. 
+- generated volcano plots for all enzymes Differentially abundant from healthy and dysbiotic states.
 
-
-
+10/09/2024
+- Going to start today with doing a correlation analysis to see if my gene counts correlate with the dysbiosis scores
 
 
 
