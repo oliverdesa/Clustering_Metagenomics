@@ -54,7 +54,7 @@ def generate_volcano_plots(file_path, output_dir):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate volcano plots for each enzyme type")
-    parser.add_argument('file_path', type=str, help="Path to the CSV file containing the data")
+    parser.add_argument('file_path', type=str, help="Path to the TSV file containing the data")
     parser.add_argument('--output_dir', type=str, help="Path to the directory where the volcano plots will be saved", default='.')
     args = parser.parse_args()
     
