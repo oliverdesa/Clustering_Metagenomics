@@ -4,7 +4,6 @@ import numpy as np
 import argparse
 import os
 from adjustText import adjust_text
-
 import matplotlib.pyplot as plt
 
 def load_data(file_path):
@@ -44,7 +43,7 @@ def create_volcano_plot(df, condition, output_dir, enzyme_colors, labels):
     plt.axvline(x=0, linestyle='--', color='grey')
     plt.xlabel('Coefficient')
     plt.ylabel('-log10(q-value)')
-    plt.title(f'DA of PGH clusters in {condition} patients')
+    plt.title(f'DA of PGH clusters in dysbiotic patients')
     
     if labels:
         # Add labels to points
@@ -75,15 +74,18 @@ def main():
     parser = argparse.ArgumentParser(description="Generate volcano plots for all PGH clusters in each condition.")
     parser.add_argument('file_path', type=str, help="Path to the TSV file containing the data")
     parser.add_argument('--output_dir', type=str, help="Path to the directory where the volcano plots will be saved", default='.')
-    parser.add_argument('--labels', type=str, help="Whether or not to label individual points", default=True, choices=['True', 'False'])
+    parser.add_argument('--labels', type=str, help="Whether or not to label individual points", default='True', choices=['True', 'False'])
 
     args = parser.parse_args()
+    
+    # Convert labels argument to boolean
+    labels = args.labels.lower() == 'true'
     
     # Create output directory if it does not exist
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
     
-    generate_volcano_plots(args.file_path, args.output_dir, args.labels)
+    generate_volcano_plots(args.file_path, args.output_dir, labels)
 
 if __name__ == "__main__":
     main()
