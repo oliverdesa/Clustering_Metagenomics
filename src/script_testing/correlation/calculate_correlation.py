@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import argparse
 from adjustText import adjust_text
+import matplotlib.patches as mpatches
 
 def make_merged_table(abundance_path, dysbiosis_path):
     abundance = pd.read_csv(abundance_path, sep='\t')
@@ -72,7 +73,7 @@ def plot_correlations(correlation_results, method, enzyme_colours):
         # Get colors for each gene based on enzyme type
         colors = [enzyme_colours.get(extract_enzyme_type(gene), 'black') for gene in genes]
 
-        plt.figure(figsize=(20, 12))
+        plt.figure(figsize=(22, 12))
         scatter = sns.scatterplot(x=range(len(genes)), y=corrs, size=-np.log10(pvals), hue=genes, palette=colors, legend=False, sizes=(20, 200))
         scatter.set_xticks(range(len(genes)))
         scatter.set_xticklabels(genes, rotation=90)
@@ -96,7 +97,12 @@ def plot_correlations(correlation_results, method, enzyme_colours):
         
         adjust_text(texts, arrowprops=dict(arrowstyle='-', color='black'))
 
-        plt.savefig(f'{method}_correlation_clusters_dysbiosis.png', dpi=600)
+        # Create custom legend
+        unique_enzyme_types = set(extract_enzyme_type(gene) for gene in genes)
+        handles = [mpatches.Patch(color=enzyme_colours[enzyme], label=enzyme) for enzyme in unique_enzyme_types]
+        plt.legend(handles=handles, title='Enzyme Types', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+        plt.savefig(f'{method}_correlation_clusters_dysbiosis.png', dpi=600, bbox_inches='tight')
     else:
         print(f"No significant {method} correlations (p < 0.05) found.")
 
