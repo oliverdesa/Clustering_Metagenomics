@@ -650,9 +650,12 @@ for that
 
 10/09/2024
 - Going to start today with doing a correlation analysis to see if my gene counts correlate with the dysbiosis scores
+- finished correlation script, generated spearman/pearson correlations for all clusters with dysbiosis scores. 
+	- might edit to use the cool correlation plot I had peviously.
 
-
-
+11/09/2024
+- start putting together slides for Dana
+- 
 
 
 

@@ -6,11 +6,12 @@ import seaborn as sns
 import argparse
 from adjustText import adjust_text
 
-def load_data(file_path):
-    df = pd.read_csv(file_path, sep='\t')
-    sample_id_column = df['sample_id']  # Save the sample_id column
-    df = df.drop('sample_id', axis=1)  # Remove the sample_id column from the df
-    return df
+def make_merged_table(abundance_path, dysbiosis_path):
+    abundance = pd.read_csv(abundance_path, sep='\t')
+    dysbiosis = pd.read_csv(dysbiosis_path, sep='\t', names=['sample_id', 'dysbiosis_score', 'dysbiosis_category'])
+    abundance_merged = abundance.merge(dysbiosis, left_on='sample_id', right_on='sample_id')
+    abundance_merged.drop(['Unnamed: 0', 'dysbiosis_category'], axis=1, inplace=True)
+    return abundance_merged
 
 def calculate_correlations(df, gene_columns, score_column):
     spearman_results = {}
@@ -65,18 +66,19 @@ def plot_correlations(correlation_results, method):
         
         adjust_text(texts, arrowprops=dict(arrowstyle='-', color='black'))
 
-        plt.show()
+        plt.savefig(f'{method}_correlation_clusters_dysbiosis', dpi=600)
     else:
         print(f"No significant {method} correlations (p < 0.05) found.")
 
 def main():
     parser = argparse.ArgumentParser(description="Calculate correlations between gene counts and dysbiosis scores")
-    parser.add_argument('file_path', type=str, help="Path to the TSV file containing the data")
+    parser.add_argument('abundance_file_path', type=str, help="Path to the TSV file containing the data")
+    parser.add_argument('dysbiosis_file_path', type=str, help="Path to the TSV file containing the dysbiosis scores")
     parser.add_argument('--score_column', type=str, default='dysbiosis_score', help="Column name for dysbiosis scores")
     args = parser.parse_args()
     
     # Load the data
-    df = load_data(args.file_path)
+    df = make_merged_table(args.abundance_file_path, args.dysbiosis_file_path)
     
     # Identify gene columns (assuming all columns except the score column are gene counts)
     gene_columns = [col for col in df.columns if col != args.score_column]
