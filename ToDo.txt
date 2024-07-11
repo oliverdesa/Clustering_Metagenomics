@@ -655,8 +655,10 @@ for that
 
 11/09/2024
 - start putting together slides for Dana
-- 
-
+- Updated Volcanos function to create a single plot and colour code enzymes.
+- working on adding a flag to the script that turns off point labels
+- updated correlation script to automatically do the merging steps
+- Will now finish the labelling flag and then organize slides. 
 
 
 

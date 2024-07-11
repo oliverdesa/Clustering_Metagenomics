@@ -13,6 +13,31 @@ def make_merged_table(abundance_path, dysbiosis_path):
     abundance_merged.drop(['Unnamed: 0', 'dysbiosis_category'], axis=1, inplace=True)
     return abundance_merged
 
+def extract_enzyme_type(column):
+        parts = column.split('-')
+        if len(parts) == 2:
+            return parts[0]
+        elif len(parts) == 3:
+            return '-'.join(parts[:2])
+        else:
+            return parts[0]
+
+def parse_data(df):
+    # Extract enzyme type from the column names
+    
+    enzyme_columns = [col for col in df.columns if col not in ['sample_id', 'dysbiosis_score']]
+    enzyme_types = [extract_enzyme_type(col) for col in enzyme_columns]
+
+    # Print unique enzyme types for debugging
+    unique_enzyme_types = set(enzyme_types)
+    print(f"Unique enzyme types: {unique_enzyme_types}")
+    
+   # Create a dictionary to map enzyme types to colors
+    enzyme_colours = {enzyme_type: color for enzyme_type, color in zip(unique_enzyme_types, 
+                                    sns.color_palette("husl", len(unique_enzyme_types)))}    
+    
+    return df, enzyme_colours
+
 def calculate_correlations(df, gene_columns, score_column):
     spearman_results = {}
     pearson_results = {}
@@ -35,7 +60,7 @@ def calculate_correlations(df, gene_columns, score_column):
     
     return spearman_results, pearson_results
 
-def plot_correlations(correlation_results, method):
+def plot_correlations(correlation_results, method, enzyme_colours):
     # Filter results for significant correlations (p < 0.05)
     significant_results = {gene: (corr, pval) for gene, (corr, pval) in correlation_results.items() if pval < 0.05}
     
@@ -44,13 +69,18 @@ def plot_correlations(correlation_results, method):
         corrs = [significant_results[gene][0] for gene in genes]
         pvals = [significant_results[gene][1] for gene in genes]
 
+        # Get colors for each gene based on enzyme type
+        colors = [enzyme_colours.get(extract_enzyme_type(gene), 'black') for gene in genes]
+
         plt.figure(figsize=(20, 12))
-        sns.scatterplot(x=range(len(genes)), y=corrs, size=-np.log10(pvals), legend=False, sizes=(20, 200))
+        scatter = sns.scatterplot(x=range(len(genes)), y=corrs, size=-np.log10(pvals), hue=genes, palette=colors, legend=False, sizes=(20, 200))
+        scatter.set_xticks(range(len(genes)))
+        scatter.set_xticklabels(genes, rotation=90)
         plt.axhline(0, linestyle='--', color='grey')
         plt.xlabel('Gene')
         plt.ylabel(f'{method} Correlation')
         plt.title(f'{method} Correlation of Gene Counts with Dysbiosis Scores')
-        plt.xticks([], [])  # Remove x-axis labels
+        plt.xticks([])  # Remove x-axis labels
 
         # Identify top 10 positive and negative correlations
         sorted_indices = np.argsort(corrs)
@@ -66,7 +96,7 @@ def plot_correlations(correlation_results, method):
         
         adjust_text(texts, arrowprops=dict(arrowstyle='-', color='black'))
 
-        plt.savefig(f'{method}_correlation_clusters_dysbiosis', dpi=600)
+        plt.savefig(f'{method}_correlation_clusters_dysbiosis.png', dpi=600)
     else:
         print(f"No significant {method} correlations (p < 0.05) found.")
 
@@ -79,6 +109,8 @@ def main():
     
     # Load the data
     df = make_merged_table(args.abundance_file_path, args.dysbiosis_file_path)
+
+    df, enzyme_colours = parse_data(df)
     
     # Identify gene columns (assuming all columns except the score column are gene counts)
     gene_columns = [col for col in df.columns if col != args.score_column]
@@ -87,8 +119,8 @@ def main():
     spearman_results, pearson_results = calculate_correlations(df, gene_columns, args.score_column)
     
     # Plot the results
-    plot_correlations(spearman_results, 'Spearman')
-    plot_correlations(pearson_results, 'Pearson')
+    plot_correlations(spearman_results, 'Spearman', enzyme_colours)
+    plot_correlations(pearson_results, 'Pearson', enzyme_colours)
 
 if __name__ == "__main__":
     main()
