@@ -659,6 +659,11 @@ for that
 - working on adding a flag to the script that turns off point labels
 - updated correlation script to automatically do the merging steps
 - Will now finish the labelling flag and then organize slides. 
+- Make side pcoas with only each enzyme and then label with condition
+
+12/09/2024
+- pcoas for each individual enzyme, labelled with condition
+
 
 
 
