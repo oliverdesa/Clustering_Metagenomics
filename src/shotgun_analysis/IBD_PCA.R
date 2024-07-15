@@ -55,7 +55,145 @@ print(gene_families)
 
 ######################
 
-## Perform PCoA ##
+# Define PCoA function to caluclate PCoA, plot result and PERMANOVA test ##
+
+perform_pcoa <- function(gene_family) {
+  # Subset the dataframe for the specific gene family
+  subset_df <- df_numeric_clean %>% select(starts_with(gene_family))
+  
+  # Remove columns with all zeros
+  non_zero_columns <- apply(subset_df, 2, function(col) any(col != 0))
+  subset_df <- subset_df[, non_zero_columns]
+  
+  # Remove rows with all zeros
+  non_zero_rows <- apply(subset_df, 1, function(row) any(row != 0))
+  subset_df <- subset_df[non_zero_rows, ]
+  
+  # Check if the subset_df is empty or has only one column (not enough for distance matrix)
+  if (ncol(subset_df) < 2 || nrow(subset_df) < 2) {
+    print(paste("Not enough data for gene family:", gene_family))
+    return(NULL)
+  }
+  
+  print(paste("Subset data for", gene_family, ":"))
+  print(head(subset_df))
+  
+  # Calculate the distance matrix
+  distance_matrix <- vegdist(subset_df, method = "bray")
+  print("Distance matrix calculated.")
+  
+  # Perform PCoA
+  pcoa_result <- cmdscale(distance_matrix, eig = TRUE, k = 2)
+  
+  # Check if the PCoA result is valid
+  if (is.null(pcoa_result$points)) {
+    print(paste("PCoA failed for gene family:", gene_family))
+    return(NULL)
+  }
+  
+  print(paste("PCoA result for", gene_family, ":"))
+  print(head(pcoa_result$points))
+  
+  # Calculate the percentage of variance explained
+  eig_vals <- pcoa_result$eig
+  variance_explained <- eig_vals / sum(eig_vals) * 100
+  percent_variance <- round(variance_explained[1:2], 2)
+  
+  labels_clean <- labels[!empty_rows][non_zero_rows]
+  pcoa_df <- data.frame(pcoa_result$points, label = labels_clean)
+  colnames(pcoa_df) <- c("PCoA1", "PCoA2", "label")
+  
+  # Ensure column names match for merging
+  colnames(metadata_ibd)[colnames(metadata_ibd) == "External.ID"] <- "label"
+  
+  # Merge PCoA results with metadata
+  merged_df <- merge(pcoa_df, metadata_ibd, by = "label")
+  
+  # Plot the results
+  pcoa_plot <- ggplot(merged_df, aes(x = PCoA1, y = PCoA2, color = diagnosis)) +
+    geom_point(size = 3) +
+    theme_minimal() +
+    labs(
+      title = paste("PCoA Plot (2D) -", gene_family), 
+      x = paste0("PCoA1 (", percent_variance[1], "%)"),
+      y = paste0("PCoA2 (", percent_variance[2], "%)")
+    ) +
+    scale_color_manual(values = c("nonIBD" = "blue", "UC" = "red", "CD" = "green"))
+  
+  ggsave(paste0("IBD_PCoA_plot_", gene_family, ".png"), plot = pcoa_plot, width = 10, height = 10, dpi = 600)
+  
+  # Run PERMANOVA test
+  permanova_result <- adonis(distance_matrix ~ diagnosis, data = merged_df)
+  print(permanova_result$aov.tab)
+  
+  # Run pairwise PERMANOVA tests
+  pairwise_results <- pairwise.adonis(distance_matrix, merged_df$diagnosis)
+  print(pairwise_results)
+  
+  return(list(pcoa_result = pcoa_result, merged_df = merged_df))
+}
+
+# Loop over each gene family and perform PCoA
+results <- lapply(gene_families, perform_pcoa)
+
+# Remove NULL results
+results <- results[!sapply(results, is.null)]
+
+# Feature selection for each gene family
+for (gene_family in gene_families) {
+  result <- results[[which(gene_families == gene_family)]]
+  if (is.null(result)) next
+  
+  print(paste("Processing gene family:", gene_family))
+  pcoa_result <- result$pcoa_result
+  feature_scores <- pcoa_result$points
+  
+  subset_df <- df_numeric_clean %>% select(starts_with(gene_family))
+  
+  # Ensure that subset_df and feature_scores have the same number of rows
+  subset_df <- subset_df[!empty_rows, ]
+  
+  print("Subset data frame:")
+  print(head(subset_df))
+  
+  print("Feature scores:")
+  print(head(feature_scores))
+  
+  contributions <- apply(subset_df, 2, function(x) cor(x, feature_scores[,1], use = "complete.obs"))
+  contributions <- cbind(contributions, apply(subset_df, 2, function(x) cor(x, feature_scores[,2], use = "complete.obs")))
+  
+  colnames(contributions) <- c("PCoA1", "PCoA2")
+  
+  # ordered_contributions_PCoA1 <- contributions[order(abs(contributions[,1]), decreasing = TRUE),]
+  # ordered_contributions_PCoA2 <- contributions[order(abs(contributions[,2]), decreasing = TRUE),]
+  
+  # print(paste("Top 10 features for PCoA1 in", gene_family, ":"))
+  # print(ordered_contributions_PCoA1[1:10,])
+  # 
+  # print(paste("Top 10 features for PCoA2 in", gene_family, ":"))
+  # print(ordered_contributions_PCoA2[1:10,])
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Calculate the distance matrix
 distance_matrix <- vegdist(df_numeric_clean, method = "bray")
