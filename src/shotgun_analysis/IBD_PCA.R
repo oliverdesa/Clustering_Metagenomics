@@ -37,6 +37,24 @@ print(any_empty_rows)
 
 ######################
 
+## subset for genefamilies ##
+
+# Extract unique gene families with the first two parts of the identifier if they exist
+get_gene_family <- function(col_name) {
+  parts <- strsplit(col_name, "\\.")[[1]]
+  if (length(parts) >= 3) {
+    return(paste(parts[1], parts[2], sep = "."))
+  } else {
+    return(parts[1])
+  }
+}
+
+gene_families <- unique(sapply(colnames(df_numeric_clean), get_gene_family))
+
+print(gene_families)
+
+######################
+
 ## Perform PCoA ##
 
 # Calculate the distance matrix
@@ -61,6 +79,14 @@ colnames(metadata_ibd)[colnames(metadata_ibd) == "External.ID"] <- "label"
 merged_df <- merge(pcoa_df, metadata_ibd, by = "label")
 
 ######################
+
+## Subset and Perform PCoA for each gene family ##
+
+# Extract unique gene families
+gene_families <- unique(sub("(.+?)\\..+", "\\1", colnames(df_numeric_clean)))
+
+print(gene_families))
+
 
 ## Visualize results ##
 
