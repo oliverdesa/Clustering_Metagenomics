@@ -683,6 +683,7 @@ correlation with maaslin and dysbiosis scores.
 
 15/07/2024
 - first lets take a look at developing the gene-specific pcoas
+- finished it. Not very informative
 
 
 
