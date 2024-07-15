@@ -664,6 +664,26 @@ for that
 12/09/2024
 - pcoas for each individual enzyme, labelled with condition
 
+14/07/2024
+Note dump:
+Navy cohort?
+
+kulia copeland paper
+paper from lab and williams paper
+
+check for samples in her freezer
+connect with julia to talk about the metagenomics
+
+Giuliano notes
+- Differential abundance testing with HDC and others, then stratify by strain to see where the functions are coming from
+
+test beta dispersion for pcoas
+
+correlation with maaslin and dysbiosis scores.
+
+15/07/2024
+- first lets take a look at developing the gene-specific pcoas
+
 
 
 
