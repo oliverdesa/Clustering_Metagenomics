@@ -683,7 +683,16 @@ correlation with maaslin and dysbiosis scores.
 
 15/07/2024
 - first lets take a look at developing the gene-specific pcoas
-- finished it. Not very informative
+- finished it. Not very informative.
+- now adjust maaslin code to take into account paired samples. 
+- oh no.
+- parelellized blastp script
+
+17/07/2024
+- blastp script running
+- queued jobs for all enzymes at 5 days. 
+- today we will start downloading more IBD datasets and begin re-analyzing the CRC datasets to include other enzymes. 
+
 
 
 

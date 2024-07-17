@@ -40,9 +40,9 @@ filtered_metadata_ibd <- filtered_metadata_ibd %>% column_to_rownames(var = "Ext
 results <- Maaslin2(
   input_data = abundance_data_ibd_unique,
   input_metadata = filtered_metadata_ibd,
-  output = "/Volumes/PGH-Backup/ibd_data/maaslin2/maaslin2_results_ibd/all_PGHs",
+  output = "/Volumes/PGH-Backup/ibd_data/maaslin2/maaslin2_results_ibd/all_PGHs/controlled",
   fixed_effects = c("diagnosis"),
-  random_effects = NULL,
+  random_effects = c("Participant.ID"),
   normalization = "none", 
   transform = "none",
   reference = c("diagnosis,nonIBD")
