@@ -693,6 +693,8 @@ correlation with maaslin and dysbiosis scores.
 - queued jobs for all enzymes at 5 days. 
 - today we will start downloading more IBD datasets and begin re-analyzing the CRC datasets to include other enzymes. 
 
+23/07/2024
+- Downloaded host transcriptomic data, will use to correlate cluster abiundances with changes in transcript level. 
 
 
 

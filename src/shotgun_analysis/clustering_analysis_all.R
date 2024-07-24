@@ -2,7 +2,7 @@ library(Maaslin2)
 library(feather)
 library(arrow)
 library(tidyverse)
-library(ALDEx2)
+# library(ALDEx2)
 
 
 ############ Colorectal cancer data ############
@@ -12,46 +12,34 @@ library(ALDEx2)
 ## Load Data ##
 
 # Read in the feather
-metadata_8156 <- arrow::read_feather("C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\LatestDataJan\\DRA008156\\DRA008156_metadata_complete.feather")
+metadata_8156 <- arrow::read_feather("/Volumes/PGH-Backup/CRC/DRA008156/DRA008156_metadata_complete.feather")
 
 # Read in the abundance data
-abundance_data_8156 <- read.csv("C:\\Users\\odesa\\Desktop\\Code\\CRC-Final\\data\\clustering\\humann_clustered\\clustered_complete_DRA008156.tsv", 
-                                sep = "\t", header = TRUE)
+abundance_data_8156 <- read.delim("/Users/odesa/Developer/CRC-Final/data/clustering/humann_clustered/clustered_complete_DRA008156.tsv", header = TRUE, sep='\t')
 
 # set sample_id as rownames
 abundance_data_8156 <- abundance_data_8156 %>% column_to_rownames(var = "sample_id")
 metadata_8156 <- metadata_8156 %>% column_to_rownames(var = "Accession")
 
 # Patterns to search for
-patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
+# patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
 
 # Combine patterns into a single regular expression
-pattern <- paste(patterns, collapse = "|")
+# pattern <- paste(patterns, collapse = "|")
 
-selected_columns <- grep(pattern, names(abundance_data_8156), value = TRUE)
+# selected_columns <- grep(pattern, names(abundance_data_8156), value = TRUE)
 
-filtered_df_8156 <- abundance_data_8156[, selected_columns]
+# filtered_df_8156 <- abundance_data_8156[, selected_columns]
 
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
-  input_data = filtered_df_8156,
+  input_data = abundance_data_8156,
   input_metadata = metadata_8156,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\DRA008156\\new_cluster\\no_clr",
+  output = "/Volumes/PGH-Backup/CRC/DRA008156/maaslin2/all_enzymes_clustered/",
   fixed_effects = c("Group"),
   random_effects = NULL,
   normalization = "none", 
-  transform = "none",
-  reference = c("Group,Healthy")
-)
-
-results <- Maaslin2(
-  input_data = filtered_df_8156,
-  input_metadata = metadata_8156,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\DRA008156\\new_cluster\\clr",
-  fixed_effects = c("Group"),
-  random_effects = NULL,
-  normalization = "CLR", 
   transform = "none",
   reference = c("Group,Healthy")
 )
@@ -62,7 +50,8 @@ results <- Maaslin2(
 ## Load Data ##
 
 # Read in the feather
-metadata_7774 <- arrow::read_feather("C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\LatestDataJan\\PRJEB7774\\PRJEB7774_metadata.feather")
+metadata_7774 <- arrow::read_feather("/Users/odesa/OneDrive - University of Toronto/LabWork/CRC/LatestDataJan/PRJEB7774/PRJEB7774_metadata.feather")
+")
 
 # Read in the abundance data
 abundance_data_7774 <- read.csv("C:\\Users\\odesa\\Desktop\\Code\\CRC-Final\\data\\clustering\\humann_clustered\\clustered_complete_PRJEB7774.tsv",
