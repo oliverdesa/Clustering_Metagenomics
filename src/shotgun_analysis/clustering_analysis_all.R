@@ -51,47 +51,35 @@ results <- Maaslin2(
 
 # Read in the feather
 metadata_7774 <- arrow::read_feather("/Users/odesa/OneDrive - University of Toronto/LabWork/CRC/LatestDataJan/PRJEB7774/PRJEB7774_metadata.feather")
-")
 
 # Read in the abundance data
-abundance_data_7774 <- read.csv("C:\\Users\\odesa\\Desktop\\Code\\CRC-Final\\data\\clustering\\humann_clustered\\clustered_complete_PRJEB7774.tsv",
+abundance_data_7774 <- read.csv("/Users/odesa/Developer/CRC-Final/data/clustering/humann_clustered/clustered_complete_PRJEB7774.tsv",
                                 sep='\t', header = TRUE)
 
 # set sample_id as rownames
 abundance_data_7774 <- abundance_data_7774 %>% column_to_rownames(var = "sample_id")
 metadata_7774 <- metadata_7774 %>% column_to_rownames(var = "run_accession")
 
-# Patterns to search for
-patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
-
-# Combine patterns into a single regular expression
-pattern <- paste(patterns, collapse = "|")
-
-selected_columns <- grep(pattern, names(abundance_data_7774), value = TRUE)
-
-filtered_df_7774 <- abundance_data_7774[, selected_columns]
+# # Patterns to search for
+# patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
+# 
+# # Combine patterns into a single regular expression
+# pattern <- paste(patterns, collapse = "|")
+# 
+# selected_columns <- grep(pattern, names(abundance_data_7774), value = TRUE)
+# 
+# filtered_df_7774 <- abundance_data_7774[, selected_columns]
 
 
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
-  input_data = filtered_df_7774,
+  input_data = abundance_data_7774,
   input_metadata = metadata_7774,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\PRJEB7774\\new_cluster\\no_clr",
+  output = "/Volumes/PGH-Backup/CRC/PRJEB7774/maaslin",
   fixed_effects = c("sample_title"),
   random_effects = NULL,
   normalization = "none", 
-  transform = "none",
-  reference=c("sample_title,Control")
-)
-
-results <- Maaslin2(
-  input_data = filtered_df_7774,
-  input_metadata = metadata_7774,
-  output = "C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\maaslin\\PRJEB7774\\new_cluster\\clr",
-  fixed_effects = c("sample_title"),
-  random_effects = NULL,
-  normalization = "CLR", 
   transform = "none",
   reference=c("sample_title,Control")
 )
