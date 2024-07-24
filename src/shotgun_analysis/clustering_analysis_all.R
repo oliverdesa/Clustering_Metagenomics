@@ -90,10 +90,10 @@ results <- Maaslin2(
 ## Load Data ##
 
 # Read in the feather
-metadata_10878 <- read.csv("C:\\Users\\odesa\\OneDrive - University of Toronto\\CRC\\LatestDataJan\\PRJEB10878\\PRJEB10878Metadata.txt")
+metadata_10878 <- read.csv("/Users/odesa/OneDrive - University of Toronto/LabWork/CRC/LatestDataJan/PRJEB10878/PRJEB10878Metadata.txt")
 
 # Read in the cluster abundance data
-abundance_data_10878 <- read.csv("C:/Users/odesa/Desktop/Code/CRC-Final/data/clustering/humann_clustered/clustered_complete_PRJEB10878.tsv", sep = "\t")
+abundance_data_10878 <- read.csv("/Users/odesa/Developer/CRC-Final/data/clustering/humann_clustered/clustered_complete_PRJEB10878.tsv", sep = "\t", header = TRUE)
 
 # set sample_id as rownames
 abundance_data_10878 <- abundance_data_10878 %>% column_to_rownames(var = "sample_id")
@@ -105,28 +105,13 @@ metadata_10878 <- metadata_10878 %>% column_to_rownames(var = "Run")
 results <- Maaslin2(
   input_data = abundance_data_10878,
   input_metadata = metadata_10878,
-  output = "E:/CRC/PRJEB10878/maaslin/no_clr",
+  output = "/Volumes/PGH-Backup/CRC/PRJEB10878/maaslin/all_enzymes_july",
   fixed_effects = c("config"),
   random_effects = NULL,
   normalization = "none", 
   transform = "none",
   reference=c("config,control"),
 )
-
-results <- Maaslin2(
-  input_data = abundance_data_10878,
-  input_metadata = metadata_10878,
-  output = "E:/CRC/PRJEB10878/maaslin/clr",
-  fixed_effects = c("config"),
-  random_effects = NULL,
-  normalization = "CLR", 
-  transform = "none",
-  reference=c("config,control"),
-)
-
-
-
-
 
 
 ############ ICI Trial Data ############
