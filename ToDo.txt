@@ -695,6 +695,9 @@ correlation with maaslin and dysbiosis scores.
 
 23/07/2024
 - Downloaded host transcriptomic data, will use to correlate cluster abiundances with changes in transcript level. 
+- I think transcriptomics is in raw counts data, need to normalize
+- begin downloading GEM ~500 samples
+- began downloading the first 2 repositories of reads
 
 
 
