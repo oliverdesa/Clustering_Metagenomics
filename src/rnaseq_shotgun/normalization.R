@@ -66,3 +66,17 @@ dge_filtered <- dge[keep, , keep.lib.sizes = FALSE]
 
 # TMM Normalization
 dge_filtered <- calcNormFactors(dge_filtered)
+
+## Write normalized counts tabel to csv
+
+# Extract normalized counts as a matrix
+normalized_counts <- cpm(dge_filtered, normalized.lib.sizes = TRUE)
+
+# Convert to data frame and add gene names as a column
+normalized_counts_df <- as.data.frame(normalized_counts)
+normalized_counts_df$Gene <- rownames(normalized_counts_df)
+
+# Write the normalized counts to a TSV file
+write.table(normalized_counts_df, "/Volumes/PGH-Backup/ibd_data/normalized_counts.tsv", sep = "\t", row.names = FALSE, quote = FALSE)
+
+
