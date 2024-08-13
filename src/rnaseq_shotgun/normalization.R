@@ -79,4 +79,7 @@ normalized_counts_df$Gene <- rownames(normalized_counts_df)
 # Write the normalized counts to a TSV file
 write.table(normalized_counts_df, "/Volumes/PGH-Backup/ibd_data/normalized_counts.tsv", sep = "\t", row.names = FALSE, quote = FALSE)
 
+write.table(metadata_rnaseq_filtered, "/Volumes/PGH-Backup/ibd_data/hmp2_rnaseq_metadata.tsv", sep = "\t")
+
+
 
