@@ -8,13 +8,8 @@ from adjustText import adjust_text
 import matplotlib.patches as mpatches
 
 
-# Read in data, merge tables and return merged table
-def make_merged_table(abundance_path, dysbiosis_path):
-    abundance = pd.read_csv(abundance_path, sep='\t')
-    dysbiosis = pd.read_csv(dysbiosis_path, sep='\t', names=['sample_id', 'dysbiosis_score', 'dysbiosis_category'])
-    abundance_merged = abundance.merge(dysbiosis, left_on='sample_id', right_on='sample_id')
-    abundance_merged.drop(['Unnamed: 0', 'dysbiosis_category'], axis=1, inplace=True)
-    return abundance_merged
+#### Re-formatting script to be more generalizable to data ####
+#### Script built to correlate metagenomic data with some continuous variable ####
 
 # Function to extract enzyme type from column name
 def extract_enzyme_type(column):
@@ -27,9 +22,9 @@ def extract_enzyme_type(column):
             return parts[0]
 
 # Function to parse data and extract enzyme types, map the types to colours
-def parse_data(df):
+def parse_data(df, score_column_id):
     # Extract enzyme type from the column names
-    enzyme_columns = [col for col in df.columns if col not in ['sample_id', 'dysbiosis_score']]
+    enzyme_columns = [col for col in df.columns if score_column_id not in col and col != 'sample_id']
     enzyme_types = [extract_enzyme_type(col) for col in enzyme_columns]
 
     # Print unique enzyme types for debugging
@@ -110,26 +105,29 @@ def plot_correlations(correlation_results, method, enzyme_colours):
         print(f"No significant {method} correlations (p < 0.05) found.")
 
 def main():
-    parser = argparse.ArgumentParser(description="Calculate correlations between gene counts and dysbiosis scores")
-    parser.add_argument('abundance_file_path', type=str, help="Path to the TSV file containing the data")
-    parser.add_argument('dysbiosis_file_path', type=str, help="Path to the TSV file containing the dysbiosis scores")
-    parser.add_argument('--score_column', type=str, default='dysbiosis_score', help="Column name for dysbiosis scores")
+    parser = argparse.ArgumentParser(description="Calculate correlations between gene counts and some variable")
+    parser.add_argument('merged_file_path', type=str, help="Path to the TSV file containing the data")
+    parser.add_argument('--score_column_id', type=str, help="string identifier for correlate score column(s)")
     args = parser.parse_args()
     
     # Load the data
-    df = make_merged_table(args.abundance_file_path, args.dysbiosis_file_path)
 
-    df, enzyme_colours = parse_data(df)
+    df = pd.read_csv(args.merged_file_path, sep='\t')
+    df, enzyme_colours = parse_data(df, args.score_column_id)
+
+    # df, enzyme_colours = parse_data(df)
+
+    # # Identify gene columns (assuming all columns except the score column are gene counts)
+    # gene_columns = [col for col in df.columns if '_mgx' in col and col != 'sample_id']
     
-    # Identify gene columns (assuming all columns except the score column are gene counts)
-    gene_columns = [col for col in df.columns if col != args.score_column]
+    # corr_columns = [col for col in df.columns if args.score_column_id in col and col != 'sample_id']
+
+    # # Calculate correlations
+    # spearman_results, pearson_results = calculate_correlations(df, gene_columns, corr_columns)
     
-    # Calculate correlations
-    spearman_results, pearson_results = calculate_correlations(df, gene_columns, args.score_column)
-    
-    # Plot the results
-    plot_correlations(spearman_results, 'Spearman', enzyme_colours)
-    plot_correlations(pearson_results, 'Pearson', enzyme_colours)
+    # # Plot the results
+    # plot_correlations(spearman_results, 'Spearman', enzyme_colours)
+    # plot_correlations(pearson_results, 'Pearson', enzyme_colours)
 
 if __name__ == "__main__":
     main()
