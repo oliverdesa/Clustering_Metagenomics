@@ -7,6 +7,8 @@ import argparse
 from adjustText import adjust_text
 import matplotlib.patches as mpatches
 
+
+# Read in data, merge tables and return merged table
 def make_merged_table(abundance_path, dysbiosis_path):
     abundance = pd.read_csv(abundance_path, sep='\t')
     dysbiosis = pd.read_csv(dysbiosis_path, sep='\t', names=['sample_id', 'dysbiosis_score', 'dysbiosis_category'])
@@ -14,6 +16,7 @@ def make_merged_table(abundance_path, dysbiosis_path):
     abundance_merged.drop(['Unnamed: 0', 'dysbiosis_category'], axis=1, inplace=True)
     return abundance_merged
 
+# Function to extract enzyme type from column name
 def extract_enzyme_type(column):
         parts = column.split('-')
         if len(parts) == 2:
@@ -23,9 +26,9 @@ def extract_enzyme_type(column):
         else:
             return parts[0]
 
+# Function to parse data and extract enzyme types, map the types to colours
 def parse_data(df):
     # Extract enzyme type from the column names
-    
     enzyme_columns = [col for col in df.columns if col not in ['sample_id', 'dysbiosis_score']]
     enzyme_types = [extract_enzyme_type(col) for col in enzyme_columns]
 
