@@ -334,6 +334,8 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
     cluster_info_df = pd.DataFrame(cluster_info_list)
     
     return clustered_df, cluster_info_df
+
+
 def group_humann_table(humann_table):
     """Group the humann table by enzymes and group all enzyme together"""
 
