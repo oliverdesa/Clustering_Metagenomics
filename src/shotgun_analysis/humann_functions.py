@@ -130,24 +130,21 @@ def group_humann_table(humann_feather):
     return grouped_df
 
 def cluster_humann_table_improved(humann_feather, cluster_tsv):
-    """Cluster the humann table for each of the PGH enzymes and store cluster information."""
+    """Cluster the humann table for each of the PGH enzymes, store cluster information, 
+       and drop unclustered columns."""
     
-    # read in the humann table
+    # Read in the humann table
     humann_df = pd.read_feather(humann_feather)
 
-    # read in the clustering dataframes
+    # Read in the clustering dataframes
     cluster_df = pd.read_csv(cluster_tsv, sep='\t', low_memory=False)
 
-    # list of enzymes
+    # List of enzymes
     enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
                'LD-endopeptidase', 'Glucosaminidase',
                'DD-carboxypeptidase', 'DD-endopeptidase',
-               'Amidase', 'Muramidase']
-    
-    extra_classes = ['Saga', 'UC118']
+               'Amidase', 'Muramidase', 'Saga', 'UC118']
 
-    clustered_df = pd.DataFrame()
-    
     clustered_df = pd.DataFrame()
     
     # This will store information about each cluster
@@ -158,6 +155,9 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
     for enzyme in enzymes:
         enzyme_col = f"{enzyme.replace('-', '_').lower()}-unclustered"
         cluster_col = f"{enzyme.replace('-', '_').lower()}-foldseek_cluster"
+        if enzyme in ['Saga', 'UC118']:
+            # Saga and UC118 are not included in the cluster mapping, so skip them
+            continue
         enzyme_cluster_map = cluster_df.set_index(enzyme_col)[cluster_col].to_dict()
         cluster_map[enzyme] = enzyme_cluster_map
 
@@ -165,6 +165,10 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
     for enzyme in enzymes:
         df = humann_df.loc[:, humann_df.columns.str.startswith(enzyme)]
         column_names = df.columns.tolist()
+
+        if len(column_names) == 0:
+            print(f'No {enzyme} found')
+            continue
 
         print(f'{len(column_names)} {enzyme} found')
 
@@ -174,59 +178,49 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
         # Get the foldseek cluster for each UniRef ID
         results = []
         clusters_info = {}
-        for id in column_ids:
-            result = cluster_map[enzyme].get(id, "unclustered")
-            if result != "unclustered":
-                cluster_id = f"{enzyme}-{result}"
-                clusters_info.setdefault(cluster_id, []).append(id)
-            results.append(f"{enzyme}-{result}" if result != "unclustered" else "unclustered")
-        
-        # Replace the column names with the foldseek cluster
-        df.columns = results
+        columns_to_keep = []
+        for id, column in zip(column_ids, df.columns):
+            if enzyme in ['Saga', 'UC118']:
+                # For Saga and UC118, just keep all columns
+                columns_to_keep.append(column)
+            else:
+                result = cluster_map[enzyme].get(id, "unclustered")
+                if result == "unclustered":
+                    continue  # Skip unclustered columns
+                else:
+                    cluster_id = f"{enzyme}-{result}"
+                    clusters_info.setdefault(cluster_id, []).append(id)
+                    results.append(cluster_id)
+                    columns_to_keep.append(column)
+
+        # Drop unclustered columns by using the filtered list of columns to keep
+        df = df[columns_to_keep]
 
         # Aggregate the columns by foldseek cluster
-        agg_df = df.T.groupby(df.columns).sum().T
+        if enzyme not in ['Saga', 'UC118']:
+            df.columns = results
+            agg_df = df.T.groupby(df.columns).sum().T
 
-        # Add the aggregated df to the clustered df
-        clustered_df = pd.concat([clustered_df, agg_df], axis=1)
+            # Add the aggregated df to the clustered df
+            clustered_df = pd.concat([clustered_df, agg_df], axis=1)
 
-        # Collect the cluster information for analysis
-        for cluster_id, ids in clusters_info.items():
-            # Sum the final abundance for this cluster
-            final_abundance = agg_df[cluster_id].sum()
+            # Collect the cluster information for analysis
+            for cluster_id, ids in clusters_info.items():
+                # Sum the final abundance for this cluster
+                final_abundance = agg_df[cluster_id].sum()
 
-            # Add the cluster info
-            cluster_info_list.append({
-                'cluster_id': cluster_id,
-                'enzyme': enzyme,
-                'num_uniref_ids': len(ids),
-                'final_abundance': final_abundance
-            })
-    
-    # Aggregate the extra classes (Saga and uc118) into single columns each
-    for extra_class in extra_classes:
-        df_extra = humann_df.loc[:, humann_df.columns.str.startswith(extra_class)]
-        
-        if not df_extra.empty:
-            print(f'{len(df_extra.columns)} {extra_class} found')
-            # Sum all columns for the extra class into one column
-            extra_class_agg = df_extra.sum(axis=1)
-            clustered_df[f'{extra_class}_aggregated'] = extra_class_agg
-
-            # Collect the info for the extra classes
-            cluster_info_list.append({
-                'cluster_id': f'{extra_class}_aggregated',
-                'enzyme': extra_class,
-                'num_uniref_ids': df_extra.shape[1],
-                'final_abundance': extra_class_agg.sum()
-            })
-        else:
-            print(f'No {extra_class} found')
+                # Add the cluster info
+                cluster_info_list.append({
+                    'cluster_id': cluster_id,
+                    'enzyme': enzyme,
+                    'num_uniref_ids': len(ids),
+                    'final_abundance': final_abundance
+                })
 
     # Add the sample id column back to the dataframe
     clustered_df['sample_id'] = humann_df['sample_id']
     
     # Convert cluster info list to DataFrame
     cluster_info_df = pd.DataFrame(cluster_info_list)
-    
+
     return clustered_df, cluster_info_df
