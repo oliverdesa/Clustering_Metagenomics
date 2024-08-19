@@ -233,10 +233,8 @@ def cluster_humann_table(humann_feather, cluster_tsv):
 
     return clustered_df
 
-def cluster_humann_parallel(humann_feather, cluster_tsv):
-    """Cluster the humann table for each of the PGH enzymes
-       input the raw humann df, clustering dataframes, and
-       output the clustered humann df"""
+def cluster_humann_table_improved(humann_feather, cluster_tsv):
+    """Cluster the humann table for each of the PGH enzymes and store cluster information."""
     
     # read in the humann table
     humann_df = pd.read_feather(humann_feather)
@@ -247,45 +245,71 @@ def cluster_humann_parallel(humann_feather, cluster_tsv):
     # list of enzymes
     enzymes = ['DL-endopeptidase', 'LD-carboxypeptidase', 
                'LD-endopeptidase', 'Glucosaminidase',
-               'DD-carboxypeptidase', 'Diadenylate-cyclase',
+               'DD-carboxypeptidase', 'DD-endopeptidase',
                'Amidase', 'Muramidase']
 
-    clustered_dfs = []
+    clustered_df = pd.DataFrame()
+    
+    # This will store information about each cluster
+    cluster_info_list = []
+
+    # Create a mapping for each enzyme's clusters beforehand
+    cluster_map = {}
     for enzyme in enzymes:
-        # Filter columns for the enzyme
-        enzyme_columns = [col for col in humann_df.columns if col.startswith(enzyme)]
-        df = humann_df[enzyme_columns]
+        enzyme_col = f"{enzyme.replace('-', '_').lower()}-unclustered"
+        cluster_col = f"{enzyme.replace('-', '_').lower()}-foldseek_cluster"
+        enzyme_cluster_map = cluster_df.set_index(enzyme_col)[cluster_col].to_dict()
+        cluster_map[enzyme] = enzyme_cluster_map
 
-        print(f'{len(enzyme_columns)} {enzyme} found')
+    # Process each enzyme
+    for enzyme in enzymes:
+        df = humann_df.loc[:, humann_df.columns.str.startswith(enzyme)]
+        column_names = df.columns.tolist()
 
-        # Extract UniRef IDs
-        column_ids = [col.split('_')[2] for col in enzyme_columns]
+        print(f'{len(column_names)} {enzyme} found')
 
-        # Create a mapping DataFrame for the enzyme
-        cluster_mapping = cluster_df[cluster_df[f"{enzyme.replace('-', '_').lower()}-unclustered"].isin(column_ids)]
-        cluster_mapping = cluster_mapping.set_index(f"{enzyme.replace('-', '_').lower()}-unclustered")[f"{enzyme.replace('-', '_').lower()}-foldseek_cluster"]
+        # Extract the UniRef IDs from the column names
+        column_ids = [x.split('_')[2] for x in column_names]
 
-        # Map the column_ids to clusters, fill "unclustered" where no match
-        cluster_labels = [cluster_mapping.get(col_id, "unclustered") for col_id in column_ids]
-
-        print(f"{len(cluster_labels)} {enzyme} found, {cluster_labels.count('unclustered')} {enzyme} unclustered")
-
+        # Get the foldseek cluster for each UniRef ID
+        results = []
+        clusters_info = {}
+        for id in column_ids:
+            result = cluster_map[enzyme].get(id, "unclustered")
+            if result != "unclustered":
+                cluster_id = f"{enzyme}-{result}"
+                clusters_info.setdefault(cluster_id, []).append(id)
+            results.append(f"{enzyme}-{result}" if result != "unclustered" else "unclustered")
+        
         # Replace the column names with the foldseek cluster
-        df.columns = cluster_labels
+        df.columns = results
 
         # Aggregate the columns by foldseek cluster
         agg_df = df.T.groupby(df.columns).sum().T
 
-        # Add the aggregated df to the list of clustered dfs
-        clustered_dfs.append(agg_df)
+        # Add the aggregated df to the clustered df
+        clustered_df = pd.concat([clustered_df, agg_df], axis=1)
 
-    # Concatenate all the clustered dfs
-    clustered_df = pd.concat(clustered_dfs, axis=1)
+        # Collect the cluster information for analysis
+        for cluster_id, ids in clusters_info.items():
+            # Sum the final abundance for this cluster
+            final_abundance = agg_df[cluster_id].sum()
 
+            # Add the cluster info
+            cluster_info_list.append({
+                'cluster_id': cluster_id,
+                'enzyme': enzyme,
+                'num_uniref_ids': len(ids),
+                'final_abundance': final_abundance
+            })
+    
     # Add the sample id column back to the dataframe
     clustered_df['sample_id'] = humann_df['sample_id']
-
-    return clustered_df
+    
+    # Convert cluster info list to DataFrame
+    cluster_info_df = pd.DataFrame(cluster_info_list)
+    
+    return clustered_df, cluster_info_df
 
 def group_humann_table(humann_table):
     """Group the humann table by enzymes and group all enzyme together"""
