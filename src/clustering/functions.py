@@ -16,17 +16,17 @@ def scale_values(dataframe):
     return dataframe
 
 
-def create_heatmap(dataframe, title, filename, target_column):
+def create_heatmap(dataframe, title, filename):
     # Pivot the DataFrame for the heatmap
     # Assuming that the columns 'feature', 'value', and 'scaled_value' exist in the dataframe
     heatmap_data = dataframe.pivot(index='feature', columns='value', values='scaled_value')
 
     # Sort the pivot data by one of the columns for visual hierarchy in the heatmap
-    sorted_heatmap_data = heatmap_data.sort_values(by=target_column, ascending=False)
+    # sorted_heatmap_data = heatmap_data.sort_values(by=target_column, ascending=False)
 
     # Create the heatmap
     plt.figure(figsize=(10, 8))
-    sns.heatmap(sorted_heatmap_data, annot=True, cmap='coolwarm_r', fmt='.2f', center = 0)
+    sns.heatmap(heatmap_data, annot=True, cmap='coolwarm_r', fmt='.2f', center = 0)
 
     # Customize the plot
     plt.title(title)
@@ -237,7 +237,7 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
     """Cluster the humann table for each of the PGH enzymes and store cluster information."""
     
     # read in the humann table
-    humann_df = pd.read_feather(humann_feather)
+    humann_df = pd.read_csv(humann_feather, sep='\t')
 
     # read in the clustering dataframes
     cluster_df = pd.read_csv(cluster_tsv, sep='\t', low_memory=False)
