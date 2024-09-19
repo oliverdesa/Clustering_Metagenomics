@@ -3,6 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
+import networkx as nx
+from collections import defaultdict
+import itertools
+from sklearn.metrics.pairwise import cosine_similarity
+from matplotlib.colors import Normalize
+from matplotlib.cm import ScalarMappable
 
 ## Functions used for plotting and analysis ##
 
@@ -367,7 +373,79 @@ def group_humann_table(humann_table):
     return grouped_df
 
 
+def plot_network(cluster_ids, significant_edges, association_table, merged_df, title):
 
+    """ Plot the network graph with adjusted node colors and sizes based on association
+        values and cluster sizes, respectively. Scale the node colour based on the
+        association with the given feature. """
+    
+    # Make association dict
+    association_dict = dict(zip(association_table['feature'], association_table['scaled_value']))
+
+    # Create the network graph
+    G_adjusted_similarity = nx.Graph()
+
+    # Add nodes (clusters)
+    G_adjusted_similarity.add_nodes_from(cluster_ids)
+
+    # Add edges with weights based on cosine similarity
+    G_adjusted_similarity.add_weighted_edges_from(significant_edges)
+
+    # Define color scaling function
+    def get_node_color(node):
+        if node in association_dict:
+            value = association_dict[node]
+            return value
+        else:
+            return None
+
+    # Assign colors to nodes based on their association values
+    node_values = [get_node_color(node) for node in G_adjusted_similarity.nodes()]
+    abs_max_val = max(abs(val) for val in node_values if val is not None)
+    min_val = -abs_max_val
+    max_val = abs_max_val
+    reversed_bwr = plt.cm.bwr.reversed()  # Reverse the colormap
+
+    node_colors = [
+        'grey' if value is None or -3 < value < 3 else reversed_bwr((value - min_val) / (max_val - min_val))
+        for value in node_values   
+    ]
+
+    # Calculate the size of each cluster
+    cluster_sizes = merged_df['dl_endopeptidase-foldseek_cluster'].value_counts().to_dict()
+
+    # Normalize cluster sizes to a suitable range for node sizes in the graph
+    min_size = 20
+    max_size = 1000
+    min_cluster_size = min(cluster_sizes.values())
+    max_cluster_size = max(cluster_sizes.values())
+    node_sizes = [
+        ((cluster_sizes[node] - min_cluster_size) / (max_cluster_size - min_cluster_size) * (max_size - min_size) + min_size)
+        if node in cluster_sizes else min_size
+        for node in G_adjusted_similarity.nodes()
+    ]
+
+    # Visualize the adjusted network
+    plt.figure(figsize=(12, 12))
+    pos = nx.spring_layout(G_adjusted_similarity, seed=42)  # For consistent layout
+
+    # Draw the network
+    nodes = nx.draw_networkx_nodes(G_adjusted_similarity, pos, node_color=node_colors, node_size=node_sizes, alpha=0.8, cmap=plt.cm.bwr)
+    nx.draw_networkx_edges(G_adjusted_similarity, pos, alpha=0.5)
+    nx.draw_networkx_labels(G_adjusted_similarity, pos, font_size=5, alpha=0.7)
+
+    if title is not None:
+        plt.title(title)
+    else:
+        plt.title("Adjusted Network Graph Based on Percentage Domain Inclusion")
+        plt.axis('off')
+
+    # Create a ScalarMappable for the colorbar
+    sm = ScalarMappable(cmap=reversed_bwr, norm=Normalize(vmin=min_val, vmax=max_val))
+    sm.set_array([])  # Dummy array for ScalarMappable
+    plt.colorbar(sm, label='Association Value')
+
+    plt.savefig('../../figures/CD_adjusted_network.png', dpi=600, bbox_inches='tight')
             
 
 
