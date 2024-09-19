@@ -252,8 +252,6 @@ def cluster_humann_table_improved(humann_feather, cluster_tsv):
 
     clustered_df = pd.DataFrame()
     
-    clustered_df = pd.DataFrame()
-    
     # This will store information about each cluster
     cluster_info_list = []
 
