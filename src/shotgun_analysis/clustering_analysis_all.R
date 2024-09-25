@@ -22,21 +22,21 @@ abundance_data_8156 <- abundance_data_8156 %>% column_to_rownames(var = "sample_
 metadata_8156 <- metadata_8156 %>% column_to_rownames(var = "Accession")
 
 # Patterns to search for
-# patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
+patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
 
 # Combine patterns into a single regular expression
-# pattern <- paste(patterns, collapse = "|")
+pattern <- paste(patterns, collapse = "|")
 
-# selected_columns <- grep(pattern, names(abundance_data_8156), value = TRUE)
+selected_columns <- grep(pattern, names(abundance_data_8156), value = TRUE)
 
-# filtered_df_8156 <- abundance_data_8156[, selected_columns]
+filtered_df_8156 <- abundance_data_8156[, selected_columns]
 
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
-  input_data = abundance_data_8156,
+  input_data = filtered_df_8156,
   input_metadata = metadata_8156,
-  output = "/Volumes/PGH-Backup/CRC/DRA008156/maaslin2/all_enzymes_clustered/",
+  output = "/Volumes/PGH-Backup/CRC/DRA008156/maaslin2/carboxys_and_dles/",
   fixed_effects = c("Group"),
   random_effects = NULL,
   normalization = "none", 
@@ -60,23 +60,23 @@ abundance_data_7774 <- read.csv("/Users/odesa/Developer/CRC-Final/data/clusterin
 abundance_data_7774 <- abundance_data_7774 %>% column_to_rownames(var = "sample_id")
 metadata_7774 <- metadata_7774 %>% column_to_rownames(var = "run_accession")
 
-# # Patterns to search for
-# patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
-# 
-# # Combine patterns into a single regular expression
-# pattern <- paste(patterns, collapse = "|")
-# 
-# selected_columns <- grep(pattern, names(abundance_data_7774), value = TRUE)
-# 
-# filtered_df_7774 <- abundance_data_7774[, selected_columns]
+# Patterns to search for
+patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
+
+# Combine patterns into a single regular expression
+pattern <- paste(patterns, collapse = "|")
+
+selected_columns <- grep(pattern, names(abundance_data_7774), value = TRUE)
+
+filtered_df_7774 <- abundance_data_7774[, selected_columns]
 
 
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
-  input_data = abundance_data_7774,
+  input_data = filtered_df_7774,
   input_metadata = metadata_7774,
-  output = "/Volumes/PGH-Backup/CRC/PRJEB7774/maaslin",
+  output = "/Volumes/PGH-Backup/CRC/PRJEB7774/maaslin/carboxys_and_dles/",
   fixed_effects = c("sample_title"),
   random_effects = NULL,
   normalization = "none", 
@@ -99,13 +99,22 @@ abundance_data_10878 <- read.csv("/Users/odesa/Developer/CRC-Final/data/clusteri
 abundance_data_10878 <- abundance_data_10878 %>% column_to_rownames(var = "sample_id")
 metadata_10878 <- metadata_10878 %>% column_to_rownames(var = "Run")
 
+# Patterns to search for
+patterns <- c("^DL.endopeptidase", "^LD.carboxypeptidase", "^DD.carboxypeptidase")
+
+# Combine patterns into a single regular expression
+pattern <- paste(patterns, collapse = "|")
+
+selected_columns <- grep(pattern, names(abundance_data_10878), value = TRUE)
+
+filtered_df_10878 <- abundance_data_10878[, selected_columns]
 
 ## Run Maaslin2 ##
 
 results <- Maaslin2(
-  input_data = abundance_data_10878,
+  input_data = filtered_df_10878,
   input_metadata = metadata_10878,
-  output = "/Volumes/PGH-Backup/CRC/PRJEB10878/maaslin/all_enzymes_july",
+  output = "/Volumes/PGH-Backup/CRC/PRJEB10878/maaslin/carboxys_and_dles",
   fixed_effects = c("config"),
   random_effects = NULL,
   normalization = "none", 
