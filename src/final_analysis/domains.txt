@@ -1,0 +1,42 @@
+Clusters for Amidase
+Top 1 domains in Cluster_1: [('N-acetylmuramoyl-L-alanine amidase', 11477)]
+Top 3 domains in Cluster_2: [('N-acetylmuramoyl-L-alanine amidase', 80922), ('Putative peptidoglycan binding domain', 18502), ('AMIN domain', 16681)]
+Top 1 domains in Cluster_3: [('Mannosyl-glycoprotein endo-beta-N-acetylglucosaminidase', 373)]
+Top 1 domains in Cluster_4: [('ell wall binding domain 2 (CWB2)', 319)]
+Top 1 domains in Cluster_5: [('Putative peptidoglycan binding domain', 61)]
+Clusters for DD-carboxypeptidase
+Top 1 domains in Cluster_1: [('D-alanyl-D-alanine carboxypeptidase', 6033)]
+Top 3 domains in Cluster_2: [('D-alanyl-D-alanine carboxypeptidase', 29801), ('D-Ala-D-Ala carboxypeptidase 3 (S13) family', 10468), ('Penicillin-binding protein 5, C-terminal domain', 7997)]
+Top 1 domains in Cluster_3: [('D-Ala-D-Ala carboxypeptidase 3 (S13) family', 7305)]
+Top 1 domains in Cluster_4: [('Beta-lactamase', 166)]
+Top 1 domains in Cluster_5: [('Penicillin-binding protein 5, C-terminal domain', 41)]
+Clusters for DD-endopeptidase
+Top 1 domains in Cluster_1: [('Peptidase family M23', 1043)]
+Top 3 domains in Cluster_2: [('Peptidase family M23', 7949), ('Csd3 second domain', 4353), ('LysM domain', 2873)]
+Top 1 domains in Cluster_3: [('NlpC/P60 family', 1319)]
+Top 1 domains in Cluster_4: [('D-alanyl-D-alanine carboxypeptidase', 406)]
+Top 1 domains in Cluster_5: [('Penicillin-insensitive murein endopeptidase', 15)]
+Clusters for DL-endopeptidase
+Top 1 domains in Cluster_1: [('NlpC/P60 family', 603)]
+Top 3 domains in Cluster_2: [('LysM domain', 701), ('NlpC/P60 family', 434), ('Bacterial SH3 domain', 97)]
+Top 1 domains in Cluster_3: [('Zinc carboxypeptidase', 158)]
+Top 3 domains in Cluster_4: [('NlpC/P60 family', 78), ('LysM domain', 36), ('S-layer homology domain', 26)]
+Top 3 domains in Cluster_5: [('LysM domain', 397), ('Zinc carboxypeptidase', 374), ('Putative peptidoglycan binding domain', 64)]
+Clusters for Glucosaminidase
+Top 1 domains in Cluster_1: [('Mannosyl-glycoprotein endo-beta-N-acetylglucosaminidase', 425)]
+Top 3 domains in Cluster_2: [('Mannosyl-glycoprotein endo-beta-N-acetylglucosaminidase', 420), ('S-layer homology domain', 332), ('Bacterial SH3 domain', 290)]
+Top 3 domains in Cluster_3: [('Choline-binding repeat', 528), ('Putative cell wall binding repeat', 350), ('N-acetylmuramoyl-L-alanine amidase', 34)]
+Top 3 domains in Cluster_4: [('Glycosyl hydrolase family 3 N terminal domain', 1282), ('Beta-lactamase', 1073), ('Glycosyl hydrolase family 3 C-terminal domain', 205)]
+Top 3 domains in Cluster_5: [('beta-N-acetylglucosaminidase', 569), ('Glycosyl hydrolase family 20, domain 2', 82), ('F5/8 type C domain', 55)]
+Clusters for LD-carboxypeptidase
+Top 3 domains in Cluster_1: [('LD-carboxypeptidase C-terminal domain', 36451), ('LD-carboxypeptidase N-terminal domain', 36447), ('TAT (twin-arginine translocation) pathway signal sequence', 28)]
+Top 1 domains in Cluster_2: [('LD-carboxypeptidase C-terminal domain', 225)]
+Top 1 domains in Cluster_3: [('LD-carboxypeptidase N-terminal domain', 141)]
+Top 1 domains in Cluster_4: [('D-alanyl-D-alanine carboxypeptidase', 213)]
+Top 1 domains in Cluster_5: [('NlpC/P60 family', 318)]
+Clusters for Muramidase
+Top 3 domains in Cluster_1: [('Transglycosylase SLT domain', 68746), ('LysM domain', 15005), ('Membrane-bound lytic murein transglycosylase C, N-terminal domain', 3412)]
+Top 1 domains in Cluster_2: [('Transglycosylase SLT domain', 16073)]
+Top 1 domains in Cluster_3: [('Lysozyme inhibitor LprI', 13239)]
+Top 1 domains in Cluster_4: [('Phage lysozyme', 23771)]
+Top 1 domains in Cluster_5: [('Glycosyl hydrolases family 25', 3016)]
