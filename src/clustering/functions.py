@@ -449,6 +449,26 @@ def plot_network(cluster_ids, significant_edges, association_table, merged_df, t
     plt.savefig('../../figures/CD_adjusted_network.png', dpi=600, bbox_inches='tight')
             
 
+def generate_colorbar(association_table, output_path):
+
+    # Scale the association values and create a colour bar.
+    
+    association_values = association_table['scaled_value']
+
+    # Calculate min and max values
+    min_val = association_values.min()
+    max_val = association_values.max()
+
+    # Create a ScalarMappable for the colorbar
+    sm = ScalarMappable(cmap=plt.cm.bwr, norm=Normalize(vmin=min_val, vmax=max_val))
+    sm.set_array([])  # Dummy array for ScalarMappable
+
+    # Plot the colorbar
+    fig, ax = plt.subplots(figsize=(1, 6))
+    fig.colorbar(sm, cax=ax, orientation='vertical', label='Association Value')
+    plt.title('')
+    plt.savefig(output_path, dpi=600, bbox_inches='tight')
+    plt.show()
 
 
 
