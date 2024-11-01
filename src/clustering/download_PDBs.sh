@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Download PDB files for each cluster
+
 # Directory containing the input files
 input_dir="/media/oliver/PGH_Backup/clustering"
 
