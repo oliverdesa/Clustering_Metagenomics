@@ -35,7 +35,7 @@ combined_data <- rbind(data10878, data7774, data8156)
 
 # Subsetting to include only features that contain "DL.e"
 
-patterns <- c("^DL.e", "^LD.c", "^DD.c")
+patterns <- c("^DD.c")
 
 # Loop through enzymes, subset df
 for (pattern in patterns) {
@@ -107,19 +107,26 @@ for (pattern in patterns) {
   plot_title <- paste0("Forest Plot of Significant Features for", pattern)
   
   # Plot the forest plot
-  ggplot(meta_data, aes(x = EffectSize, y = reorder(Feature, EffectSize))) +
+  ggplot(meta_data, aes(y = EffectSize, x = reorder(Feature, EffectSize))) +
     geom_point(aes(color = Significance), size = 3) + # Use Significance for color
-    geom_errorbarh(aes(xmin = LowerCI, xmax = UpperCI), height = 0.2) +
-    geom_text(data = filtered_data, aes(label = paste0("p=", round(pval, 3)), color = Significance), hjust = 1.5) + # Annotate with p-values
+    geom_errorbar(aes(ymin = LowerCI, ymax = UpperCI), width = 0.3) + # Vertical error bars with wider spacing
+    # geom_text(data = filtered_data, aes(label = paste0("p=", round(pval, 3)), color = Significance), 
+              # vjust = -6.5, angle = 45, hjust = 1, size = 3.5) + # Adjust position, angle, and size of p-value annotations
     scale_color_manual(values = c("Red" = "red", "Orange" = "orange", "Not Significant" = "blue")) + # Define colors
-    labs(x = "MaAsLin2 Coefficient", y = "Feature", title = plot_title) +
+    labs(y = "MaAsLin2 Coefficient", x = "Feature", title = plot_title) +
     theme_minimal() +
-    theme(axis.text.y = element_text(size = 8),
+    theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), # Increase font size for better readability
+          axis.text.y = element_text(size = 10, margin = margin(r = 10)), # Add more space between y-axis labels
+          plot.title = element_text(size = 14, face = "bold"), # Make title more prominent
           legend.position = "none") 
   
-  plot_height <- 5 + 0.2 * nrow(meta_data)
+  # Adjust plot width and height for more spacing
+  plot_width <- 10 + 0.5 * nrow(meta_data) 
+  plot_height <- 25
+  
+  # Save the plot with increased dimensions
   figure_name <- paste0("/Volumes/PGH-Backup/CRC/meta_analysis", safe_pattern, ".tif")
   
-  ggsave(figure_name, width = 20, height = plot_height, units = "cm", dpi = 600, device = "tiff")
+  ggsave(figure_name, height = plot_height, width = plot_width, units = "cm", dpi = 600, device = "tiff")
   
 }

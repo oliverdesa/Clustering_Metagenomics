@@ -45,6 +45,7 @@ def create_heatmap(dataframe, title, filename):
     plt.show()
 
 
+
 ## Functions used for clustering ##
     
 # Create a function, when given a foldseek ID, returns all proteins within that cluster
