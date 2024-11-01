@@ -2,6 +2,10 @@ library(ggmsa)
 library(ggplot2)
 library(Biostrings)
 
+####################################################################
+# Abandoned script to visualize multiple sequence alignments (MSAs)
+####################################################################
+
 
 alignment_dir <- "/Users/odesa/Desktop/transient_files/aligned_fastas"
 

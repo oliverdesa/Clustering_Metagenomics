@@ -4,6 +4,10 @@ library(arrow)
 library(tidyverse)
 library(vegan)
 
+####################################################################
+# PCA script
+####################################################################
+
 # Read in the feather
 metadata_8156 <- arrow::read_feather("C:\\Users\\odesa\\OneDrive - University of Toronto\\LabWork\\CRC\\LatestDataJan\\DRA008156\\DRA008156_metadata_complete.feather")
 
