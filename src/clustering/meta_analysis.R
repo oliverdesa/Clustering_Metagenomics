@@ -2,6 +2,11 @@ library(metafor)
 library(ggplot2)
 library(dplyr)
 
+####################################################################
+# This R script is to carry out the meta-analysis of MaAsLin2 results
+# across the CRC trials and generate outputted plots
+####################################################################
+
 
 # Tools like funnel plots for assessing publication bias and statistics like I² 
 # for quantifying heterogeneity can provide additional insights into the reliability
